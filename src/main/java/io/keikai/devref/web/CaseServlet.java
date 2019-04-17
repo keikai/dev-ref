@@ -20,18 +20,23 @@ public class CaseServlet extends BaseServlet {
         if (appClass == null) {
             request.getRequestDispatcher("/notfound.jsp").forward(request, resp);
         } else {
-            try {
-                KeikaiCase keikaiCase = (KeikaiCase) appClass.newInstance();
-                keikaiCase.init(keikaiServerAddress);
-                // pass the anchor DOM element id for rendering keikai
-                String keikaiJs = keikaiCase.getJavaScriptURI("spreadsheet");
-                // store as an attribute to be accessed by EL on a JSP
-                request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
-                request.getRequestDispatcher("/mycase/case.jsp").forward(request, resp);
-                keikaiCase.run();
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            KeikaiCase keikaiCase = newKeikaiCase(appClass);
+            keikaiCase.init(keikaiServerAddress);
+            // pass the anchor DOM element id for rendering keikai
+            String keikaiJs = keikaiCase.getJavaScriptURI("spreadsheet");
+            // store as an attribute to be accessed by EL on a JSP
+            request.setAttribute(Configuration.KEIKAI_JS, keikaiJs);
+            request.getRequestDispatcher("/mycase/case.jsp").forward(request, resp);
+            keikaiCase.run();
+        }
+    }
+
+    private KeikaiCase newKeikaiCase(Class appClass) throws IOException {
+        try {
+            return (KeikaiCase) appClass.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+            throw new IOException(e);
         }
     }
 }
