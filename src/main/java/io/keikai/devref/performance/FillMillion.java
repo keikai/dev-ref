@@ -8,10 +8,12 @@ import io.keikai.util.Converter;
 public class FillMillion implements KeikaiCase {
     private Spreadsheet spreadsheet;
 
+    @Override
     public void init(String keikaiEngineAddress) {
         spreadsheet = Keikai.newClient(keikaiEngineAddress);
     }
 
+    @Override
     public String getJavaScriptURI(String domId) {
         return spreadsheet.getURI(domId);
     }
@@ -19,6 +21,7 @@ public class FillMillion implements KeikaiCase {
     /**
      * set cell values row by row (1000 columns * 1000 rows)
      */
+    @Override
     public void run() {
         //Setting a row value at a time.
         int rowCount = 1000;
