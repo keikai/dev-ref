@@ -6,8 +6,9 @@ import java.util.logging.*;
 
 public class Configuration {
     public static final String DEFAULT_KEIKAI_SERVER = "http://localhost:8888";
-    public static final String INTERNAL_FILE_FOLDER = "book";
+    public static final String INTERNAL_BOOK_FOLDER = "/WEB-INF/book/";
     public static final String KEIKAI_JS = "keikaiJs";
+    public static File DEFAULT_BOOK_FOLDER;
 
     /**
      * a mapping between file and corresponding application class
@@ -26,9 +27,5 @@ public class Configuration {
         handler.setFormatter(new SimpleFormatter());
         handler.setLevel(Level.ALL);
         log.addHandler(handler);
-    }
-
-    static public String getDefaultFileFolder(){
-        return "/WEB-INF/" + INTERNAL_FILE_FOLDER + "/";
     }
 }

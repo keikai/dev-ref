@@ -13,13 +13,6 @@ public class BaseServlet extends HttpServlet {
     protected String keikaiServerAddress = Configuration.DEFAULT_KEIKAI_SERVER;
     protected File defaultFileFolder;
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        defaultFileFolder = new File(getServletContext().getRealPath(Configuration.getDefaultFileFolder()));
-//        Configuration.enableSocketIOLog();
-    }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

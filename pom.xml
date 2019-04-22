@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>1.0.0-beta.16-Eval</version>
+	<version>1.0.0-beta.17-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
@@ -26,6 +26,11 @@
 			<id>Keikai EVAL</id>
 			<name>Keikai Evaluation Repository</name>
 			<url>http://mavensync.zkoss.org/eval</url>
+		</repository>
+		<repository>
+			<id>Keikai</id>
+			<name>Keikai Repository</name>
+			<url>http://mavensync.zkoss.org/maven2</url>
 		</repository>
 	</repositories>
 	<dependencies>
