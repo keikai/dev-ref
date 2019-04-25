@@ -9,14 +9,18 @@ import java.io.IOException;
 
 import static io.keikai.devref.Configuration.fileAppMap;
 
+/**
+ * /case/[CASE_NAME]
+ * instantiate and start application class, {@link KeikaiCase} according to case name.
+ */
 @WebServlet("/case/*")
 public class CaseServlet extends BaseServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
-        String fileName = request.getPathInfo().substring(1);
-        Class appClass = fileAppMap.get(fileName);
+        String caseName = request.getPathInfo().substring(1);
+        Class appClass = fileAppMap.get(caseName);
         if (appClass == null) {
             request.getRequestDispatcher("/notfound.jsp").forward(request, resp);
         } else {
