@@ -8,15 +8,15 @@ import java.net.*;
 import java.util.*;
 
 /**
- * fetch from https://exchangeratesapi.io/
+ * fetch exchange rates from https://exchangeratesapi.io/
  */
 public class ExchangeRateFetcher {
 
-    private static String GET_URL = "https://api.exchangeratesapi.io/latest";
+    private static String EXCHANGE_RATES_URL = "https://api.exchangeratesapi.io/latest";
 
     public static Map<String, Double> fetch() throws IOException {
-        URL obj = new URL(GET_URL);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        URL url = new URL(EXCHANGE_RATES_URL);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) { // success
@@ -39,11 +39,12 @@ public class ExchangeRateFetcher {
 
     }
 
-//    static private JsonElement parseResponse(String response) {
-//
-
-//    }
     public static void main(String[] args) throws IOException {
-        ExchangeRateFetcher.fetch();
+        Map rates = ExchangeRateFetcher.fetch();
+        Iterator<String> currencyIterator = rates.keySet().iterator();
+        while (currencyIterator.hasNext()) {
+            String currency = currencyIterator.next();
+            System.out.println(String.format("%s  %s", currency, rates.get(currency)));
+        }
     }
 }
