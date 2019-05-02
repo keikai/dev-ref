@@ -17,6 +17,7 @@ public class Configuration {
 
     static {
         fileAppMap.put("million", io.keikai.devref.performance.FillMillion.class);
+        fileAppMap.put("language", UiLanguage.class);
     }
 
     static public void enableSocketIOLog() {
