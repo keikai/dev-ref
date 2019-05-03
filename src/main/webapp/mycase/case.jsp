@@ -8,10 +8,8 @@
     <title>Keikai Example</title>
 </head>
 <body>
-    <div class="myapp">
-        <%@ include file="../header.jsp" %>
-        <div id="spreadsheet" style="height: 90%" >
-        </div>
+    <%@ include file="../header.jsp" %>
+    <div id="spreadsheet" style="height: 90%" >
     </div>
 </body>
 </html>
