@@ -1,5 +1,7 @@
 package io.keikai.devref;
 
+import io.keikai.devref.app.exchange.CurrencyExchange;
+
 import java.io.File;
 import java.util.*;
 import java.util.logging.*;
@@ -18,6 +20,7 @@ public class Configuration {
     static {
         fileAppMap.put("million", io.keikai.devref.performance.FillMillion.class);
         fileAppMap.put("language", UiLanguage.class);
+        fileAppMap.put("exchange", CurrencyExchange.class);
     }
 
     static public void enableSocketIOLog() {
