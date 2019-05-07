@@ -5,11 +5,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <script async defer src="${keikaiJs}"></script>
+    <link href="../resources/html5reset-1.6.1.css" type="text/css" rel="stylesheet">
+    <link href="../resources/common.css" type="text/css" rel="stylesheet">
     <title>Keikai Example</title>
 </head>
 <body>
     <%@ include file="../header.jsp" %>
-    <div id="spreadsheet" style="height: 90%" >
+    <div id="spreadsheet" style="height: 95%" >
     </div>
 </body>
 </html>
