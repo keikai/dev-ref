@@ -2,10 +2,10 @@ package io.keikai.devref.performance;
 
 import io.keikai.client.api.*;
 import io.keikai.client.api.event.Events;
-import io.keikai.devref.KeikaiCase;
+import io.keikai.devref.UseCase;
 import io.keikai.util.Converter;
 
-public class FillMillion implements KeikaiCase {
+public class FillMillion implements UseCase {
     private Spreadsheet spreadsheet;
 
     @Override

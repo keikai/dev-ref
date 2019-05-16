@@ -8,7 +8,7 @@ import java.util.Locale;
 /**
  * enforce UI language
  */
-public class UiLanguage implements KeikaiCase {
+public class UiLanguage implements UseCase {
     private Spreadsheet spreadsheet;
 
     @Override

@@ -1,13 +1,13 @@
 package io.keikai.devref;
 
 /**
- * Each {@link KeikaiCase} demonstrates an API use case. You should call an KeikaiCase with such order: <br/>
+ * Each {@link UseCase} demonstrates an API use case. You should call it with such order: <br/>
  * <code>
  * keikaiApp.init(); <br/>
  * keikaiApp.run();
  * </code>
  */
-public interface KeikaiCase {
+public interface UseCase {
 
     /**
      * connect to keikai engine. Initialize an application related data.

@@ -11,7 +11,7 @@ import static io.keikai.devref.Configuration.fileAppMap;
 
 /**
  * /case/[CASE_NAME]
- * instantiate and start application class, {@link KeikaiCase} according to case name.
+ * instantiate and start application class, {@link UseCase} according to case name.
  */
 @WebServlet("/case/*")
 public class CaseServlet extends BaseServlet {
@@ -24,7 +24,7 @@ public class CaseServlet extends BaseServlet {
         if (appClass == null) {
             request.getRequestDispatcher("/notfound.jsp").forward(request, resp);
         } else {
-            KeikaiCase keikaiCase = newKeikaiCase(appClass);
+            UseCase keikaiCase = newKeikaiCase(appClass);
             keikaiCase.init(keikaiServerAddress);
             // pass the anchor DOM element id for rendering keikai
             String keikaiJs = keikaiCase.getJavaScriptURI("spreadsheet");
@@ -35,9 +35,9 @@ public class CaseServlet extends BaseServlet {
         }
     }
 
-    private KeikaiCase newKeikaiCase(Class appClass) throws IOException {
+    private UseCase newKeikaiCase(Class appClass) throws IOException {
         try {
-            return (KeikaiCase) appClass.newInstance();
+            return (UseCase) appClass.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
             throw new IOException(e);

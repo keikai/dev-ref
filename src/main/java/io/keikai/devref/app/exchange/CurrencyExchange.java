@@ -9,7 +9,7 @@ import io.keikai.util.DateUtil;
 import java.io.*;
 import java.util.*;
 
-public class CurrencyExchange implements KeikaiCase {
+public class CurrencyExchange implements UseCase {
     private Spreadsheet spreadsheet;
     private Worksheet selectSheet;
     private Worksheet exchangeSheet;
