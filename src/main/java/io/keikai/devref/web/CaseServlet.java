@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-import static io.keikai.devref.Configuration.fileAppMap;
+import static io.keikai.devref.Configuration.pathCaseMap;
 
 /**
  * /case/[CASE_NAME]
@@ -20,7 +20,7 @@ public class CaseServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         super.doGet(request, resp);
         String caseName = request.getPathInfo().substring(1);
-        Class appClass = fileAppMap.get(caseName);
+        Class appClass = pathCaseMap.get(caseName);
         if (appClass == null) {
             request.getRequestDispatcher("/notfound.jsp").forward(request, resp);
         } else {

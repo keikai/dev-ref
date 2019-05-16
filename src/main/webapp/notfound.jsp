@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/tutorial.css'/>
     <script async defer src="${keikaiJs}"></script>
-    <title>Keikai Editor</title>
+    <title>Not Found</title>
 </head>
 <body>
-    no case found! Check your URL.
+    No use case for this URL found! Check your URL.
 </body>
 </html>

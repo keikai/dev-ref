@@ -1,6 +1,7 @@
 package io.keikai.devref;
 
 import io.keikai.devref.app.exchange.CurrencyExchange;
+import io.keikai.devref.performance.FillMillion;
 
 import java.io.File;
 import java.util.*;
@@ -13,14 +14,16 @@ public class Configuration {
     public static File DEFAULT_BOOK_FOLDER;
 
     /**
-     * a mapping between file and corresponding application class
+     * a mapping between path and corresponding use case.
+     * http://localhost:8080/demo/case/[PATH]
+     * PATH : MyClass.class
      */
-    public static final Map<String, Class> fileAppMap = new HashMap<String, Class>();
+    public static final Map<String, Class> pathCaseMap = new HashMap<String, Class>();
 
     static {
-        fileAppMap.put("million", io.keikai.devref.performance.FillMillion.class);
-        fileAppMap.put("language", UiLanguage.class);
-        fileAppMap.put("exchange", CurrencyExchange.class);
+        pathCaseMap.put("million", FillMillion.class);
+        pathCaseMap.put("language", UiLanguage.class);
+        pathCaseMap.put("exchange", CurrencyExchange.class);
     }
 
     static public void enableSocketIOLog() {
@@ -31,5 +34,11 @@ public class Configuration {
         handler.setFormatter(new SimpleFormatter());
         handler.setLevel(Level.ALL);
         log.addHandler(handler);
+
+        Iterator<String> pathIterator = pathCaseMap.keySet().iterator();
+        while (pathIterator.hasNext()){
+            String path = pathIterator.next();
+        }
+
     }
 }
