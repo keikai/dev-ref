@@ -18,5 +18,6 @@ http://localhost:8080/demo/case/exchange
 
 # Welcome to our sites:
 ## [Website](https://keikai.io)  
-## [Demo](https://keikai.io/demo)  
+## [Demo](https://keikai.io/demo)
+## [Document](https://doc.keikai.io)
 ## [Blog](https://keikai.io/blog)
