@@ -19,7 +19,7 @@ public class CurrencyExchange implements UseCase {
     private Double destinationRate;
 
     private static final String BOOK_NAME = "currencyExchange.xlsx";
-    private static final SheetProtection PROTECTION = new SheetProtection.Builder().setPassword("").setAllowSelectLockedCells(true).setAllowFiltering(true).build();
+    private static final SheetProtection PROTECTION = new SheetProtection.Builder().setPassword("").setAllowSelectLockedCells(true).setUserInterfaceOnly(true).setAllowFiltering(true).build();
     private static final String COST_CELL = "cost"; // range name
 
     @Override
@@ -57,8 +57,15 @@ public class CurrencyExchange implements UseCase {
             displayExchangeRate();
             unlockCostInput();
             setupVisibleArea();
+            protectAllSheets();
         } catch (FileNotFoundException | AbortedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void protectAllSheets() {
+        for (int i = 0 ; i < spreadsheet.getWorkbook().getSheetCount() ; i ++){
+            spreadsheet.getWorksheet(i).protect(PROTECTION);
         }
     }
 
@@ -78,7 +85,6 @@ public class CurrencyExchange implements UseCase {
         protection.setLocked(false);
         unlockedStyle.setProtection(protection);
         costCell.setCellStyle(unlockedStyle);
-        exchangeSheet.protect(PROTECTION);
     }
 
     /**
@@ -138,7 +144,6 @@ public class CurrencyExchange implements UseCase {
      * place an order in the transaction table
      */
     private void placeAnOrder() {
-        listSheet.unprotect("");
         Range costCell = spreadsheet.getRangeByName(exchangeSheet.getSheetId(), COST_CELL);
         if (!costCell.toString().isEmpty()) {
             Double cost = costCell.getRangeValue().getCellValue().getDoubleValue();
@@ -149,17 +154,14 @@ public class CurrencyExchange implements UseCase {
                 orderTable1stRow.setValues(DateUtil.getExcelDate(new Date()), cost, destinationCurrency, destinationRate, amount);
             }
         }
-        listSheet.protect(PROTECTION);
     }
 
     /**
      * fill user-selected currency and rate into "exchange" sheet
      */
     private void fillDestinationCurrencyRate() {
-        exchangeSheet.unprotect("");
         spreadsheet.getRangeByName(exchangeSheet.getName(), "rate").setValue(destinationRate);
         spreadsheet.getRange(BOOK_NAME, exchangeSheet.getName(), "H9").setValue(destinationCurrency);
         spreadsheet.getRangeByName(exchangeSheet.getName(), COST_CELL).activate();
-        exchangeSheet.protect(PROTECTION);
     }
 }
