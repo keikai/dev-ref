@@ -2,6 +2,7 @@ package io.keikai.devref;
 
 import io.keikai.devref.app.ReportBuilder;
 import io.keikai.devref.app.exchange.CurrencyExchange;
+import io.keikai.devref.app.payroll.PayrollTemplate;
 import io.keikai.devref.performance.FillMillion;
 
 import java.io.File;
@@ -26,6 +27,7 @@ public class Configuration {
         pathCaseMap.put("language", UiLanguage.class);
         pathCaseMap.put("exchange", CurrencyExchange.class);
         pathCaseMap.put("report", ReportBuilder.class);
+        pathCaseMap.put("payroll", PayrollTemplate.class);
     }
 
     static public void enableSocketIOLog() {
