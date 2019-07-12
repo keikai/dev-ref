@@ -26,11 +26,11 @@ public class FillMillion implements UseCase {
         //Setting a row value at a time.
         int rowCount = 1000;
         int columnCount = 1000;
-        Range cell = spreadsheet.getRange(rowCount, columnCount);
+        Range cell = spreadsheet.getRange(0, 0);
         cell.activate();
-        cell.setValue("click to start");
+        cell.setValue("click to fill 1 million of cells");
         spreadsheet.addEventListener(Events.ON_CELL_CLICK, rangeEvent -> {
-            if (rangeEvent.getRow() == rowCount && rangeEvent.getColumn() == columnCount) {
+            if (rangeEvent.getRow() == 0 && rangeEvent.getColumn() == 0) {
                 for (int row = 0; row < rowCount; row++) {
                     String[] values = new String[rowCount];
                     for (int column = 0; column < columnCount; column++) {
@@ -40,6 +40,8 @@ public class FillMillion implements UseCase {
                     range.setNumberFormat("@"); //save smart input parsing time
                     range.setValues(values);
                 }
+                Range endCell = spreadsheet.getRange(rowCount, columnCount);
+                endCell.activate();
             }
         });
     }
