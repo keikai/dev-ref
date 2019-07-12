@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <script async defer src="${keikaiJs}"></script>
     <link href="../resources/html5reset-1.6.1.css" type="text/css" rel="stylesheet">
     <link href="../resources/common.css" type="text/css" rel="stylesheet">
+    <script defer src="${keikaiJs}"></script>
     <title>Keikai Example</title>
 </head>
 <body>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel='stylesheet' href='${pageContext.request.contextPath}/css/tutorial.css'/>
-    <script async defer src="${keikaiJs}"></script>
+    <script defer src="${keikaiJs}"></script>
     <title>Keikai App</title>
 </head>
 <body>
