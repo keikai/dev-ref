@@ -22,6 +22,10 @@ Build a personalized report generator.
 
 * Highlighted Features: UI control, UI customization, sheet protection,  sheet copy,
 
+## Payroll template
+Extract data from a table structure and use it to populate a template to generate individual printouts.
+
+* Highlighted Features: UI control, sheet control,  sheet copy, data extraction
 
 # Welcome to our sites:
 ## [Website](https://keikai.io)  
