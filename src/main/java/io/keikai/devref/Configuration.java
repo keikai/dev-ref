@@ -1,6 +1,7 @@
 package io.keikai.devref;
 
 import io.keikai.devref.app.ReportBuilder;
+import io.keikai.devref.app.datatransform.DataTransformApp;
 import io.keikai.devref.app.exchange.CurrencyExchange;
 import io.keikai.devref.app.payroll.PayrollTemplate;
 import io.keikai.devref.performance.FillMillion;
@@ -10,7 +11,7 @@ import java.util.*;
 import java.util.logging.*;
 
 public class Configuration {
-    public static final String DEFAULT_KEIKAI_SERVER = "http://localhost:8888";
+    public static final String DEFAULT_KEIKAI_SERVER = "http://192.168.1.15:8888";
     public static final String INTERNAL_BOOK_FOLDER = "/WEB-INF/book/";
     public static final String KEIKAI_JS = "keikaiJs";
     public static File DEFAULT_BOOK_FOLDER;
@@ -28,6 +29,7 @@ public class Configuration {
         pathCaseMap.put("exchange", CurrencyExchange.class);
         pathCaseMap.put("report", ReportBuilder.class);
         pathCaseMap.put("payroll", PayrollTemplate.class);
+        pathCaseMap.put("transform", DataTransformApp.class);
     }
 
     static public void enableSocketIOLog() {
