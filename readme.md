@@ -27,6 +27,11 @@ Extract data from a table structure and use it to populate a template to generat
 
 * Highlighted Features: UI control, sheet control,  sheet copy, data extraction
 
+## Data transform
+Use spreadsheet calculation and cascading cell references to generate complex data from input fields.
+
+* Highlighted Features: UI control, spreadsheet functionalities
+
 # Welcome to our sites:
 ## [Website](https://keikai.io)  
 ## [Demo](https://keikai.io/demo)
