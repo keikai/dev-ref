@@ -6,7 +6,7 @@
 
 	<display-name>Keikai Developer Reference Example</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>editor.zul</welcome-file>
 	</welcome-file-list>
 
 </web-app>
