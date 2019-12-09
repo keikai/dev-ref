@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
 	<hbox vflex="1" hflex="1" align="center" pack="center"
 		spacing="20px">
-		<window border="normal" title="Login" apply="org.zkoss.zss.essential.advanced.permission.LoginComposer">
+		<window border="normal" title="Login" apply="io.keikai.devref.advanced.permission.LoginComposer">
 			Login as
 			<combobox readonly="true">
 				<template name="model">

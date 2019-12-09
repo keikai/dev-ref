@@ -1,5 +1,5 @@
 <zk>
-<div height="100%" apply="org.zkoss.zss.essential.LocaleComposer">
+<div height="100%" apply="io.keikai.devref.LocaleComposer">
 
 current locale : <label id="localeLabel" />
 <combobox id="localeBox" readonly="true" />

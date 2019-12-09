@@ -1,5 +1,5 @@
 <zk>
-	<hlayout apply="org.zkoss.zss.essential.advanced.customization.DisableFunctionsComposer"
+	<hlayout apply="io.keikai.devref.advanced.customization.DisableFunctionsComposer"
 		width="100%" height="100%">
 		<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true"
 			showContextMenu="false" showToolbar="true" showSheetbar="true" maxVisibleRows="100"

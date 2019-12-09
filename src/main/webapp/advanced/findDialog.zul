@@ -6,7 +6,7 @@
 </style>
 	<window id="findDialog" title="Find" mode="overlapped"
 		visible="true" position="right,center" contentStyle="padding: 5px"
-		apply="org.zkoss.zss.essential.advanced.customization.FindDialogComposer">
+		apply="io.keikai.devref.advanced.customization.FindDialogComposer">
 		<hlayout>
 			<vlayout sclass="block">
 				Find what:

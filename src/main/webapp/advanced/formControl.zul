@@ -1,5 +1,5 @@
 <zk>
-<div apply="org.zkoss.zss.essential.advanced.FormControlComposer" >
+<div apply="io.keikai.devref.advanced.FormControlComposer" >
 click each icon and get its name. click other cells to show a listbox
 	<spreadsheet id="ss" hflex="1" height="100%" showFormulabar="true" showContextMenu="true"
 		showToolbar="true" showSheetbar="true" maxVisibleRows="20" maxVisibleColumns="10"

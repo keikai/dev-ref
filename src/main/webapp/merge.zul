@@ -1,6 +1,6 @@
 <zk>
 	<window hflex="1" vflex="1"
-		apply="org.zkoss.zss.essential.MergeComposer">
+		apply="io.keikai.devref.MergeComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1"
 				showFormulabar="true" showContextMenu="true" showToolbar="true"

@@ -1,6 +1,6 @@
 <zk>
 	<window hflex="1" vflex="1"
-		apply="org.zkoss.zss.essential.CellStyleComposer">
+		apply="io.keikai.devref.CellStyleComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1"
 				showFormulabar="true" showContextMenu="true" showToolbar="true"

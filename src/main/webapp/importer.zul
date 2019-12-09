@@ -1,7 +1,7 @@
 <?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
 <zk>
 	<window title="My First ZK Spreadsheet Application" 
-	apply="org.zkoss.zss.essential.ImporterComposer"
+	apply="io.keikai.devref.ImporterComposer"
 		border="normal" height="100%" width="100%">
 		<spreadsheet id="ss" height="100%" width="100%"
 		maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"

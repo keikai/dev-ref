@@ -1,6 +1,6 @@
 <?component name="contextmenu" macroURI="myContextMenu.zul" inline="true"?>
 <zk>
-	<div apply="org.zkoss.zss.essential.advanced.customization.CustomContextMenuComposer"
+	<div apply="io.keikai.devref.advanced.customization.CustomContextMenuComposer"
 		width="100%" height="100%">
 		<spreadsheet id="ss" width="100%" height="100%" showFormulabar="true"
 			showContextMenu="false" showToolbar="true" showSheetbar="true" maxVisibleRows="100"

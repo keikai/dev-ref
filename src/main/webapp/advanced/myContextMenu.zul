@@ -1,6 +1,6 @@
 <zk>
 	<div
-		apply="org.zkoss.zss.essential.advanced.customization.MyContextMenuComposer">
+		apply="io.keikai.devref.advanced.customization.MyContextMenuComposer">
 		<menupopup id="myContext">
 			<menuitem id="display" label="Display Information" />
 			<menuitem id="open" label="Open Dialog" />

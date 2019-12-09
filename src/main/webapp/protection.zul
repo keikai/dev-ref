@@ -1,6 +1,6 @@
 <zk>
 	<window hflex="1" vflex="1"
-		apply="org.zkoss.zss.essential.ProtectionComposer">
+		apply="io.keikai.devref.ProtectionComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
 				showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40" 

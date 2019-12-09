@@ -1,6 +1,6 @@
 <?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window apply="org.zkoss.zss.essential.advanced.permission.PermissionComposer"
+	<window apply="io.keikai.devref.advanced.permission.PermissionComposer"
 	 height="100%" width="100%">
 	<div style="text-align:right">
 		<a href="login.zul" label="Logout"/>

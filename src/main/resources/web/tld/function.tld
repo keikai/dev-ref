@@ -6,12 +6,12 @@
     </description>
     <import>
         <import-name>MyCustomFunctions</import-name>
-        <import-class>org.zkoss.zss.essential.advanced.MyCustomFunctions</import-class>
+        <import-class>io.keikai.devref.advanced.MyCustomFunctions</import-class>
     </import>
  
     <function>
         <name>MYEXCHANGE</name>
-        <function-class>org.zkoss.zss.essential.advanced.MyCustomFunctions
+        <function-class>io.keikai.devref.advanced.MyCustomFunctions
         </function-class>
         <function-signature>double exchange(double,double);</function-signature>
         <description>

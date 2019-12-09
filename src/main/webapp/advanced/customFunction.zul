@@ -1,11 +1,11 @@
 <?xel-method prefix="zss" name="EXCHANGE"
-    class="org.zkoss.zss.essential.advanced.MyCustomFunctions"  
+    class="MyCustomFunctions"
     signature="double exchange(double,double)"?>
 <?xel-method prefix="zss" name="MYSUBTOTAL"
-    class="org.zkoss.zss.essential.advanced.MyCustomFunctions"  
+    class="MyCustomFunctions"
     signature="org.zkoss.poi.ss.formula.eval.ValueEval mySubtotal(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <?xel-method prefix="zss" name="CHAIN"
-    class="org.zkoss.zss.essential.advanced.MyCustomFunctions"  
+    class="MyCustomFunctions"
     signature="org.zkoss.poi.ss.formula.eval.ValueEval chain(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?> 
 <?taglib uri="/WEB-INF/tld/function.tld" prefix="zss" ?>    
 <zk>

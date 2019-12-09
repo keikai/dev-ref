@@ -1,6 +1,6 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-<div height="100%" width="100%" apply="org.zkoss.zss.essential.BookSheetComposer">
+<div height="100%" width="100%" apply="io.keikai.devref.BookSheetComposer">
 	<div height="40px">
 	Select Sheet Name: <listbox id="sheetBox" mold="select"/>
 	</div>

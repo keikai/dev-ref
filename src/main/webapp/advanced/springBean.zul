@@ -1,6 +1,6 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <zk>
-	<window hflex="1" vflex="1" apply="org.zkoss.zss.essential.advanced.RefSpringBeanComposer">
+	<window hflex="1" vflex="1" apply="io.keikai.devref.advanced.RefSpringBeanComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" src="/WEB-INF/books/springBean.xlsx" maxrows="200" maxcolumns="40"
 				showFormulabar="true" showContextMenu="true" showToolbar="true" showSheetbar="true" 

@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkplus</artifactId>
-			<version>8.0.5</version>
+			<version>8.0.5-Eval</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

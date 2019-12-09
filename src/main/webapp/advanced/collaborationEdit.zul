@@ -1,6 +1,6 @@
 <zk>
 	<window hflex="1" vflex="1"
-		apply="org.zkoss.zss.essential.advanced.CoeditComposer">
+		apply="io.keikai.devref.advanced.CoeditComposer">
 
 		<hlayout hflex="1" vflex="1">
 			<hlayout hflex="1" vflex="1">

@@ -1,6 +1,6 @@
 <zk>
 	<window hflex="1" vflex="1"
-		apply="org.zkoss.zss.essential.events.EventsComposer">
+		apply="io.keikai.devref.events.EventsComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1"
 				showFormulabar="true" showContextMenu="true" showToolbar="true"

@@ -1,5 +1,5 @@
 <zk>
-	<window hflex="1" vflex="1" apply="org.zkoss.zss.essential.PictureComposer">
+	<window hflex="1" vflex="1" apply="io.keikai.devref.PictureComposer">
 
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"

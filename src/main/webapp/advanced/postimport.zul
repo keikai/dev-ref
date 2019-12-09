@@ -1,5 +1,5 @@
 <zk>
-	<div apply="org.zkoss.zss.essential.advanced.PostImportComposer" height="100%">
+	<div apply="io.keikai.devref.advanced.PostImportComposer" height="100%">
 		<checkbox
 			label="initialize data within post-processing after importing" />
 		<spreadsheet id="ss" width="100%" vflex="1"

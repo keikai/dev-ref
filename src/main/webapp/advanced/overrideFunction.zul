@@ -1,5 +1,5 @@
 <?xel-method prefix="zss" name="LEN"
-    class="org.zkoss.zss.essential.advanced.MyCustomFunctions"  
+    class="MyCustomFunctions"
     signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <zk>
 	<window title="ZK Spreadsheet" border="normal" height="100%">

@@ -1,6 +1,6 @@
 <zk>
 <window title="Custom ${labels.zssex.dlg.format.dataValidation.title}" width="500px" border="normal" mode="modal"
-	apply="org.zkoss.zss.essential.advanced.customization.MyDataValidationCtrl">
+	apply="io.keikai.devref.advanced.customization.MyDataValidationCtrl">
 	<vbox align="center" hflex="1">
 		<tabbox hflex="1">
 			<tabs>
