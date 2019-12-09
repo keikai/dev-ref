@@ -1,0 +1,8 @@
+<config>
+	<config-name>myFunction</config-name>
+    <depends>zss</depends>
+    <taglib>
+        <taglib-uri>http://www.zkoss.org/zss/essentials/custom</taglib-uri>
+        <taglib-location>/web/tld/function.tld</taglib-location>
+    </taglib>
+</config>

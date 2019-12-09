@@ -1,0 +1,36 @@
+<zk>
+<style>
+	.block{
+		margin:10px;
+	}
+</style>
+	<window id="findDialog" title="Find" mode="overlapped"
+		visible="true" position="right,center" contentStyle="padding: 5px"
+		apply="org.zkoss.zss.essential.advanced.customization.FindDialogComposer">
+		<hlayout>
+			<vlayout sclass="block">
+				Find what:
+				<textbox id="keywordBox" width="180px"/>
+				<separator height="20px"/>
+				<hlayout>
+					<hlayout>
+						Within:
+						<combobox id="scopeBox" width="80px" readonly="true">
+							<template name="model">
+								<comboitem label="${each}" value="${each}" />
+							</template>
+						</combobox>
+					</hlayout>
+					<vlayout>
+					<checkbox id="caseSensitiveBox" label="Match case"/>
+					<checkbox id="entireCellBox" label="Find entire cell only"/>
+					</vlayout>
+				</hlayout>
+			</vlayout>
+			<vlayout sclass="block">
+				<button id="find" label="Find Next" width="80px"/>
+				<button id="close" label="Close" width="80px"/>
+			</vlayout>
+		</hlayout>
+	</window>
+</zk>

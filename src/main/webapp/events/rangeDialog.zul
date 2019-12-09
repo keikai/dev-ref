@@ -1,0 +1,15 @@
+<zk>
+	<window width="100%" height="80%"
+		apply="org.zkoss.zss.essential.events.RangeSelectionComposer">
+		<button id="open">Open range dialog</button>
+		<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
+			showToolbar="true" showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40"
+			src="/WEB-INF/books/blank.xlsx" />
+		<window id="dialog" title="Select Range" mode="overlapped" closable="false"
+			visible="false">
+			Selection:
+			<textbox id="rangeBox" />
+			<button id="ok">OK</button>
+		</window>
+	</window>
+</zk>

@@ -1,0 +1,10 @@
+<?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<div apply="org.zkoss.zss.essential.advanced.PerformanceComposer" height="100%" width="100%">
+		<button label="Fill with autorefresh=true"/>
+		<button label="Fill with autorefresh=false" style="background: lime"/>
+		<spreadsheet id="ss" vflex="1" width="100%" src="/WEB-INF/books/blank.xlsx"
+		maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
+		 showToolbar="true" showSheetbar="true" showFormulabar="true"/>
+	</div>
+</zk>

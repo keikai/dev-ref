@@ -1,0 +1,78 @@
+<zk>
+<window title="Custom ${labels.zssex.dlg.format.dataValidation.title}" width="500px" border="normal" mode="modal"
+	apply="org.zkoss.zss.essential.advanced.customization.MyDataValidationCtrl">
+	<vbox align="center" hflex="1">
+		<tabbox hflex="1">
+			<tabs>
+				<tab label="${labels.zssex.dlg.format.dataValidation.tab.settings}"/>
+				<tab label="${labels.zssex.dlg.format.dataValidation.tab.inputMsg}"/>
+				<tab label="${labels.zssex.dlg.format.dataValidation.tab.errorAlert}"/>
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+						<vbox pack="start" hflex="1">
+							<label value="${labels.zssex.dlg.format.dataValidation.settings.desc.name}" style="font-weight: bold"/>
+							<label value="${labels.zssex.dlg.format.dataValidation.settings.allow.name}"/>
+							<hbox>
+								<combobox id="allowCombobox" readonly="true"/>
+								<vbox>
+									<div>
+										<checkbox id="ignoreBlankCheckbox"/>									
+										<label value="${labels.zssex.dlg.format.dataValidation.settings.ignore}"/>
+									</div>
+									<div>
+										<checkbox id="inCellDropdownCheckbox"/>									
+										<label value="${labels.zssex.dlg.format.dataValidation.settings.inCell}" id="inCellDropdownLabel"/>
+									</div>
+								</vbox>								
+							</hbox>
+							<label value="${labels.zssex.dlg.format.dataValidation.settings.data.name}"/>
+							<combobox id="dataCombobox" readonly="true"/>
+							<label id="param1Label"/>
+							<textbox id="param1Textbox"/>
+							<label id="param2Label"/>
+							<textbox id="param2Textbox"/>
+						</vbox>
+				</tabpanel>
+				<tabpanel>
+					<vbox pack="start" hflex="1">
+						<hbox>
+							<checkbox id="inputMsgCheckbox"/>
+							<label value="${labels.zssex.dlg.format.dataValidation.input.show}"/>
+						</hbox>
+						<label style="font-weight: bold" value="${labels.zssex.dlg.format.dataValidation.input.desc}"/>
+						<label value="${labels.zssex.dlg.format.dataValidation.input.title}"/>
+						<textbox id="inputTitleTextbox"/>
+						<label value="${labels.zssex.dlg.format.dataValidation.input.msg}"/>
+						<textbox id="inputMsgTextbox" multiline="true" height="70px" width="250px"/>
+					</vbox>
+				</tabpanel>
+				<tabpanel>
+					<vbox pack="start" hflex="1">
+						<hbox>
+							<checkbox id="errorMsgCheckbox"/>
+							<label value="${labels.zssex.dlg.format.dataValidation.error.show}"/>
+						</hbox>
+						<label style="font-weight: bold" value="${labels.zssex.dlg.format.dataValidation.error.desc}"/>
+						<label value="${labels.zssex.dlg.format.dataValidation.error.style}"/>
+						<combobox id="errorStyleCombobox" readonly="true"/>
+						<label value="${labels.zssex.dlg.format.dataValidation.error.title}"/>
+						<textbox id="errorTitleTextbox"/>
+						<label value="${labels.zssex.dlg.format.dataValidation.error.msg}"/>
+						<textbox id="errorMsgTextbox" multiline="true" height="70px" width="250px"/>
+					</vbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<hbox hflex="1" style="padding-top:5px;">
+			<hbox hflex="1" pack="start">
+				<button id="clearBtn" label="Clear All"/>
+			</hbox>
+			<hbox hflex="1" pack="end">
+				<button id="okBtn" label="OK"/>
+				<button id="cancelBtn" label="Cancel"/>		
+			</hbox>
+		</hbox>
+	</vbox>
+</window>
+</zk>

@@ -1,0 +1,12 @@
+<zk>
+	<window hflex="1" vflex="1" apply="org.zkoss.zss.essential.advanced.BookSeriesComposer">
+		<groupbox width="100%" height="200px"><caption label="profile.xlsx"></caption>
+			<spreadsheet id="profile" hflex="1"  vflex="1" showFormulabar="true" showContextMenu="true"
+				showToolbar="false" showSheetbar="false" maxVisibleRows="2" maxVisibleColumns="7"/>
+		</groupbox>
+		<groupbox width="100%" vflex="1"><caption label="resume.xlsx"></caption>
+			<spreadsheet id="resume" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
+				showToolbar="true" showSheetbar="true" maxVisibleRows="12" maxVisibleColumns="6"/>
+		</groupbox>
+	</window>
+</zk>

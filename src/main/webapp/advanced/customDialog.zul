@@ -1,0 +1,6 @@
+<zk>
+	<spreadsheet id="ss" apply="org.zkoss.zss.essential.advanced.customization.CustomDialogComposer"
+				 hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
+		showToolbar="true" showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="20"
+		src="/WEB-INF/books/startzss.xlsx" />
+</zk>

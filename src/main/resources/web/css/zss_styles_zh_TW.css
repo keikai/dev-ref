@@ -1,0 +1,10 @@
+/*inject localized content*/
+.zsrendering:after {
+    content: " 繪製中...";
+    font-size: 10pt;
+}
+
+/*hide the english text*/
+.zsrendering {
+    font-size: 0;
+}

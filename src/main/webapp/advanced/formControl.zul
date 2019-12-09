@@ -1,0 +1,21 @@
+<zk>
+<div apply="org.zkoss.zss.essential.advanced.FormControlComposer" >
+click each icon and get its name. click other cells to show a listbox
+	<spreadsheet id="ss" hflex="1" height="100%" showFormulabar="true" showContextMenu="true"
+		showToolbar="true" showSheetbar="true" maxVisibleRows="20" maxVisibleColumns="10"
+		src="/WEB-INF/books/symbol.xlsx" />
+	<popup id="popup">
+		<listbox id="box" mold="select">
+			<listitem>
+				<listcell label="option A" />
+			</listitem>
+			<listitem>
+				<listcell label="option B" />
+			</listitem>
+			<listitem>
+				<listcell label="option C" />
+			</listitem>
+		</listbox>
+	</popup>
+</div>
+</zk>

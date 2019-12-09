@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.0.0.FL.20191127-Eval</version>
+	<version>5.0.0.FL.20191130-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
@@ -38,6 +38,27 @@
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-ex</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkplus</artifactId>
+			<version>8.0.5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 	</dependencies>
 	<build>

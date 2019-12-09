@@ -1,0 +1,15 @@
+<zk>
+	<div
+		apply="org.zkoss.zss.essential.advanced.customization.MyContextMenuComposer">
+		<menupopup id="myContext">
+			<menuitem id="display" label="Display Information" />
+			<menuitem id="open" label="Open Dialog" />
+			<menuitem id="clear" label="Clear All" />
+		</menupopup>
+		<window id="dialog" title="My Dialog" mode="overlapped"
+			closable="true" visible="false" width="200px" height="150px">
+			Selection:
+			<label id="content"></label>
+		</window>
+	</div>
+</zk>

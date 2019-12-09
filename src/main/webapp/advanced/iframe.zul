@@ -1,0 +1,15 @@
+<zk xmlns:n="native">
+    <n:h2>Iframe Communication</n:h2> A HTML button communicates with a spreadsheet inside an iframe.
+    This is required only when the parent page and the iframe page are from different origins.
+    <n:div>
+        <n:button id="export">Export</n:button>
+    </n:div>
+    <n:iframe src="iframe-inner.zul" width="100%" height="100%"/>
+    <script defer="true"><![CDATA[
+var iframe = document.getElementsByTagName('iframe')[0];
+jq('#export').on('click',
+    function(){
+        iframe.contentWindow.postMessage('onExport', iframe);
+    });
+    ]]></script>
+</zk>

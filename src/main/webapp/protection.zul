@@ -1,0 +1,35 @@
+<zk>
+	<window hflex="1" vflex="1"
+		apply="org.zkoss.zss.essential.ProtectionComposer">
+		<hlayout hflex="1" vflex="1">
+			<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
+				showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40" 
+				src="/WEB-INF/books/protection.xlsx" />
+			<vlayout width="300px" vflex="1">
+				<groupbox hflex="1" >
+					<caption label="Protection" />
+					<grid vflex="1" hflex="1">
+						<columns>
+							<column width="200px"/>
+							<column/>
+						</columns>
+						<rows>
+							<row>
+								Current Sheet Protection Status: <label id="status" style="font-weight:bold"/>
+							</row>
+							<row spans="2" align="right">
+								<button id="toggleProtection" label="Toggle Protection"/>
+							</row>
+							<row>
+								Current Cell Locked Status: <label id="lockStatus" style="font-weight:bold"/>
+							</row>
+							<row spans="2" align="right">
+								<button id="toggleLock" label="Toggle Lock"/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+			</vlayout>
+		</hlayout>
+	</window>
+</zk>

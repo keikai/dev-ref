@@ -1,0 +1,10 @@
+<zk>
+	<div apply="org.zkoss.zss.essential.advanced.PostImportComposer" height="100%">
+		<checkbox
+			label="initialize data within post-processing after importing" />
+		<spreadsheet id="ss" width="100%" vflex="1"
+			showFormulabar="true"
+			showContextMenu="false" showToolbar="true" showSheetbar="true"
+			maxVisibleRows="1000" maxVisibleColumns="200" />
+	</div>
+</zk>

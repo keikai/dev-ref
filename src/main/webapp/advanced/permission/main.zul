@@ -1,0 +1,12 @@
+<?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window apply="org.zkoss.zss.essential.advanced.permission.PermissionComposer"
+	 height="100%" width="100%">
+	<div style="text-align:right">
+		<a href="login.zul" label="Logout"/>
+	</div>
+		<spreadsheet id="ss" vflex="1" width="100%" src="/WEB-INF/books/startzss.xlsx"
+		maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
+		 showToolbar="true" showSheetbar="true" showFormulabar="true"/>
+	</window>
+</zk>

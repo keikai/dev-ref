@@ -1,0 +1,19 @@
+<zk xmlns:n="native">
+	<hbox vflex="1" hflex="1" align="center" pack="center"
+		spacing="20px">
+		<window border="normal" title="Login" apply="org.zkoss.zss.essential.advanced.permission.LoginComposer">
+			Login as
+			<combobox readonly="true">
+				<template name="model">
+				<comboitem label="${each.name}" value="${each}"></comboitem>
+				</template>
+			</combobox>
+			<button label="Login"/>
+			<vlayout>
+				<div>owner  - all operations allowed</div>
+				<div>editor - can edit but no sheet operations allowed</div>
+				<div>viewer - view only</div>
+			</vlayout>
+		</window>
+	</hbox>
+</zk>

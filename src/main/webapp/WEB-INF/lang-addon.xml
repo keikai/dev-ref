@@ -1,0 +1,8 @@
+<language>
+    <language-name>xul/html</language-name>
+    <device-type>ajax</device-type>
+    <namespace>http://www.zkoss.org/2005/zul</namespace>
+    <extension>zul</extension><!-- the first extension is the major one -->
+    <extension>xul</extension>
+    <stylesheet href="~./css/zss_styles*.css" type="text/css"/>
+</language>

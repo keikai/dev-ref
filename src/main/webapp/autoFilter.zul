@@ -1,0 +1,55 @@
+<zk>
+	<window hflex="1" vflex="1"
+		apply="org.zkoss.zss.essential.AutoFilterComposer">
+		<hlayout hflex="1" vflex="1">
+			<spreadsheet id="ss" hflex="1" vflex="1"
+				showFormulabar="true" showContextMenu="true" showToolbar="true"
+				showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40"
+				src="/WEB-INF/books/filter.xlsx" />
+			<vlayout width="300px" vflex="1">
+				<groupbox hflex="1" >
+					<caption label="Auto Filter" />
+					<grid vflex="1" hflex="1">
+						<columns>
+							<column/>
+							<column width="100px"/>
+						</columns>
+						<rows>
+							<row spans="2" align="right">
+								<button id="toggle" label="Toogle Filter"/>
+							</row>
+							<row spans="2" align="right">
+								<button id="clear" label="Clear Filter"/>
+							</row>
+							<row spans="2" align="right">
+								<button id="reapply" label="Reapply Filter"/>  
+							</row>
+							<row align="right">
+								<hlayout>
+								Filter by type: 
+								<combobox id="typeBox" readonly="true" value="Beverages" width="100px">
+									<comboitem  label="Beverages" value="Beverages"/>
+									<comboitem  label="Meat" value="Meat"/>
+									<comboitem  label="Produce" value="Produce"/>
+									<comboitem  label="Vegetables" value="Vegetables"/>
+									<comboitem  label="Tools" value="Tools"/>
+								</combobox>
+								</hlayout>
+								<button id="apply" label="Apply">Apply</button>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+			</vlayout>
+		</hlayout>
+	</window>
+	<style>
+		/* remove dash borders of the auto filter */
+		/*
+		[class*="af"]:after {
+			border: initial !important;
+		}
+		*/
+	</style>
+</zk>
+

@@ -1,0 +1,6 @@
+<zk>
+implement grouping
+	<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
+		showToolbar="true" showSheetbar="true" maxVisibleRows="20" maxVisibleColumns="10"
+		src="/WEB-INF/books/grouping.xlsx"  apply="org.zkoss.zss.essential.advanced.GroupingComposer"/>
+</zk>
