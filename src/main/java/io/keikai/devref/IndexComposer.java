@@ -21,7 +21,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 	@Wire
 	private Vlayout linkArea;
-	private String currentPage = "index.zul";
+	static private String INDEX_ZUL = "index.zul";
 	
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
@@ -39,7 +39,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 	    File[] folders = webRoot.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
-				return pathname.isDirectory() && !pathname.getName().equals("WEB-INF");
+				return pathname.isDirectory() && (!pathname.getName().equals("WEB-INF") && !pathname.getName().equals("js"));
 			}
 		});
 	    for (File folder : folders){
@@ -65,7 +65,8 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 		@Override
 		public boolean accept(File pathname) {
-			return pathname.getName().toLowerCase().endsWith("zul") && !pathname.getName().equals(currentPage);
+			return (pathname.getName().toLowerCase().endsWith("zul") || pathname.getName().toLowerCase().endsWith("jsp"))
+					&& !pathname.getName().equals(INDEX_ZUL);
 		}
 		
 	}
