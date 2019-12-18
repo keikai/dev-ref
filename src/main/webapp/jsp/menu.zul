@@ -1,0 +1,23 @@
+<zk xmlns:h="native">
+    <div height="100%" apply="io.keikai.devref.jsp.MenuComposer">
+        <h:h4>ZSS with the extra menu</h:h4>
+        <menubar>
+            <menuitem label="Upload" upload="true" id="upload"/>
+            <menuitem label="Load"  id="load" popup="filePopup"/>
+        </menubar>
+        <popup id="filePopup">
+            <groupbox width="300px">
+                <caption label="File List"/>
+                <listbox id="filelistBox" height="400px">
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each}"/>
+                        </listitem>
+                    </template>
+                </listbox>
+            </groupbox>
+        </popup>
+        <spreadsheet id="ss" src="/WEB-INF/books/application_for_leave.xlsx" maxVisibleRows="200" maxVisibleColumns="55" width="100%"
+                     vflex="1" showContextMenu="true" showSheetbar="true" showToolbar="true" showFormulabar="true"/>
+    </div>
+</zk>
