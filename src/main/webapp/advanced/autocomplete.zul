@@ -1,13 +1,13 @@
 <zk xmlns:n="native" xmlns:w="client">
     <script src="/js/SpreadsheetCellPopup.js"/>
     <script src="/js/zss-1305.js"/>
-    <n:h1>
+    <n:h2>
         autocomplete with a combobox in column A
-    </n:h1>
-    <label multiline="true">
+    </n:h2>
+    <label>
         when you start editing a cell in column A, a combobox pops up for autocomplete.
     </label>
-    <div apply="io.keikai.devref.AutoCompleteComposer" width="100%" height="100%">
+    <div apply="io.keikai.devref.AutoCompleteComposer" width="100%" vflex="1">
         <spreadsheet id="ss" hflex="1" vflex="1"
                      showFormulabar="true" showContextMenu="true" showToolbar="true"
                      showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40"
