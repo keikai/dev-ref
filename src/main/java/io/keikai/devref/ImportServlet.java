@@ -8,9 +8,11 @@ import org.zkoss.xel.taglib.Taglib;
 import org.zkoss.xel.util.TaglibMapper;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
+@WebServlet("/import")
 public class ImportServlet extends HttpServlet {
 
 	@Override
