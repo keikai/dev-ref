@@ -1,4 +1,4 @@
-<?variable-resolver class="MyBeanResolver"?>
+<?variable-resolver class="io.keikai.devref.advanced.MyBeanResolver"?>
 <zk>
 	<window hflex="1" vflex="1" apply="io.keikai.devref.advanced.RefBeanComposer">
 		<hlayout hflex="1" vflex="1">
