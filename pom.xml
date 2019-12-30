@@ -3,9 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.0.0.FL.20191218-Eval</version>
+	<version>5.0.0-SNAPSHOT</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
+		<zk.version>9.0.0-Eval</zk.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -50,9 +51,19 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>io.keikai</groupId>
+			<artifactId>keikai-pdf</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zkoss.theme</groupId>
+			<artifactId>iceblue_c</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkplus</artifactId>
-			<version>9.0.0-Eval</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

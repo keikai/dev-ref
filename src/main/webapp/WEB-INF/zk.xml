@@ -3,5 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zk/config http://www.zkoss.org/2005/zk/config/zk.xsd">
 
-
+    <library-property>
+        <name>org.zkoss.theme.preferred</name>
+        <value>iceblue_c</value>
+    </library-property>
 </zk>
