@@ -1,13 +1,13 @@
-<?xel-method prefix="zss" name="EXCHANGE"
-    class="MyCustomFunctions"
+<?xel-method prefix="keikai" name="EXCHANGE"
+    class="io.keikai.devref.advanced.MyCustomFunctions"
     signature="double exchange(double,double)"?>
-<?xel-method prefix="zss" name="MYSUBTOTAL"
-    class="MyCustomFunctions"
+<?xel-method prefix="keikai" name="MYSUBTOTAL"
+    class="io.keikai.devref.advanced.MyCustomFunctions"
     signature="org.zkoss.poi.ss.formula.eval.ValueEval mySubtotal(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<?xel-method prefix="zss" name="CHAIN"
-    class="MyCustomFunctions"
+<?xel-method prefix="keikai" name="CHAIN"
+    class="io.keikai.devref.advanced.MyCustomFunctions"
     signature="org.zkoss.poi.ss.formula.eval.ValueEval chain(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?> 
-<?taglib uri="/WEB-INF/tld/function.tld" prefix="zss" ?>    
+<?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>
 <zk>
 	<window title="ZK Spreadsheet" border="normal" height="100%">
 		<spreadsheet src="/WEB-INF/books/customFunction.xlsx" 
