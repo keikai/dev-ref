@@ -18,6 +18,6 @@
             </groupbox>
         </popup>
         <spreadsheet id="ss" src="/WEB-INF/books/application_for_leave.xlsx" maxVisibleRows="200" maxVisibleColumns="55" width="100%"
-                     vflex="1" showContextMenu="true" showSheetbar="true" showToolbar="true" showFormulabar="true"/>
+                     vflex="1" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true"/>
     </div>
 </zk>

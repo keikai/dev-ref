@@ -1,7 +1,7 @@
 <zk xmlns:n="native">
 	<n:span>inside iframe</n:span>
 	<spreadsheet id="ss" width="100%" height="80%" showFormulabar="true" apply="io.keikai.devref.ExportComposer"
-				 showContextMenu="true" showToolbar="true" showSheetbar="true" maxVisibleRows="100"
+				 showContextMenu="true" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100"
 				 maxVisibleColumns="40" src="/WEB-INF/books/startzss.xlsx" />
 	<script><![CDATA[
 	window.addEventListener("message", receiveMessage, false);

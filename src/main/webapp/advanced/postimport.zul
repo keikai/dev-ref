@@ -4,7 +4,7 @@
 			label="initialize data within post-processing after importing" />
 		<spreadsheet id="ss" width="100%" vflex="1"
 			showFormulabar="true"
-			showContextMenu="false" showToolbar="true" showSheetbar="true"
+			showContextMenu="false" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true"
 			maxVisibleRows="1000" maxVisibleColumns="200" />
 	</div>
 </zk>

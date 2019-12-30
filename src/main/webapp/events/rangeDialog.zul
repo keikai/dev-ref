@@ -3,7 +3,7 @@
 		apply="io.keikai.devref.events.RangeSelectionComposer">
 		<button id="open">Open range dialog</button>
 		<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
-			showToolbar="true" showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40"
+			showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40"
 			src="/WEB-INF/books/blank.xlsx" />
 		<window id="dialog" title="Select Range" mode="overlapped" closable="false"
 			visible="false">

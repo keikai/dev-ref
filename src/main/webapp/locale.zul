@@ -4,6 +4,6 @@
 current locale : <label id="localeLabel" />
 <combobox id="localeBox" readonly="true" />
 <spreadsheet id="ss"  src="/WEB-INF/books/numberFormat.xlsx" maxVisibleRows="100" maxVisibleColumns="20" width="100%"
-	height="90%" showContextMenu="true" showSheetbar="true" showToolbar="true" showFormulabar="true" />
+	height="90%" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true" />
 </div>
 </zk>

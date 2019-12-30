@@ -1,6 +1,6 @@
 <zk>
 implement grouping
 	<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
-		showToolbar="true" showSheetbar="true" maxVisibleRows="20" maxVisibleColumns="10"
+		showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="20" maxVisibleColumns="10"
 		src="/WEB-INF/books/grouping.xlsx"  apply="io.keikai.devref.advanced.GroupingComposer"/>
 </zk>

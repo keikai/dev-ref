@@ -12,7 +12,7 @@
 		<kkjsp:spreadsheet id="myzss" src="/WEB-INF/books/application_for_leave.xlsx" apply="io.keikai.devref.jsp.MyComposer"
 			width="1024px" height="768px" 
 			maxVisibleRows="100" maxVisibleColumns="20"
-			showToolbar="true" showFormulabar="true" showContextMenu="true" showSheetbar="true"/>
+			showToolbar="true" showFormulabar="true" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true"/>
 	</div>
 </body>
 </html>

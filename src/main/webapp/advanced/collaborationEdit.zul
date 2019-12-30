@@ -6,7 +6,7 @@
 			<hlayout hflex="1" vflex="1">
 				<spreadsheet id="ss" hflex="1" vflex="1" userName="user1"
 					showFormulabar="true" showContextMenu="true" showToolbar="true"
-					showSheetbar="true" maxVisibleRows="100" maxVisibleColumns="40" />
+					showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40" />
 			</hlayout>
 			<vlayout width="200px" vflex="1">
 				<groupbox hflex="1" height="200px">

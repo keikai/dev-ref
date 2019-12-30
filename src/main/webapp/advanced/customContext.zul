@@ -3,7 +3,7 @@
 	<div apply="io.keikai.devref.advanced.customization.CustomContextMenuComposer"
 		width="100%" height="100%">
 		<spreadsheet id="ss" width="100%" height="100%" showFormulabar="true"
-			showContextMenu="false" showToolbar="true" showSheetbar="true" maxVisibleRows="100"
+			showContextMenu="false" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100"
 			maxVisibleColumns="20" src="/WEB-INF/books/blank.xlsx" />
 		<contextmenu/>
 	</div>

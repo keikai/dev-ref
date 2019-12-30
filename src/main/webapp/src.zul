@@ -2,5 +2,5 @@
 <zk>
     <spreadsheet id="ss" height="100%" width="100%" src="/WEB-INF/books/blank.xlsx"
                  maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
-                 showToolbar="true" showSheetbar="true" showFormulabar="true"/>
+                 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
 </zk>

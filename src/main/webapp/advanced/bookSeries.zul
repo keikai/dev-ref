@@ -6,7 +6,7 @@
 		</groupbox>
 		<groupbox width="100%" vflex="1"><caption label="resume.xlsx"></caption>
 			<spreadsheet id="resume" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
-				showToolbar="true" showSheetbar="true" maxVisibleRows="12" maxVisibleColumns="6"/>
+				showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="12" maxVisibleColumns="6"/>
 		</groupbox>
 	</window>
 </zk>

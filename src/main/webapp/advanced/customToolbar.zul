@@ -1,7 +1,7 @@
 <zk>
 	custom toolbar example
 	<spreadsheet id="spreadsheet" maxVisibleRows="60" maxVisibleColumns="60"
-		hflex="1" vflex="1" showContextMenu="true" showSheetbar="true" showToolbar="true"/>
+		hflex="1" vflex="1" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true"/>
     <script defer="true"><![CDATA[
 var hiddenButtons = ['.zstbtn-newBook', '.zstbtn-saveBook', '.zstbtn-exportPDF', '.zstbtn-sortAndFilter'
 	, '.zschktbtn-protectSheet', '.zstbtn-insertPicture', '.zstbtn-insertChart'];
