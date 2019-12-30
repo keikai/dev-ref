@@ -23,14 +23,19 @@
 	</licenses>
 	<repositories>
 		<repository>
+			<id>Keikai OSS</id>
+			<name>Keikai Repository</name>
+			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
+		<repository>
 			<id>Keikai EVAL</id>
 			<name>Keikai Evaluation Repository</name>
 			<url>http://mavensync.zkoss.org/eval</url>
 		</repository>
 		<repository>
-			<id>Keikai</id>
-			<name>Keikai Repository</name>
-			<url>http://mavensync.zkoss.org/maven2</url>
+			<id>Keikai EE</id>
+			<name>Keikai EE Repository</name>
+			<url>https://maven.zkoss.org/repo/zk/ee</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -47,7 +52,7 @@
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkplus</artifactId>
-			<version>8.0.5-Eval</version>
+			<version>9.0.0-Eval</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
