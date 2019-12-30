@@ -42,4 +42,4 @@ Freshly release contains the latest features and bug fixes that are under develo
 The steps are:
 1. check the latest freshly version at [evaluation repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/)
 2. change the keikai version in `pom.xml`
-3. run the project according to [How to Run This Project](#How to Run This Project)
+3. run the project according to [How to Run This Project](#How-to-Run-This-Project)
