@@ -2,8 +2,8 @@
 <zk>
 	<window title="ZSS Header Events" border="normal" width="100%"
 		height="100%" apply="io.keikai.devref.events.MouseEventsComposer">
-		Right click the top and left header to see the custom context menu.
-		<spreadsheet width="600px" height="300px" maxVisibleRows="100" maxVisibleColumns="40" 
+		Right click the top or left header to see the custom context menu.
+		<spreadsheet width="100%" vflex="1" maxVisibleRows="100" maxVisibleColumns="40"
 		showFormulabar="true" showToolbar="true" src="/WEB-INF/books/blank.xlsx" >
 		</spreadsheet>
 

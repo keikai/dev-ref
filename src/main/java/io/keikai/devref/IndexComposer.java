@@ -65,7 +65,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 		@Override
 		public boolean accept(File pathname) {
-			return (pathname.getName().toLowerCase().endsWith("zul") || pathname.getName().toLowerCase().endsWith("jsp"))
+			return pathname.isFile() && (pathname.getName().toLowerCase().endsWith("zul") || pathname.getName().toLowerCase().endsWith("jsp"))
 					&& !pathname.getName().equals(INDEX_ZUL);
 		}
 		
