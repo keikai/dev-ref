@@ -1,5 +1,7 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
-<zk>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<window hflex="1" vflex="1" apply="io.keikai.devref.advanced.RefSpringBeanComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" src="/WEB-INF/books/springBean.xlsx" maxVisibleRows="200" maxVisibleColumns="40"

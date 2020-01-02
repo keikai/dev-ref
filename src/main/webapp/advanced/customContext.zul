@@ -1,5 +1,7 @@
 <?component name="contextmenu" macroURI="myContextMenu.zul" inline="true"?>
-<zk>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<div apply="io.keikai.devref.advanced.customization.CustomContextMenuComposer"
 		width="100%" height="100%">
 		<spreadsheet id="ss" width="100%" height="100%" showFormulabar="true"

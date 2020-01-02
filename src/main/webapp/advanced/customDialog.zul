@@ -1,4 +1,6 @@
-<zk>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<spreadsheet id="ss" apply="io.keikai.devref.advanced.customization.CustomDialogComposer"
 				 hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
 		showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="20"

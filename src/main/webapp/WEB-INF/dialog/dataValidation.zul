@@ -1,4 +1,6 @@
-<zk>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 <window title="Custom ${labels.zssex.dlg.format.dataValidation.title}" width="500px" border="normal" mode="modal"
 	apply="io.keikai.devref.advanced.customization.MyDataValidationCtrl">
 	<vbox align="center" hflex="1">
