@@ -15,6 +15,7 @@ Copyright (C) 2009 Potix Corporation. All Rights Reserved.
 package io.keikai.devref;
 
 import io.keikai.api.*;
+import io.keikai.api.SheetProtection;
 import io.keikai.api.model.*;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.*;
@@ -37,7 +38,8 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 	private Label status;
 	@Wire
 	private Label lockStatus;
-	
+	private static final String PASSWORD = "mypass";
+	static private SheetProtection PROTECTION_WITH_SELECTION = SheetProtection.Builder.create().withPassword(PASSWORD).withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).build();
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
@@ -49,25 +51,9 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 	public void toggleProtection(){
 		Sheet selectedSheet = ss.getSelectedSheet();
 		if (selectedSheet.isProtected()){
-			Ranges.range(selectedSheet).unprotectSheet("mypass");
+			Ranges.range(selectedSheet).unprotectSheet(PASSWORD);
 		}else{
-			Ranges.range(selectedSheet).protectSheet("mypass",
-					true, //allowSelectingLockedCells
-					true, //allowSelectingUnlockedCells,  
-					false, //allowFormattingCells
-					false, //allowFormattingColumns
-					false, //allowFormattingRows 
-					false, //allowInsertColumns 
-					false, //allowInsertRows
-					false, //allowInsertingHyperlinks
-					false, //allowDeletingColumns
-					false, //boolean allowDeletingRows
-					false, //allowSorting
-					false, //allowFiltering 
-					false, //allowUsingPivotTables
-					false, //drawingObjects
-					false  //boolean scenarios
-			);
+			Ranges.range(selectedSheet).protectSheet(PROTECTION_WITH_SELECTION);
 		}
 		updateSheetProtectionStatus(selectedSheet);
 	}

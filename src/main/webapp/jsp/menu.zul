@@ -1,6 +1,6 @@
 <zk xmlns:h="native">
     <div height="100%" apply="io.keikai.devref.jsp.MenuComposer">
-        <h:h4>ZSS with the extra menu</h:h4>
+        <h:h4>the extra menu</h:h4>
         <menubar>
             <menuitem label="Upload" upload="true" id="upload"/>
             <menuitem label="Load"  id="load" popup="filePopup"/>
