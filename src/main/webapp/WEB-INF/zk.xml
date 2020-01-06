@@ -7,4 +7,10 @@
         <name>org.zkoss.theme.preferred</name>
         <value>iceblue_c</value>
     </library-property>
+    <!-- set true if you want to debug JavaScript.
+        Once it's true, the uncompressed JavaScript files will be loaded.
+    -->
+    <client-config>
+        <debug-js>true</debug-js>
+    </client-config>
 </zk>
