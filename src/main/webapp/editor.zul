@@ -4,5 +4,5 @@
     <spreadsheet width="100%" height="100%"
                  showToolbar="true" showFormulabar="true"
                  showSheetbar="true" showContextMenu="true"
-                 src="/WEB-INF/book/Leave Application.xlsx"/>
+                 src="/WEB-INF/books/application_for_leave.xlsx"/>
 </zk>
