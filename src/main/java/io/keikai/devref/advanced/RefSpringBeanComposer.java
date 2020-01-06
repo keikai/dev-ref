@@ -1,6 +1,6 @@
 package io.keikai.devref.advanced;
 
-import io.keikai.api.Ranges;
+import io.keikai.api.*;
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
@@ -37,7 +37,7 @@ public class RefSpringBeanComposer extends SelectorComposer<Component> {
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		Ranges.range(ss.getBook().getSheetAt(0)).protectSheet("");
+		Ranges.range(ss.getBook().getSheetAt(0)).protectSheet(SheetProtection.Builder.create().build());
 	}
 
 	@Listen("onChange = doublebox")
