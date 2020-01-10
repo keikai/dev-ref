@@ -36,7 +36,7 @@
 		<repository>
 			<id>Keikai EE</id>
 			<name>Keikai EE Repository</name>
-			<url>https://maven.zkoss.org/repo/zk/ee</url>
+			<url>https://maven.zkoss.org/repo/keikai/ee/</url>
 		</repository>
 	</repositories>
 	<dependencies>
