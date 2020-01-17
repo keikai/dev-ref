@@ -1,15 +1,14 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-	custom toolbar example
+	custom toolbar example: the last button on the toolbar
+	<style>
+		.zstbtn .zss-toolbarbutton-content.k-icon-attach-file:before{
+			font-family: FontAwesome;
+			content: "\f0c6";
+		}
+	</style>
 	<spreadsheet id="spreadsheet" maxVisibleRows="60" maxVisibleColumns="60"
-		hflex="1" vflex="1" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true"/>
-    <script defer="true"><![CDATA[
-var hiddenButtons = ['.zstbtn-newBook', '.zstbtn-saveBook', '.zstbtn-exportPDF', '.zstbtn-sortAndFilter'
-	, '.zschktbtn-protectSheet', '.zstbtn-insertPicture', '.zstbtn-insertChart'];
-
-jq.each(hiddenButtons, function(index, selector){
-	jq(selector).hide();
-});
-    ]]></script>
+		hflex="1" vflex="1" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true"
+	apply="io.keikai.devref.advanced.customization.CustomToolbarComposer" />
 </zk>
