@@ -25,9 +25,6 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
 		UserActionManager actionManager = ss.getUserActionManager();
 		actionManager.registerHandler(
 				DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
-				AuxAction.NEW_BOOK.getAction(), new NewBookHandler());
-		actionManager.registerHandler(
-				DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
 				AuxAction.SAVE_BOOK.getAction(), new SaveBookHandler());
 	}
 }

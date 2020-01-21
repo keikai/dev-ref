@@ -1,14 +1,11 @@
 package io.keikai.devref.advanced.customization;
 
-import io.keikai.api.*;
-import io.keikai.api.model.*;
 import io.keikai.devref.util.BookUtil;
 import io.keikai.ui.*;
 import io.keikai.ui.impl.DefaultUserActionManagerCtrl;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zk.ui.util.Notification;
 
 
 /**
