@@ -106,4 +106,10 @@ public class BookUtil {
 		Ranges.range(newBook.getSheetAt(0)).deleteSheet();
 		return newBook;
 	}
+
+	static public Book newBook(){
+		Book book = Books.createBook("blank.xlsx");
+		Ranges.range(book).createSheet("Sheet1");
+		return book;
+	}
 }
