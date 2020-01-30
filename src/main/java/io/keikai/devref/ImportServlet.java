@@ -12,30 +12,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 
+/**
+ * An example to access an Excel file without {@link io.keikai.ui.Spreadsheet}.
+ * Just import an xlsx file and access cells via {@link Range} API.
+ */
 @WebServlet("/import")
 public class ImportServlet extends HttpServlet {
+
+	private Book book;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		importFile(req);
-		resp.getWriter().print("imported");
+		readCell(resp);
 	}
 
 	private void importFile(HttpServletRequest req) throws IOException {
-		FunctionResolver fr = FunctionResolverFactory.createFunctionResolver();
-		TaglibMapper mapper = (TaglibMapper)fr.getFunctionMapper();
-		//load the taglib declared in config.xml
-		mapper.load(new Taglib("zss", "http://www.zkoss.org/zss/essentials/custom"), new ClassLocator());
-		//load the tld directly in the classpath
-//		mapper.load(new Taglib("zss", "/web/tld/function.tld"), new ClassLocator());
-		//load the tld under WEB-INF
-//		mapper.load(new Taglib("zss", "/WEB-INF/tld/function.tld"), new ServletContextLocator(getServletContext())); 
-		
 		Importer importer = Importers.getImporter();
-		Book book = importer.imports(new File(req.getSession().getServletContext().getRealPath("/WEB-INF/books/customFunction.xlsx")), "sample");
-		Range formulaCell = Ranges.range(book.getSheetAt(0), 4, 2);
-		System.out.println("c5 is " + formulaCell.getCellEditText()+", "+ formulaCell.getCellValue());
+		book = importer.imports(new File(req.getSession().getServletContext().getRealPath("/WEB-INF/books/data_format.xlsx")), "sample");
+	}
+
+	private void readCell(HttpServletResponse response) throws IOException {
+		String cell = "I2";
+		Range formulaCell = Ranges.range(book.getSheetAt(0), cell);
+		response.getWriter().print(cell + " is " + formulaCell.getCellEditText()+", "+ formulaCell.getCellValue());
 	}
 
 }
