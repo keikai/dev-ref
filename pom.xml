@@ -95,6 +95,9 @@
 					<webAppConfig>
 						<contextPath>/${project.artifactId}</contextPath>
 						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
+						<!-- disable web fragment scanning to speed up startup time-->
+						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
+						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
 					</webAppConfig>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 				</configuration>
