@@ -11,6 +11,12 @@ import org.zkoss.zk.ui.WebApps;
 
 public class BookUtil {
 
+	static public Book newBook(){
+		Book book = Books.createBook("blank.xlsx");
+		Ranges.range(book).createSheet("Sheet1");
+		return book;
+	}
+
 	static public Book newBook(String bookName, BookType type) {
 		try {
 			return loadBlankBook(bookName, type);
@@ -105,11 +111,5 @@ public class BookUtil {
 		Ranges.range(newBook).cloneSheetFrom(sheet.getSheetName(), sheet);
 		Ranges.range(newBook.getSheetAt(0)).deleteSheet();
 		return newBook;
-	}
-
-	static public Book newBook(){
-		Book book = Books.createBook("blank.xlsx");
-		Ranges.range(book).createSheet("Sheet1");
-		return book;
 	}
 }
