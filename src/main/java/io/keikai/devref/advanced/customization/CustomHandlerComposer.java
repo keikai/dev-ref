@@ -26,6 +26,9 @@ public class CustomHandlerComposer extends SelectorComposer<Component> {
 		actionManager.registerHandler(
 				DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
 				AuxAction.SAVE_BOOK.getAction(), new SaveBookHandler());
+		actionManager.setHandler(
+				DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
+				AuxAction.DATA_VALIDATION.getAction(), new MyValidationHandler());
 	}
 }
 
