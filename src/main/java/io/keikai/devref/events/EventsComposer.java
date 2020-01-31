@@ -40,7 +40,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 
 	//Events
 
-	@Listen("onCtrlKey = #ss")
+	@Listen(Events.ON_CTRL_KEY + "= #ss")
 	public void onCtrlKey(KeyEvent event){
 		StringBuilder info = new StringBuilder();
 		
@@ -63,7 +63,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		return event.isCtrlKey() && event.getKeyCode() == 90;
 	}
 
-	@Listen("onCellClick = #ss")
+	@Listen(Events.ON_CELL_CLICK + " = #ss")
 	public void onCellClick(CellMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Click on cell ")
@@ -73,7 +73,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 			addInfo(info.toString());
 		}
 	}
-	@Listen("onCellRightClick = #ss")
+	@Listen(Events.ON_CELL_RIGHT_CLICK+" = #ss")
 	public void onCellRightClick(CellMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Right-click on cell ").append(Ranges.getCellRefString(event.getRow(),event.getColumn()));
@@ -82,7 +82,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 			addInfo(info.toString());
 		}
 	}
-	@Listen("onCellDoubleClick = #ss")
+	@Listen(Events.ON_CELL_DOUBLE_CLICK +" = #ss")
 	public void onCellDoubleClick(CellMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Double-click on cell ").append(Ranges.getCellRefString(event.getRow(),event.getColumn()));
@@ -94,7 +94,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	
 	
 	
-	@Listen("onHeaderClick = #ss")
+	@Listen(Events.ON_HEADER_CLICK +" = #ss")
 	public void onHeaderClick(HeaderMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Click on ").append(event.getType()).append(" ");
@@ -112,7 +112,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 			addInfo(info.toString());
 		}
 	}
-	@Listen("onHeaderRightClick = #ss")
+	@Listen(Events.ON_HEADER_RIGHT_CLICK + " = #ss")
 	public void onHeaderRightClick(HeaderMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Right-click on ").append(event.getType()).append(" ");
@@ -130,7 +130,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 			addInfo(info.toString());
 		}
 	}
-	@Listen("onHeaderDoubleClick = #ss")
+	@Listen(Events.ON_HEADER_DOUBLE_CLICK + " = #ss")
 	public void onHeaderDoubleClick(HeaderMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Double-click on ").append(event.getType()).append(" ");
@@ -149,7 +149,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 
-	@Listen("onHeaderUpdate = #ss")
+	@Listen(Events.ON_HEADER_UPDATE + " = #ss")
 	public void onHeaderUpdate(HeaderUpdateEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Header ").append(event.getAction())
@@ -178,7 +178,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onCellFocus = #ss")
+	@Listen(Events.ON_CELL_FOUCS + " = #ss")
 	public void onCellFocus(CellEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Focus on[").append(Ranges.getCellRefString(event.getRow(),event.getColumn())).append("]");
@@ -188,7 +188,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onCellSelection = #ss")
+	@Listen(Events.ON_CELL_SELECTION + " = #ss")
 	public void onCellSelection(CellSelectionEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Select on[").append(Ranges.getAreaRefString(event.getSheet(), event.getArea())).append("]");
@@ -198,7 +198,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onCellSelectionUpdate = #ss")
+	@Listen(Events.ON_CELL_SELECTION_UPDATE + " = #ss")
 	public void onCellSelectionUpdate(CellSelectionUpdateEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Selection update from[")
@@ -212,7 +212,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 
-	@Listen("onStartEditing = #ss")
+	@Listen(Events.ON_START_EDITING + " = #ss")
 	public void onStartEditing(StartEditingEvent event){
 		StringBuilder info = new StringBuilder();
 		String ref = Ranges.getCellRefString(event.getRow(),event.getColumn());
@@ -236,7 +236,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 
-	@Listen("onEditboxEditing = #ss")
+	@Listen(Events.ON_EDITBOX_EDITING + " = #ss")
 	public void onEditboxEditing(EditboxEditingEvent event){
 		StringBuilder info = new StringBuilder();
 		String ref = Ranges.getCellRefString(event.getRow(),event.getColumn());
@@ -248,7 +248,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}	
 	
-	@Listen("onStopEditing = #ss")
+	@Listen(Events.ON_STOP_EDITING + " = #ss")
 	public void onStopEditing(StopEditingEvent event){
 		StringBuilder info = new StringBuilder();
 		String ref = Ranges.getCellRefString(event.getRow(),event.getColumn());
@@ -272,7 +272,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onAfterCellChange = #ss")
+	@Listen(Events.ON_AFTER_CELL_CHANGE + " = #ss")
 	public void onAfterCellChange(CellAreaEvent event){
 		StringBuilder info = new StringBuilder();
 
@@ -289,7 +289,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}	
 	
-	@Listen("onCellHyperlink = #ss")
+	@Listen(Events.ON_CELL_HYPERLINK + " = #ss")
 	public void onCellHyperlink(CellHyperlinkEvent event){
 		StringBuilder info = new StringBuilder();
 		
@@ -306,7 +306,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	
 
 	
-	@Listen("onAfterSheetCreate = #ss")
+	@Listen(Events.ON_AFTER_SHEET_CREATE + " = #ss")
 	public void onSheetCreate(SheetEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Create sheet : ").append(event.getSheetName());
@@ -316,7 +316,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onSheetSelect = #ss")
+	@Listen(Events.ON_SHEET_SELECT + " = #ss")
 	public void onSheetSelect(SheetSelectEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Select sheet : ").append(event.getSheetName());
@@ -326,7 +326,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onAfterSheetNameChange = #ss")
+	@Listen(Events.ON_AFTER_SHEET_NAME_CHANGE + " = #ss")
 	public void onSheetNameChange(SheetEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Rename sheet to ").append(event.getSheetName());
@@ -337,7 +337,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onAfterSheetOrderChange = #ss")
+	@Listen(Events.ON_AFTER_SHEET_ORDER_CHANGE + " = #ss")
 	public void onSheetOrderChange(SheetEvent event){
 		StringBuilder info = new StringBuilder();
 		Sheet sheet = event.getSheet();
@@ -350,7 +350,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	}
 	
 	
-	@Listen("onAfterSheetDelete = #ss")
+	@Listen(Events.ON_AFTER_SHEET_DELETE + " = #ss")
 	public void onSheetDelete(SheetDeleteEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Delete sheet : ").append(event.getSheetName());
@@ -362,7 +362,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	
 
 	
-	@Listen("onWidgetUpdate = #ss")
+	@Listen(Events.ON_WIDGET_UPDATE + " = #ss")
 	public void onWidgetUpdate(WidgetUpdateEvent event){
 		StringBuilder info = new StringBuilder();
 		SheetAnchor anchor = event.getSheetAnchor();
@@ -381,7 +381,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onWidgetCtrlKey = #ss")
+	@Listen(Events.ON_WIDGET_CTRL_KEY + " = #ss")
 	public void onWidgetCtrlKey(WidgetKeyEvent event){
 		StringBuilder info = new StringBuilder();
 		
@@ -396,7 +396,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onAuxAction = #ss")
+	@Listen(Events.ON_AUX_ACTION + " = #ss")
 	public void onAuxAction(AuxActionEvent event){
 		StringBuilder info = new StringBuilder();
 		
@@ -413,7 +413,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	}
 	
 	
-	@Listen("onCellFilter = #ss")
+	@Listen(Events.ON_CELL_FILTER + " = #ss")
 	public void onCellFilter(CellFilterEvent event){
 		StringBuilder info = new StringBuilder();
 		
@@ -426,7 +426,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen("onCellValidator = #ss")
+	@Listen(Events.ON_CELL_VALIDATOR + " = #ss")
 	public void onCellValidator(CellMouseEvent event){
 		StringBuilder info = new StringBuilder();
 		
