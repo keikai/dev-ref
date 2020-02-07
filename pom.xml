@@ -85,21 +85,14 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
-			<!-- Run with Jetty. 4G heap size is allocated by default. -->
+			<!-- use tomcat for JSP -->
 			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.3.0.v20150612</version>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
 				<configuration>
-					<jvmArgs>-Xmx4096m</jvmArgs>
-					<webAppConfig>
-						<contextPath>/${project.artifactId}</contextPath>
-						<allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
-						<!-- disable web fragment scanning to speed up startup time-->
-						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
-						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
-					</webAppConfig>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
+					<port>8080</port>
+					<path>/${project.artifactId}</path>
 				</configuration>
 			</plugin>
 		</plugins>
