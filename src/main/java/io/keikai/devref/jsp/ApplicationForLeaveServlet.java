@@ -2,7 +2,8 @@ package io.keikai.devref.jsp;
 
 import io.keikai.api.*;
 import io.keikai.api.model.*;
-import io.keikai.jsp.JsonUpdateBridge;
+import io.keikai.json.JSONValue;
+import io.keikai.jsp.*;
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.json.JSONObject;
 import org.zkoss.zk.ui.Desktop;
@@ -10,7 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.Date;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * a servlet to handle ajax request and return the result
@@ -30,53 +32,28 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		//set encoding
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-		//json content type
-		resp.setContentType("application/json");
-		
-		//parameter from ajax request, you have to pass it in AJAX request
-		//necessary parameter to get ZK server side desktop
-		final String desktopId = req.getParameter("desktopId");
-		//necessary parameter to get ZK server side spreadsheet
-		final String zssUuid = req.getParameter("zssUuid");
-		
-		final String action = req.getParameter("action");
-		
-		// prepare a json result object, it can contain your ajax result and
-		// also the necessary zk component update result
+		// parsing fetch API with request body data to JSON Map
+		Map<String, String> bodyData = (Map) JSONValue.parse(req.getReader().lines().collect(Collectors.joining()));
+
+		final String action = bodyData.get("action");
+
 		final JSONObject result = new JSONObject();
 		// set back for client to check action result, it depends on your logic.
 		result.put("action", action);
-		
+
 		// use utility class to wrap zk in servlet request and
 		// get access and response result
-		JsonUpdateBridge bridge = new JsonUpdateBridge(getServletContext(), req, resp,
-				desktopId) {
-			@Override
-			protected void process(Desktop desktop) {
-				Spreadsheet ss = (Spreadsheet)desktop.getComponentByUuidIfAny(zssUuid);
-				Book book = ss.getBook();
-				Sheet sheet = book.getSheetAt(0);
-				
-				if("reset".equals(action)){
-					handleReset(sheet,result);
-				}else if("check".equals(action)){
-					handleCheck(sheet,result);
-				}
+		final Map respJSON = SmartUpdateBridge.Builder.create(req.getServletContext(), req, resp, bodyData).withBook(book -> {
+			Sheet sheet = book.getSheetAt(0);
+			if("reset".equals(action)){
+				handleReset(sheet, result);
+			}else if("check".equals(action)){
+				handleCheck(sheet, result);
 			}
-		};
-		
-		/*
-		 * Generate ZK update result in given JSON object. An AJAX response
-		 * handler at client side, zssjsp, will 'eval' this result to update ZK
-		 * components.
-		 */
-		bridge.process(result);
+		}).build(result);
 
 		Writer w = resp.getWriter();
-		w.append(result.toJSONString());	
+		w.append(JSONObject.toJSONString(respJSON));
 	}
 	
 

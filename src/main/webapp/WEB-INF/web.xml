@@ -13,6 +13,14 @@
 		<servlet-name>importServlet</servlet-name>
 		<url-pattern>/import</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>ApplicationForLeaveServlet</servlet-name>
+		<servlet-class>io.keikai.devref.jsp.ApplicationForLeaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApplicationForLeaveServlet</servlet-name>
+		<url-pattern>/jsp/app4l</url-pattern>
+	</servlet-mapping>
 	<!-- ZK -->
 	<listener>
 		<description>ZK listener for session cleanup</description>
