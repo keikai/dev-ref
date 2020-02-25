@@ -178,7 +178,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen(Events.ON_CELL_FOUCS + " = #ss")
+	@Listen(Events.ON_CELL_FOCUS + " = #ss")
 	public void onCellFocus(CellEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Focus on[").append(Ranges.getCellRefString(event.getRow(),event.getColumn())).append("]");
@@ -462,7 +462,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		
 		enableEventFilter(Events.ON_AUX_ACTION,true);
 		
-		enableEventFilter(Events.ON_CELL_FOUCS,false);
+		enableEventFilter(Events.ON_CELL_FOCUS,false);
 		enableEventFilter(Events.ON_CELL_SELECTION,false);
 		enableEventFilter(Events.ON_CELL_SELECTION_UPDATE,true);
 		
