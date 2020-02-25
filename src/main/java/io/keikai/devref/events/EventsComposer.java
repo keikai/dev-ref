@@ -416,27 +416,38 @@ public class EventsComposer extends SelectorComposer<Component>{
 	@Listen(Events.ON_CELL_FILTER + " = #ss")
 	public void onCellFilter(CellFilterEvent event){
 		StringBuilder info = new StringBuilder();
-		
+
 		info.append("Filter button clicked")
 			.append(", filter area: ").append(Ranges.getAreaRefString(event.getSheet(), event.getFilterArea()))
 			.append(", on field: ").append(event.getField());
-		
+
 		if(isShowEventInfo(event.getName())){
 			addInfo(info.toString());
 		}
 	}
-	
+
 	@Listen(Events.ON_CELL_VALIDATOR + " = #ss")
 	public void onCellValidator(CellMouseEvent event){
 		StringBuilder info = new StringBuilder();
-		
+
 		info.append("Validation button clicked ")
 			.append(" on cell ").append(Ranges.getCellRefString(event.getRow(),event.getColumn()));
-		
+
 		if(isShowEventInfo(event.getName())){
 			addInfo(info.toString());
 		}
 	}
+
+	@Listen(Events.ON_CLIPBOARD_PASTE + " = #ss")
+	public void onClipboardPaste(ClipboardPasteEvent event) {
+		if(isShowEventInfo(event.getName())){
+			StringBuilder info = new StringBuilder();
+			info.append("pasted to").append(event.getArea());
+			addInfo(info.toString());
+		}
+	}
+
+
 	
 
 	private void initModel() {
@@ -479,7 +490,8 @@ public class EventsComposer extends SelectorComposer<Component>{
 		enableEventFilter(Events.ON_SHEET_SELECT,true);
 		
 		enableEventFilter(Events.ON_CELL_HYPERLINK,true);
-		
+		enableEventFilter(Events.ON_CLIPBOARD_PASTE,false);
+
 		eventFilterList.setModel(eventFilterModel);
 
 		//add default show only
