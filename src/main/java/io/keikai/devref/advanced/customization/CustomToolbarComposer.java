@@ -24,7 +24,7 @@ public class CustomToolbarComposer extends SelectorComposer<Component> {
 		super.doAfterCompose(comp);
 		spreadsheet.setBook(BookUtil.newBook());
 		addToolbarbutton();
-		spreadsheet.removeToolbarButton(AuxAction.EXPORT_PDF.getAction());
+		spreadsheet.removeToolbarButton(AuxAction.EXPORT_PDF);
 	}
 
 	private void addToolbarbutton() {
