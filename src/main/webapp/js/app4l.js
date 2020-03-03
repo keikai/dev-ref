@@ -1,10 +1,10 @@
 //ZK has a bundled jQuery
 $(document).ready(function(){
     //register client event on button by jquery api
-    $("#checkBtn").click(function(){
-        postAjax("check");
+    $("#submit").click(function(){
+        postAjax("submit");
     });
-    $("#resetBtn").click(function(){
+    $("#reset").click(function(){
         postAjax("reset");
     });
 });
@@ -12,32 +12,31 @@ $(document).ready(function(){
 //kkjsp is created by keikai
 function postAjax(action) {
 	//use window.fetch() API
+	//app4l is the servlet URL
 	fetch("app4l", {
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		method: 'POST',
+		// 'myzss' is the id specified on kkjsp tag
 		body: JSON.stringify(kkjsp.prepare('myzss', {action: action})) // preparing Keikai's request data
 	})
-		.then(function (response) {
-			return response.json();
-		})
-		.then(kkjsp.process) // processing Keikai's response
-		.then(handleAjaxResult);
+    .then(function (response) {
+        return response.json();
+    })
+    .then(kkjsp.process) // update Keikai widget upon the server's response
+    .then(handleAjaxResult); //optional post-processing
 }
 
-//the method to handle ajax result from your servlet
-function handleAjaxResult(result){
-	//process the json result that contains zk client update information
-	kkjsp.processJson(result);
 
-	//use your way to hanlde you ajax message or error
+function handleAjaxResult(result){
+	//show input validation message
 	if(result.message){
 		alert(result.message);
 	};
 
-	//use your way handle your ajax action result
-	if(result.action == "check" && result.valid){
+	//handle your ajax response in your way
+	if(result.action == "submit" && result.valid){
 		if(result.form){
 			//create a form dynamically to submit the form data
 			var field,form = jq("<form action='submitted.jsp' method='post'/>").appendTo('body');

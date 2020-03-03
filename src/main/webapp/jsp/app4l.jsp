@@ -19,8 +19,8 @@
 			width="700px" height="500px"
 			maxVisibleRows="13" maxVisibleColumns="8"/>
 	</div>
-	<button id="resetBtn">Reset</button>
-	<button id="checkBtn">Submit</button>
+	<button id="reset">Reset</button>
+	<button id="submit">Submit</button>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/app4l.js"></script>
 </body>
 </html>

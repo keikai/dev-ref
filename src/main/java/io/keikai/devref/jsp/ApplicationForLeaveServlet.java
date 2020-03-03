@@ -4,9 +4,8 @@ import io.keikai.api.*;
 import io.keikai.api.model.*;
 import io.keikai.json.JSONValue;
 import io.keikai.jsp.*;
-import io.keikai.ui.Spreadsheet;
 import org.zkoss.json.JSONObject;
-import org.zkoss.zk.ui.Desktop;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -47,8 +46,8 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 			Sheet sheet = book.getSheetAt(0);
 			if("reset".equals(action)){
 				handleReset(sheet, result);
-			}else if("check".equals(action)){
-				handleCheck(sheet, result);
+			}else if("submit".equals(action)){
+				handleSubmit(sheet, result);
 			}
 		}).build(result);
 
@@ -78,7 +77,7 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 	}
 	
 	//validate cell data of user input and return a JSONObject
-	private void handleCheck(Sheet sheet, JSONObject result) {
+	private void handleSubmit(Sheet sheet, JSONObject result) {
 		Date from = Ranges.rangeByName(sheet,"From").getCellData().getDateValue();
 		Date to = Ranges.rangeByName(sheet,"To").getCellData().getDateValue();
 		String reason = Ranges.rangeByName(sheet,"Reason").getCellData().getStringValue();
