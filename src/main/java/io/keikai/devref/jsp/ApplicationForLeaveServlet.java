@@ -21,43 +21,44 @@ import java.util.stream.Collectors;
 @WebServlet("/jsp/app4l")
 public class ApplicationForLeaveServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	private static final String ACTION = "action";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws IOException {
 		doPost(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws IOException {
 		// parsing fetch API with request body data to JSON Map
 		Map<String, String> bodyData = (Map) JSONValue.parse(req.getReader().lines().collect(Collectors.joining()));
 
-		final String action = bodyData.get("action");
+		final String action = bodyData.get(ACTION);
 
-		final JSONObject result = new JSONObject();
-		// set back for client to check action result, it depends on your logic.
-		result.put("action", action);
+		// add custom response message, it depends on your logic.
+		final JSONObject appResponse = new JSONObject();
+		appResponse.put(ACTION, action);
 
-		// use utility class to wrap zk in servlet request and
-		// get access and response result
-		final Map respJSON = SmartUpdateBridge.Builder.create(req.getServletContext(), req, resp, bodyData).withBook(book -> {
+		final Map keikaiResponse = SmartUpdateBridge.Builder.create(req.getServletContext(), req, resp, bodyData).withBook(book -> {
+			//implement business logic
 			Sheet sheet = book.getSheetAt(0);
 			if("reset".equals(action)){
-				handleReset(sheet, result);
+				reset(sheet);
 			}else if("submit".equals(action)){
-				handleSubmit(sheet, result);
+				submit(sheet, appResponse);
 			}
-		}).build(result);
+		})
+		// build a keikai response for Book change which will be processed by kkjsp
+		.build(appResponse);
 
-		Writer w = resp.getWriter();
-		w.append(JSONObject.toJSONString(respJSON));
+		resp.getWriter().append(JSONObject.toJSONString(keikaiResponse));
 	}
 	
 
 	//reset cells to default value
-	private void handleReset(Sheet sheet, JSONObject result) {
+	private void reset(Sheet sheet) {
 		//you can use a cell reference to get a range
 		Range from = Ranges.range(sheet,"E5");//Ranges.range(sheet,"From");
 		//or you can use a name to get a range (the named range has to be set in Excel);
@@ -77,7 +78,7 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 	}
 	
 	//validate cell data of user input and return a JSONObject
-	private void handleSubmit(Sheet sheet, JSONObject result) {
+	private void submit(Sheet sheet, JSONObject response) {
 		Date from = Ranges.rangeByName(sheet,"From").getCellData().getDateValue();
 		Date to = Ranges.rangeByName(sheet,"To").getCellData().getDateValue();
 		String reason = Ranges.rangeByName(sheet,"Reason").getCellData().getStringValue();
@@ -86,28 +87,25 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 		Date requestDate = Ranges.rangeByName(sheet,"RequestDate").getCellData().getDateValue();
 		
 		if(from == null){
-			result.put("message", "FROM is not a correct date");
+			response.put("message", "FROM is not a correct date");
 		}else if(to == null){
-			result.put("message", "TO is not a correct date");
+			response.put("message", "TO is not a correct date");
 		}else if(total==null || total.intValue()<0){
-			result.put("message", "TOTAL small than 1");
+			response.put("message", "TOTAL small than 1");
 		}else if(reason == null){
-			result.put("message", "REASON is empty");
+			response.put("message", "REASON is empty");
 		}else if(applicant == null){
-			result.put("message", "APPLICANT is empty");
+			response.put("message", "APPLICANT is empty");
 		}else if(requestDate == null){
-			result.put("message", "REQUEST DATE is empty");
+			response.put("message", "REQUEST DATE is empty");
 		}else{
 			//Option 1:
-			//You can handle your business logic here and return a final result for user directly
-			
-			
-			
-			//Or option 2: return necessary form data, 
+			//You can handle your business logic here and return a final result for users directly
+			//Or option 2: return necessary form data,
 			//so client can process it by submitting that can be handled by Spring MVC or Struts
-			result.put("valid", true);
+			response.put("valid", true);
 			JSONObject form = new JSONObject();
-			result.put("form", form);
+			response.put("form", form);
 
 			form.put("from", from.getTime());//can't pass as data, use long for time
 			form.put("to", to.getTime());//can't pass as data, use long for time
@@ -132,7 +130,7 @@ public class ApplicationForLeaveServlet extends HttpServlet{
 					try {
 						fos.close();
 					} catch (IOException e) {
-						//handle the exception
+						e.printStackTrace();
 					}
 			}
 		}
