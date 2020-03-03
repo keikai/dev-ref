@@ -10,6 +10,9 @@ import org.zkoss.zk.ui.WebApps;
 
 
 public class BookUtil {
+	static public Book newBook() {
+		return newBook(null);
+	}
 
 	static public Book newBook(String bookName){
 		if (bookName == null){
