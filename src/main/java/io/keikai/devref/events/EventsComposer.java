@@ -442,7 +442,8 @@ public class EventsComposer extends SelectorComposer<Component>{
 	public void onClipboardPaste(ClipboardPasteEvent event) {
 		if(isShowEventInfo(event.getName())){
 			StringBuilder info = new StringBuilder();
-			info.append("pasted to").append(event.getArea());
+			info.append("pasted from " + ss.getHighlight());
+			info.append(" to " + event.getArea());
 			addInfo(info.toString());
 		}
 	}
