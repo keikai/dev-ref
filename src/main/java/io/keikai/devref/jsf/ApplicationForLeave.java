@@ -5,10 +5,12 @@ import io.keikai.api.model.Book;
 import io.keikai.api.model.Sheet;
 import io.keikai.jsf.Action;
 import io.keikai.jsf.ActionBridge;
+import net.sf.cglib.core.Local;
 
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -56,11 +58,15 @@ public class ApplicationForLeave {
 
 	private void resetFields() {
 		// use range API to set the cell data
-		fromCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now().plusDays(1))); //tomorrow
-		toCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now().plusDays(1)));
+		fromCell.getCellData().setValue(getDate(LocalDate.now().plusDays(1))); //tomorrow
+		toCell.getCellData().setValue(getDate(LocalDate.now().plusDays(1)));
 		reasonCell.setCellEditText("");
 		applicantCell.setCellEditText("");
-		requestDateCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now()));
+		requestDateCell.getCellData().setValue(getDate(LocalDate.now()));
+	}
+
+	private Date getDate(LocalDate date){
+		return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
 	private void initRanges() {
