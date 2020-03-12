@@ -20,7 +20,7 @@ Run the Maven wrapper below which will download everything needed for you during
 
 
 
-After Tomcat starts up, visit http://localhost:8080/dev-ref with your browser. You will be seeing a list of examples, these examples are explained in Keikai [Developer Reference](https://doc.keikai.io/dev-ref/).
+After Tomcat starts up, visit http://localhost:8080/dev-ref with your browser. You will be seeing a list of examples, these examples are explained in Keikai [Developer Reference](https://doc.keikai.io/dev-ref).
 
 After finishing trying it out, you can press `Ctrl+c` to stop the server.
 
