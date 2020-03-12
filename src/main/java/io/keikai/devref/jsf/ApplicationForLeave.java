@@ -8,6 +8,7 @@ import io.keikai.jsf.ActionBridge;
 
 import java.io.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -55,11 +56,11 @@ public class ApplicationForLeave {
 
 	private void resetFields() {
 		// use range API to set the cell data
-		fromCell.getCellData().setValue(DateUtil.tomorrowDate(0));
-		toCell.getCellData().setValue(DateUtil.tomorrowDate(0));
+		fromCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now().plusDays(1))); //tomorrow
+		toCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now().plusDays(1)));
 		reasonCell.setCellEditText("");
 		applicantCell.setCellEditText("");
-		requestDateCell.getCellData().setValue(DateUtil.todayDate());
+		requestDateCell.getCellData().setValue(java.sql.Date.valueOf(LocalDate.now()));
 	}
 
 	private void initRanges() {
