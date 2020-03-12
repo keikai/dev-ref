@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:kkjsf="http://www.zkoss.org/jsf/zss"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Application for Leave</title>
+	<kkjsf:head/>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<div>
+			
+			<kkjsf:spreadsheet id="myzss" 
+				book="#{applicationForLeave.book}"
+				actionBridge="#{applicationForLeave.actionBridge}" 
+				width="700px" height="380px" maxVisibleRows="11" maxVisibleColumns="9"
+				hiderowhead="true" hidecolumnhead="true"/>
+			<h:panelGrid columns="3">
+				<h:commandButton value="Reset" action="#{applicationForLeave.doReset}" >
+					<f:ajax execute="@all" render="msg zkupdate" />
+				</h:commandButton>
+				
+				<h:commandButton value="Ok" action="#{applicationForLeave.doOk}" >
+					<f:ajax execute="@all" render="msg zkupdate" />
+				</h:commandButton>
+				<h:messages id="msg"/>
+			</h:panelGrid>
+		</div>
+		<kkjsf:update id="zkupdate"/>
+	</h:form>
+</h:body>
+</html>
