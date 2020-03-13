@@ -12,11 +12,10 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Vlayout;
 
 /**
- * Generate links to every page.
+ * Scan each folders and generate links to every page.
  * @author Hawk
  * 
  */
-@SuppressWarnings("serial")
 public class IndexComposer extends SelectorComposer<Component> {
 
 	@Wire
@@ -33,7 +32,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 		String webRootRealPath = WebApps.getCurrent().getRealPath("/");
 		File webRoot = new File(webRootRealPath);
 	    // list the files using our FileFilter
-	    File[] files = webRoot.listFiles(new ZulFileFilter());
+	    File[] files = webRoot.listFiles(new PageFilter());
 	    appendPageLinks("/", files);
 	    //scan folders
 	    File[] folders = webRoot.listFiles(new FileFilter() {
@@ -43,7 +42,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 			}
 		});
 	    for (File folder : folders){
-	    	files = folder.listFiles(new ZulFileFilter());
+	    	files = folder.listFiles(new PageFilter());
 	    	appendPageLinks(folder.getPath().substring(webRootRealPath.length()) + File.separator, files);
 	    }
 	}
@@ -61,11 +60,17 @@ public class IndexComposer extends SelectorComposer<Component> {
 		}
 	}
 
-	class ZulFileFilter implements FileFilter{
+	/**
+	 * accept .zul, .jsp, .xhtml
+	 */
+	class PageFilter implements FileFilter{
 
 		@Override
 		public boolean accept(File pathname) {
-			return pathname.isFile() && (pathname.getName().toLowerCase().endsWith("zul") || pathname.getName().toLowerCase().endsWith("jsp"))
+			return pathname.isFile()
+					&& (pathname.getName().toLowerCase().endsWith("zul")
+						|| pathname.getName().toLowerCase().endsWith("jsp")
+						|| pathname.getName().endsWith("xhtml"))
 					&& !pathname.getName().equals(INDEX_ZUL);
 		}
 		
