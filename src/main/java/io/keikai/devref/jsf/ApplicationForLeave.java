@@ -92,11 +92,9 @@ public class ApplicationForLeave {
 	}
 
 	public void doReset() {
-		
 		//use actionBridge to execute the action inside ZK context
 		//so the spreadsheet can get the update of book automatically
 		actionBridge.execute(new Action() {
-
 			public void execute() {
 				initRanges();
 				resetFields();
@@ -134,7 +132,6 @@ public class ApplicationForLeave {
 				addMessage("RequestDate :" + requestDate.getTime());
 
 				exportXlsx();
-
 			}
 		});
 	}
