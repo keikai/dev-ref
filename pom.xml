@@ -25,24 +25,25 @@
 	</licenses>
 	<repositories>
 		<repository>
-			<id>Keikai OSS</id>
-			<name>Keikai Repository</name>
-			<url>https://mavensync.zkoss.org/maven2</url>
-		</repository>
-		<repository>
 			<id>Keikai EVAL</id>
 			<name>Keikai Evaluation Repository</name>
 			<url>https://mavensync.zkoss.org/eval</url>
 		</repository>
 		<repository>
+			<!-- paid customers only, credentials required -->
 			<id>Keikai EE</id>
 			<name>Keikai EE Repository</name>
 			<url>https://maven.zkoss.org/repo/keikai/ee/</url>
 		</repository>
 		<repository>
+			<!-- paid customers only, credentials required -->
 			<id>ZK EE</id>
-			<name>ZK EE Repository</name>
-			<url>https://maven.zkoss.org/repo/zk/ee/</url>
+			<url>https://maven.zkoss.org/repo/zk/ee</url>
+		</repository>
+		<repository>
+			<id>OSE</id>
+			<name>Keikai OSE</name>
+			<url>http://mavensync.zkoss.org/maven2</url>
 		</repository>
 	</repositories>
 	<dependencies>
