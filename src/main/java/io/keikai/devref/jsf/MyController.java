@@ -1,7 +1,6 @@
 package io.keikai.devref.jsf;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 
 import io.keikai.ui.event.StopEditingEvent;
@@ -11,11 +10,17 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.util.Clients;
 
 @ManagedBean(name= "myController")
-@SessionScoped
+@RequestScoped
 public class MyController extends SelectorComposer<Component>{
-	
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		// import an xlsx file
+		// manipulate Book object for initialization
+		System.out.println("initialize cell data");
+	}
 
 	@Listen("onStopEditing = spreadsheet")
     public void onStopEditing(StopEditingEvent event){
