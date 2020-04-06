@@ -4,7 +4,7 @@ import java.util.*;
 
 import io.keikai.api.Ranges;
 import io.keikai.ui.Spreadsheet;
-import io.keikai.ui.event.CellMouseEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
@@ -34,7 +34,7 @@ public class FormControlComposer extends SelectorComposer<Component> {
 		controlsName.put("✪", "star shield");
 	}
 
-	@Listen("onCellClick = #ss")
+	@Listen(Events.ON_CELL_CLICK + "= #ss")
 	public void print(CellMouseEvent e){
 		String controlSymbol = Ranges.range(e.getSheet(),e.getRow(), e.getColumn()).getCellEditText();
 		String name = controlsName.get(controlSymbol);

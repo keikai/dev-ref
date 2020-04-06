@@ -2,7 +2,7 @@ package io.keikai.devref.advanced;
 
 import io.keikai.api.*;
 import io.keikai.ui.Spreadsheet;
-import io.keikai.ui.event.CellMouseEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
@@ -31,7 +31,7 @@ public class GroupingComposer extends SelectorComposer<Component> {
      * else if a grouping symbol - clicked
      * hide rows
      */
-    @Listen("onCellClick = #ss")
+    @Listen(Events.ON_CELL_CLICK + "= #ss")
     public void toggleGrouping(CellMouseEvent e) {
         Range symbolCell = Ranges.range(e.getSheet(), e.getRow(), e.getColumn());
         String value = symbolCell.getCellData().getStringValue();

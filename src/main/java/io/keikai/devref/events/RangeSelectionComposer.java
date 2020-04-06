@@ -45,7 +45,7 @@ public class RangeSelectionComposer extends SelectorComposer<Component>{
 		ss.addEventListener("onStartEditing", noEditListener);
 	}
 	
-	@Listen("onCellSelection = #dialog")
+	@Listen(io.keikai.ui.event.Events.ON_CELL_SELECTION + "= #dialog")
 	public void onCellSelection(CellSelectionEvent event){
 		Textbox rangeBox  = (Textbox)dialog.getFellow("rangeBox");
 		Range selection = Ranges.range(event.getSheet(), event.getArea());

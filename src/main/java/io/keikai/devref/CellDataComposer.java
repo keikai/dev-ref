@@ -4,6 +4,7 @@ import io.keikai.api.*;
 import io.keikai.api.model.CellData;
 import io.keikai.devref.util.ClientUtil;
 import io.keikai.ui.Spreadsheet;
+import io.keikai.ui.event.Events;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -40,7 +41,7 @@ public class CellDataComposer extends SelectorComposer<Component> {
 //	Textbox cellFormatTextBox;
 	
 	
-	@Listen("onCellFocus = #ss")
+	@Listen(Events.ON_CELL_FOCUS + " = #ss")
 	public void onCellFocus(){
 		CellRef pos = ss.getCellFocus();
 		

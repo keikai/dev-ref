@@ -4,6 +4,7 @@ import io.keikai.api.*;
 import io.keikai.api.model.*;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.api.model.CellStyle.*;
+import io.keikai.ui.event.Events;
 import org.zkoss.poi.ss.usermodel.VerticalAlignment;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
@@ -50,7 +51,7 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 		vAlignBox.setModel(getVertocalAlignmentList());
 	}
 
-	@Listen("onCellFocus = #ss")
+	@Listen(Events.ON_CELL_FOCUS + "= #ss")
 	public void onCellFocus() {
 		CellRef pos = ss.getCellFocus();
 		refreshCellStyle(pos.getRow(), pos.getColumn());

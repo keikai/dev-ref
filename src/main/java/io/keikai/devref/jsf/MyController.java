@@ -3,7 +3,7 @@ package io.keikai.devref.jsf;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 
-import io.keikai.ui.event.StopEditingEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -22,11 +22,9 @@ public class MyController extends SelectorComposer<Component>{
 		System.out.println("initialize cell data");
 	}
 
-	@Listen("onStopEditing = spreadsheet")
+	@Listen(Events.ON_STOP_EDITING + " = spreadsheet")
     public void onStopEditing(StopEditingEvent event){
 		FacesContext context = FacesContext.getCurrentInstance();
 		Clients.showNotification("edited");
 	}
-	
-	
 }
