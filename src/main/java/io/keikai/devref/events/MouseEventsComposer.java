@@ -1,6 +1,6 @@
 package io.keikai.devref.events;
 
-import io.keikai.ui.event.HeaderMouseEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
@@ -19,7 +19,7 @@ public class MouseEventsComposer extends SelectorComposer<Component> {
 	@Wire
 	private Menupopup leftHeaderMenu;
 	
-	@Listen("onHeaderRightClick = spreadsheet")
+	@Listen(Events.ON_HEADER_RIGHT_CLICK + "= spreadsheet")
 	public void onHeaderRightClick(HeaderMouseEvent event) {
 		
 		switch(event.getType()){

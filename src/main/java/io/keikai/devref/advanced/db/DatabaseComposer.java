@@ -5,9 +5,10 @@ import io.keikai.api.Range.*;
 import io.keikai.api.model.Sheet;
 import io.keikai.model.impl.AbstractTableAdv;
 import io.keikai.ui.*;
-import io.keikai.ui.event.StopEditingEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.*;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zk.ui.util.Clients;
@@ -26,6 +27,7 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 	private Button loadButton;
 
 	private Map<Integer, Trade> tradeMap;
+	private int recordCount = 0;
 	//column index
 	public static int ID = 0;
 	public static int TYPE = 1;
@@ -67,16 +69,24 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 	
 	@Listen("onClick = #save")
 	public void save(){
+		extractAllTrade();
 		dataService.save(tradeMap);
 		tableGrid.setModel(new ListModelList<Trade>(dataService.queryAll().values()));
 		loadButton.setDisabled(false);
 	}
-	
+
+	private void extractAllTrade() {
+		for (int row = 1 ; row < 1 + recordCount ; row++){
+			extract(row);
+		}
+	}
+
 	@Listen("onClick = #add")
 	public void add(){
 		// modify the model
 		Trade trade = new Trade(dataService.nextId());
 		tradeMap.put(trade.getId(), trade);
+		recordCount++;
 		// update the view
 		int maxRow = ss.getMaxVisibleRows()+1;
 		ss.setMaxVisibleRows(maxRow);
@@ -84,7 +94,6 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 		//extend table row range
 		((AbstractTableAdv)ss.getBook().getSheetAt(0).getInternalSheet().getTables().get(0)).insertRows(0, maxRow);
 		loadButton.setDisabled(false);
-		
 	}
 	
 	@Listen("onClick = #delete")
@@ -93,33 +102,13 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 		if (isEditable(row)){
 			Trade trade = extract(row);
 			tradeMap.remove(trade.getId());
-
+			recordCount--;
 			Ranges.range(ss.getSelectedSheet(), ss.getSelection()).toRowRange().delete(DeleteShift.UP);
 			int maxVisibleRow = ss.getMaxVisibleRows();
 			if (maxVisibleRow > 1){
 				ss.setMaxVisibleRows(maxVisibleRow-1);
 			}
 		}
-		loadButton.setDisabled(false);
-	}
-	
-	/**
-	 * When onStopEditing fired, the cell value in the book model is still not updated. So we don't extract cell data into a Trade here.
-	 * @param event
-	 */
-	@Listen("onStopEditing = #ss")
-	public void update(StopEditingEvent event){
-		//validate input with Excel validation
-		Events.postEvent("onAfterEditing", ss, event.getRow());
-	}
-	
-
-	@Listen("onAfterEditing = #ss")
-	public void update(Event event){
-		Integer row = (Integer)event.getData();
-		//the header row is locked
-		Trade trade = extract(row);
-		tradeMap.put(trade.getId(), trade);
 		loadButton.setDisabled(false);
 	}
 
@@ -135,6 +124,7 @@ public class DatabaseComposer extends SelectorComposer<Component> {
 			load(entry.getValue(), row);
 			row++;
 		}
+		recordCount = tradeMap.size();
 		ss.setMaxVisibleRows(tradeMap.size()+1);
 		
 		tableGrid.setModel(new ListModelList<Trade>(tradeMap.values()));

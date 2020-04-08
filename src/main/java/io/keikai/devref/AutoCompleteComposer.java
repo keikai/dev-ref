@@ -3,7 +3,7 @@ package io.keikai.devref;
 import io.keikai.api.Ranges;
 import io.keikai.devref.advanced.SpreadsheetCellPopup;
 import io.keikai.ui.Spreadsheet;
-import io.keikai.ui.event.StartEditingEvent;
+import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
@@ -34,7 +34,7 @@ public class AutoCompleteComposer extends SelectorComposer<Component> {
 		box.setModel(ListModels.toListSubModel(modelList));
 	}
 
-	@Listen("onStartEditing = #ss")
+	@Listen(Events.ON_STOP_EDITING + " = #ss")
 	public void showInputPopup(StartEditingEvent event) {
 		if (event.getColumn() == 0) {
 			event.cancel();
