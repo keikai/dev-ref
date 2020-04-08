@@ -12,7 +12,6 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 
 import io.keikai.api.Range;
 import io.keikai.api.Ranges;
-import io.keikai.api.SheetProtection;
 import io.keikai.api.model.Sheet;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.CellMouseEvent;
@@ -23,13 +22,11 @@ public class PayrollComposer extends SelectorComposer<Component>{
     @Wire("spreadsheet")
     private Spreadsheet spreadsheet;
     final private static String SELECT_SHEET = "Payroll";
-    private static final SheetProtection VIEW_ONLY = SheetProtection.Builder.create().withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).withAutoFilterAllowed(true).build();
 
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-//        protectAllSheets();
     }
 
     @Listen(Events.ON_CELL_CLICK + "=spreadsheet")
@@ -47,7 +44,6 @@ public class PayrollComposer extends SelectorComposer<Component>{
     	Sheet sheet = spreadsheet.getBook().getSheet("Payroll");
 		String tableName = "PayrollTable";
 		Range payrollRange = Ranges.rangeByName(sheet, tableName);
-    	List<String> headers = getAllHeaders(payrollRange);
     	List<Map<String, Object>> allRows = getAllRows(payrollRange);
     	generateAllTemplates(allRows);
 	}
