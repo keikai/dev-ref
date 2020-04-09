@@ -1,15 +1,15 @@
 <?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
 <zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-<style>
-.title{
-	font-size: 30px;
-	font-weight: bold;
-}
-</style>
-	<window border="normal" title="Example for ZK Spreadsheet Essentials" apply="io.keikai.devref.IndexComposer">
-	<vlayout id="linkArea" style="padding:10px">
-	</vlayout>
-	</window>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <style>
+        .title{
+			font-size: 30px;
+			font-weight: bold;
+        }
+    </style>
+    <window border="normal" title="Keikai Developer Reference Examples" apply="io.keikai.devref.IndexComposer">
+        <vlayout id="linkArea" style="padding:10px">
+        </vlayout>
+    </window>
 </zk>
