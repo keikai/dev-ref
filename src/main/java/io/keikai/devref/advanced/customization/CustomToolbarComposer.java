@@ -28,8 +28,10 @@ public class CustomToolbarComposer extends SelectorComposer<Component> {
 	}
 
 	private void addToolbarbutton() {
-		spreadsheet.addToolbarButton(ToolbarButton.Builder.create(ACTION_KEY).withTooltip("attach file").withLabel("attach").build());
-		spreadsheet.getUserActionManager().registerHandler(DefaultUserActionManagerCtrl.Category.AUXACTION.getName(), ACTION_KEY, new AttachFileHandler());
+		spreadsheet.addToolbarButton(ToolbarButton.Builder.create(ACTION_KEY).withTooltip("attach file")
+				.withIconClass("z-icon-paperclip").build());
+		spreadsheet.getUserActionManager().registerHandler(DefaultUserActionManagerCtrl.Category.AUXACTION.getName(),
+				ACTION_KEY, new AttachFileHandler());
 	}
 }
 

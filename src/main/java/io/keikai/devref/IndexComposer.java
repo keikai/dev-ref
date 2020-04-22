@@ -2,6 +2,7 @@ package io.keikai.devref;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.util.*;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.WebApps;
@@ -21,41 +22,44 @@ public class IndexComposer extends SelectorComposer<Component> {
 	@Wire
 	private Vlayout linkArea;
 	static private String INDEX_ZUL = "index.zul";
-	
+	String webRootRealPath = WebApps.getCurrent().getRealPath("");
+
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		generateLinksOfZul();
+		List<File> folders = scanFolders();
+
+		for (File folder : folders){
+	    	File[] files = folder.listFiles(new PageFilter());
+	    	appendPageLinks(folder.getPath().substring(webRootRealPath.length()), files);
+	    }
 	}
 
-	private void generateLinksOfZul() {
-		String webRootRealPath = WebApps.getCurrent().getRealPath("/");
+	private List<File>  scanFolders() {
+		List<File> folders = new LinkedList<>();
 		File webRoot = new File(webRootRealPath);
-	    // list the files using our FileFilter
-	    File[] files = webRoot.listFiles(new PageFilter());
-	    appendPageLinks("/", files);
-	    //scan folders
-	    File[] folders = webRoot.listFiles(new FileFilter() {
+		folders.add(webRoot);
+		folders.addAll(Arrays.asList(webRoot.listFiles(new FileFilter() {
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.isDirectory() && (!pathname.getName().equals("WEB-INF") && !pathname.getName().equals("js"));
 			}
-		});
-	    for (File folder : folders){
-	    	files = folder.listFiles(new PageFilter());
-	    	appendPageLinks(folder.getPath().substring(webRootRealPath.length()) + File.separator, files);
-	    }
+		})));
+		Collections.sort(folders);
+		return folders;
 	}
-	
+
 	private void appendPageLinks(String folderPath, File[] files) {
 		if (!folderPath.equals("/")){
 			Label title = new Label(folderPath);
 			title.setSclass("title");
 			linkArea.appendChild(title);
 		}
-		for (File zulFile : files){
+		List<File> fileList = Arrays.asList(files);
+		Collections.sort(fileList);
+		for (File zulFile : fileList){
 			A link = new A(zulFile.getName());
-			link.setHref(folderPath + zulFile.getName());
+			link.setHref(folderPath + File.separator + zulFile.getName());
 			linkArea.appendChild(link);
 		}
 	}
