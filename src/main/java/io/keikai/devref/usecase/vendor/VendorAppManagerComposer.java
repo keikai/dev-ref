@@ -107,7 +107,7 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 		VendorMap[] allVendors = PersistenceUtil.getAllVendors();
 		System.out.println(allVendors.length + " vendors to display");
 		spreadsheetManager.setSrc(null);
-		spreadsheetManager.setSrc("/WEB-INF/book/vendor-app-manager.xlsx");
+		spreadsheetManager.setSrc("/WEB-INF/books/vendor-app-manager.xlsx");
 		Sheet worksheet = spreadsheetManager.getBook().getSheet("Sheet1");
 		/*retrieve rows from the worksheet*/
 		Range firstrow = Ranges.range(worksheet, new AreaRef("A1")).toRowRange();
