@@ -23,12 +23,6 @@ public class PayrollComposer extends SelectorComposer<Component>{
     private Spreadsheet spreadsheet;
     final private static String SELECT_SHEET = "Payroll";
 
-
-    @Override
-    public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);
-    }
-
     @Listen(Events.ON_CELL_CLICK + "=spreadsheet")
     public void onCellClick(CellMouseEvent e) {
         String sheetName = e.getSheet().getSheetName();
