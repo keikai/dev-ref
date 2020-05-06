@@ -12,6 +12,7 @@ import org.zkoss.zk.ui.select.annotation.*;
 
 import java.io.*;
 import java.util.*;
+import static io.keikai.devref.util.RangeHelper.*;
 
 public class ExchangeComposer extends SelectorComposer {
     @Wire("spreadsheet")
@@ -50,14 +51,14 @@ public class ExchangeComposer extends SelectorComposer {
 
     private void buyAnother(CellMouseEvent e){
         Range buyAnotherButton = Ranges.rangeByName(e.getSheet(), "buyAnother");
-        if (e.getRow() == buyAnotherButton.getRow() && e.getColumn() == buyAnotherButton.getColumn()){
+        if (isCellClicked(e, buyAnotherButton)){
             spreadsheet.setSelectedSheet(SELECT_SHEET);
         }
     }
 
     private void buy(CellMouseEvent e) {
         Range buyButton = Ranges.rangeByName(e.getSheet(), "buy");
-        if (e.getRow() == buyButton.getRow() && e.getColumn() == buyButton.getColumn()) {
+        if (isCellClicked(e, buyButton)) {
             double cost = Ranges.rangeByName(e.getSheet(), "cost").getCellData().getDoubleValue();
             double amount = Ranges.rangeByName(e.getSheet(), "amount").getCellData().getDoubleValue();
             if (cost > 0) {
@@ -73,15 +74,17 @@ public class ExchangeComposer extends SelectorComposer {
         //locate the 1st cell based on the header because insertion causes a name range shifted
         Range firstCell1stRow = Ranges.rangeByName(sheet, "header").toShiftedRange(1,0);
         Range fillCell = firstCell1stRow;
-        fillCell.setCellValue(DateUtil.getExcelDate(new Date()));
-        fillCell = fillCell.toShiftedRange(0, 1);
-        fillCell.setCellValue(cost);
-        fillCell = fillCell.toShiftedRange(0, 1);
-        fillCell.setCellValue(destinationCurrency);
-        fillCell = fillCell.toShiftedRange(0, 1);
-        fillCell.setCellValue(rates.get(destinationCurrency));
-        fillCell = fillCell.toShiftedRange(0, 1);
-        fillCell.setCellValue(amount);
+        setValuesInRow(firstCell1stRow, DateUtil.getExcelDate(new Date()), cost, destinationCurrency,
+                rates.get(destinationCurrency), amount);
+//        fillCell.setCellValue(DateUtil.getExcelDate(new Date()));
+//        fillCell = fillCell.toShiftedRange(0, 1);
+//        fillCell.setCellValue(cost);
+//        fillCell = fillCell.toShiftedRange(0, 1);
+//        fillCell.setCellValue(destinationCurrency);
+//        fillCell = fillCell.toShiftedRange(0, 1);
+//        fillCell.setCellValue(rates.get(destinationCurrency));
+//        fillCell = fillCell.toShiftedRange(0, 1);
+//        fillCell.setCellValue(amount);
     }
 
     /**
@@ -96,8 +99,7 @@ public class ExchangeComposer extends SelectorComposer {
 
     private void selectCurrency(CellMouseEvent e) {
         Range currencyTable = Ranges.rangeByName(e.getSheet(), "currencyTable");
-        if (e.getRow() >= currencyTable.getRow() && e.getRow() <= currencyTable.getLastRow()
-            && e.getColumn() >= currencyTable.getColumn() && e.getColumn() <= currencyTable.getLastColumn()) {
+        if (isRangeClicked(e, currencyTable)) {
             destinationCurrency = Ranges.range(e.getSheet(), e.getRow(), 6).getCellValue().toString();
             spreadsheet.setSelectedSheet(EXCHANGE_SHEET);
             fillDestinationCurrencyRate();
