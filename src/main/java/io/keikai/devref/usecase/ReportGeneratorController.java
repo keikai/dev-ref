@@ -31,7 +31,7 @@ public class ReportGeneratorController extends SelectorComposer {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        table = Ranges.rangeByName(spreadsheet.getSelectedSheet(), "FormTable");
+        table = Ranges.rangeByName(spreadsheet.getSelectedSheet(), "TemplateTable");
         importTemplates();
     }
 
@@ -39,7 +39,7 @@ public class ReportGeneratorController extends SelectorComposer {
         if (templateMap.size() > 0){
             return; // already imported
         }
-        int row = table.getRow();
+        int row = table.getRow() + 1;
         int lastRow = table.getLastRow();
         int templateColumn = table.getLastColumn();
         for ( ; row <= lastRow ; row++) {
