@@ -76,15 +76,6 @@ public class ExchangeComposer extends SelectorComposer {
         Range fillCell = firstCell1stRow;
         setValuesInRow(firstCell1stRow, DateUtil.getExcelDate(new Date()), cost, destinationCurrency,
                 rates.get(destinationCurrency), amount);
-//        fillCell.setCellValue(DateUtil.getExcelDate(new Date()));
-//        fillCell = fillCell.toShiftedRange(0, 1);
-//        fillCell.setCellValue(cost);
-//        fillCell = fillCell.toShiftedRange(0, 1);
-//        fillCell.setCellValue(destinationCurrency);
-//        fillCell = fillCell.toShiftedRange(0, 1);
-//        fillCell.setCellValue(rates.get(destinationCurrency));
-//        fillCell = fillCell.toShiftedRange(0, 1);
-//        fillCell.setCellValue(amount);
     }
 
     /**
