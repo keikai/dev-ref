@@ -51,14 +51,14 @@ public class ExchangeComposer extends SelectorComposer {
 
     private void buyAnother(CellMouseEvent e){
         Range buyAnotherButton = Ranges.rangeByName(e.getSheet(), "buyAnother");
-        if (isCellClicked(e, buyAnotherButton)){
+        if (isRangeClicked(e, buyAnotherButton)){
             spreadsheet.setSelectedSheet(SELECT_SHEET);
         }
     }
 
     private void buy(CellMouseEvent e) {
         Range buyButton = Ranges.rangeByName(e.getSheet(), "buy");
-        if (isCellClicked(e, buyButton)) {
+        if (isRangeClicked(e, buyButton)) {
             double cost = Ranges.rangeByName(e.getSheet(), "cost").getCellData().getDoubleValue();
             double amount = Ranges.rangeByName(e.getSheet(), "amount").getCellData().getDoubleValue();
             if (cost > 0) {

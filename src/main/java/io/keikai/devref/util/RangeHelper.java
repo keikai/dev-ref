@@ -5,11 +5,6 @@ import io.keikai.ui.event.CellMouseEvent;
 
 public class RangeHelper {
 
-    public static boolean isCellClicked(CellMouseEvent event, Range cell){
-        return event.getRow() == cell.getRow()
-                && event.getColumn() == cell.getColumn();
-    }
-
     public static boolean isRangeClicked(CellMouseEvent event, Range range){
         return event.getRow() >= range.getRow() && event.getRow() <= range.getLastRow()
                 && event.getColumn() >= range.getColumn() && event.getColumn() <= range.getLastColumn();
