@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.keikai.devref.util.RangeHelper;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -22,14 +23,21 @@ public class PayrollComposer extends SelectorComposer<Component>{
     @Wire("spreadsheet")
     private Spreadsheet spreadsheet;
     final private static String SELECT_SHEET = "Payroll";
+	private Range generateButton;
 
-    @Listen(Events.ON_CELL_CLICK + "=spreadsheet")
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		generateButton = Ranges.rangeByName(spreadsheet.getBook().getSheet(SELECT_SHEET), "Generate");
+	}
+
+	@Listen(Events.ON_CELL_CLICK + "=spreadsheet")
     public void onCellClick(CellMouseEvent e) {
         String sheetName = e.getSheet().getSheetName();
         switch (sheetName) {
             case SELECT_SHEET:
-            	if(e.getRow() == 14 && e.getColumn() == 10)
-            	fillForm();
+            	if (RangeHelper.isRangeClicked(e, generateButton))
+            		fillForm();
                 break;
         }
     }
