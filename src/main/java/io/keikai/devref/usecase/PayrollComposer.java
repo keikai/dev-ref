@@ -22,39 +22,41 @@ public class PayrollComposer extends SelectorComposer<Component>{
 
     @Wire("spreadsheet")
     private Spreadsheet spreadsheet;
-    final private static String SELECT_SHEET = "Payroll";
+    final private static String EMPLOYEE_SHEET = "Payroll";
 	private Range generateButton;
+	private Sheet sheet;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		generateButton = Ranges.rangeByName(spreadsheet.getBook().getSheet(SELECT_SHEET), "Generate");
+		sheet = spreadsheet.getBook().getSheet(EMPLOYEE_SHEET);
+		generateButton = Ranges.rangeByName(sheet, "Generate");
 	}
 
 	@Listen(Events.ON_CELL_CLICK + "=spreadsheet")
     public void onCellClick(CellMouseEvent e) {
         String sheetName = e.getSheet().getSheetName();
         switch (sheetName) {
-            case SELECT_SHEET:
+            case EMPLOYEE_SHEET:
             	if (RangeHelper.isRangeClicked(e, generateButton))
-            		fillForm();
+            		fillPayrollSlips();
                 break;
         }
     }
 
-    private void fillForm() {
-    	Sheet sheet = spreadsheet.getBook().getSheet("Payroll");
+    private void fillPayrollSlips() {
 		String tableName = "PayrollTable";
 		Range payrollRange = Ranges.rangeByName(sheet, tableName);
-    	List<Map<String, Object>> allRows = getAllRows(payrollRange);
-    	generateAllTemplates(allRows);
+    	List<Map<String, Object>> employeeSalaries = getEmployeeSalaries(payrollRange);
+    	generateAllPayrollSlips(employeeSalaries);
 	}
 
-	private void generateAllTemplates(List<Map<String, Object>> allRows) {
-		for (Map<String, Object> row : allRows) {
-			Sheet cloneSheet = Ranges.range(spreadsheet.getBook().getSheet("Form")).cloneSheet((String) row.get("Name"));
-			for (String head : row.keySet()) {
-				Ranges.rangeByName(cloneSheet, head).setCellValue(row.get(head));
+	private void generateAllPayrollSlips(List<Map<String, Object>> employeeSalaries) {
+		for (Map<String, Object> employee : employeeSalaries) {
+			Sheet payrollSheet = Ranges.range(spreadsheet.getBook().getSheet("Form"))
+					.cloneSheet((String) employee.get("Name"));
+			for (String field : employee.keySet()) {
+				Ranges.rangeByName(payrollSheet, field).setCellValue(employee.get(field));
 			}
 		}
 	}
@@ -68,7 +70,7 @@ public class PayrollComposer extends SelectorComposer<Component>{
 		return headers;
 	}
 
-	private List<Map<String, Object>> getAllRows(Range table) {
+	private List<Map<String, Object>> getEmployeeSalaries(Range table) {
 		List<Map<String, Object>> allRows = new ArrayList<Map<String,Object>>();
 		List<String> headers = getAllHeaders(table);
 		for (int j = table.getRow() - 1; j < table.getRowCount(); j++) {
