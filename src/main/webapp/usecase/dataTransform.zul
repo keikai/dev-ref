@@ -2,7 +2,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
     <spreadsheet height="100%" width="100%" src="/WEB-INF/books/transform.xlsx"
-				 maxVisibleColumns="15" maxVisibleRows="20" hidecolumnhead="false" showFormulabar="true"
-				 hiderowhead="false" showToolbar="true" showSheetbar="true"
+				 maxVisibleColumns="15" maxVisibleRows="20"
 				 apply="io.keikai.devref.usecase.DataTransformComposer"/>
 </zk>
