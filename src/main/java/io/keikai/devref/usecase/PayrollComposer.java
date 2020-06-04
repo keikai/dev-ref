@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.keikai.devref.util.RangeHelper;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -21,32 +22,41 @@ public class PayrollComposer extends SelectorComposer<Component>{
 
     @Wire("spreadsheet")
     private Spreadsheet spreadsheet;
-    final private static String SELECT_SHEET = "Payroll";
+    final private static String EMPLOYEE_SHEET = "Payroll";
+	private Range generateButton;
+	private Sheet sheet;
 
-    @Listen(Events.ON_CELL_CLICK + "=spreadsheet")
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		sheet = spreadsheet.getBook().getSheet(EMPLOYEE_SHEET);
+		generateButton = Ranges.rangeByName(sheet, "Generate");
+	}
+
+	@Listen(Events.ON_CELL_CLICK + "=spreadsheet")
     public void onCellClick(CellMouseEvent e) {
         String sheetName = e.getSheet().getSheetName();
         switch (sheetName) {
-            case SELECT_SHEET:
-            	if(e.getRow() == 14 && e.getColumn() == 10)
-            	fillForm();
+            case EMPLOYEE_SHEET:
+            	if (RangeHelper.isRangeClicked(e, generateButton))
+            		fillPayrollSlips();
                 break;
         }
     }
 
-    private void fillForm() {
-    	Sheet sheet = spreadsheet.getBook().getSheet("Payroll");
+    private void fillPayrollSlips() {
 		String tableName = "PayrollTable";
 		Range payrollRange = Ranges.rangeByName(sheet, tableName);
-    	List<Map<String, Object>> allRows = getAllRows(payrollRange);
-    	generateAllTemplates(allRows);
+    	List<Map<String, Object>> employeeSalaries = getEmployeeSalaries(payrollRange);
+    	generateAllPayrollSlips(employeeSalaries);
 	}
 
-	private void generateAllTemplates(List<Map<String, Object>> allRows) {
-		for (Map<String, Object> row : allRows) {
-			Sheet cloneSheet = Ranges.range(spreadsheet.getBook().getSheet("Form")).cloneSheet((String) row.get("Name"));
-			for (String head : row.keySet()) {
-				Ranges.rangeByName(cloneSheet, head).setCellValue(row.get(head));
+	private void generateAllPayrollSlips(List<Map<String, Object>> employeeSalaries) {
+		for (Map<String, Object> employee : employeeSalaries) {
+			Sheet payrollSheet = Ranges.range(spreadsheet.getBook().getSheet("Form"))
+					.cloneSheet((String) employee.get("Name"));
+			for (String field : employee.keySet()) {
+				Ranges.rangeByName(payrollSheet, field).setCellValue(employee.get(field));
 			}
 		}
 	}
@@ -60,7 +70,7 @@ public class PayrollComposer extends SelectorComposer<Component>{
 		return headers;
 	}
 
-	private List<Map<String, Object>> getAllRows(Range table) {
+	private List<Map<String, Object>> getEmployeeSalaries(Range table) {
 		List<Map<String, Object>> allRows = new ArrayList<Map<String,Object>>();
 		List<String> headers = getAllHeaders(table);
 		for (int j = table.getRow() - 1; j < table.getRowCount(); j++) {

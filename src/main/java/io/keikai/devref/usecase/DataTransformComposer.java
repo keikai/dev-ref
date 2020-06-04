@@ -25,13 +25,6 @@ public class DataTransformComposer extends SelectorComposer<Component>{
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
         protectAllSheets();
-        spreadsheet.setShowSheetbar(false);
-        spreadsheet.setShowSheetTabContextMenu(false);
-        spreadsheet.setShowToolbar(false);
-        spreadsheet.setShowContextMenu(false);
-        spreadsheet.setShowAddColumn(false);
-        spreadsheet.setShowAddRow(false);
-        spreadsheet.setShowFormulabar(false);
     }
 
     @Listen(Events.ON_CELL_CLICK + "=spreadsheet")
