@@ -1,6 +1,6 @@
 package io.keikai.devref.advanced.permission;
 
-import io.keikai.api.Ranges;
+import io.keikai.api.*;
 import io.keikai.api.model.Sheet;
 import io.keikai.ui.*;
 import io.keikai.ui.event.StartEditingEvent;
@@ -167,7 +167,8 @@ public class AuthorityService {
 				ss.setShowContextMenu(true);
 			}
 		});
-		
+		SheetProtection READ_ONLY_WITH_SELECTION = SheetProtection.Builder.create().
+				withSelectLockedCellsAllowed(true).withSelectLockedCellsAllowed(true).build();
 		VIEWER.assign(new Restriction(Restriction.NAME.EDIT) {
 			
 			@Override
@@ -175,8 +176,7 @@ public class AuthorityService {
 				String shareScope = ss.getBook().getShareScope();
 				if (shareScope == null || shareScope.equals(EventQueues.DESKTOP)){
 					for (int i=0 ; i < ss.getBook().getNumberOfSheets() ; i++){
-						Ranges.range(ss.getBook().getSheetAt(i)).protectSheet("",
-								false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+						Ranges.range(ss.getBook().getSheetAt(i)).protectSheet(READ_ONLY_WITH_SELECTION);
 					}
 				}else{
 					/*
