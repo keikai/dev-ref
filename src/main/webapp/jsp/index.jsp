@@ -8,11 +8,9 @@
 		<kkjsp:head/>
 	</head>
 <body>
-	<div>
-		<kkjsp:spreadsheet id="myzss" src="/WEB-INF/books/application_for_leave.xlsx" apply="io.keikai.devref.jsp.MyComposer"
-			width="1024px" height="768px" 
-			maxVisibleRows="100" maxVisibleColumns="20"
-			showToolbar="true" showFormulabar="true" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true"/>
-	</div>
+    <kkjsp:spreadsheet id="spreadsheet" src="/WEB-INF/books/application_for_leave.xlsx" apply="io.keikai.devref.jsp.MyComposer"
+        width="1024px" height="768px"
+        maxVisibleRows="100" maxVisibleColumns="20"
+        showToolbar="true" showFormulabar="true" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true"/>
 </body>
 </html>
