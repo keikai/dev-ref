@@ -34,7 +34,7 @@ public class AutoCompleteComposer extends SelectorComposer<Component> {
 		box.setModel(ListModels.toListSubModel(modelList));
 	}
 
-	@Listen(Events.ON_STOP_EDITING + " = #ss")
+	@Listen(Events.ON_START_EDITING + " = #ss")
 	public void showInputPopup(StartEditingEvent event) {
 		if (event.getColumn() == 0) {
 			event.cancel();

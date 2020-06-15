@@ -1,6 +1,5 @@
 <zk xmlns:n="native" xmlns:w="client">
     <script src="/js/SpreadsheetCellPopup.js"/>
-    <script src="/js/zss-1305.js"/>
     <n:h2>
         autocomplete with a combobox in column A
     </n:h2>
