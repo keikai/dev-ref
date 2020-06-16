@@ -5,7 +5,6 @@ import io.keikai.api.model.*;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.api.model.CellStyle.*;
 import io.keikai.ui.event.Events;
-import org.zkoss.poi.ss.usermodel.VerticalAlignment;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
