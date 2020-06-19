@@ -1,13 +1,17 @@
 package io.keikai.devref.util;
 
-import io.keikai.api.Range;
-import io.keikai.ui.event.CellMouseEvent;
+import io.keikai.api.*;
+import io.keikai.ui.event.*;
 
 public class RangeHelper {
 
     public static boolean isRangeClicked(CellMouseEvent event, Range range){
         return event.getRow() >= range.getRow() && event.getRow() <= range.getLastRow()
                 && event.getColumn() >= range.getColumn() && event.getColumn() <= range.getLastColumn();
+    }
+
+    public static Range getTargetRange(CellEvent event){
+        return Ranges.range(event.getSheet(), event.getRow(), event.getColumn());
     }
 
     /**

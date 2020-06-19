@@ -1,7 +1,9 @@
 package io.keikai.devref.events;
 
 import io.keikai.api.*;
-import io.keikai.api.model.Sheet;
+import io.keikai.api.model.*;
+import io.keikai.devref.util.RangeHelper;
+import io.keikai.model.impl.ColorImpl;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.*;
 import org.zkoss.zk.ui.Component;
@@ -546,6 +548,24 @@ public class EventsComposer extends SelectorComposer<Component>{
 	public void onClearInfo(){
 		infoModel.clear();
 	}
+
+
+	/**
+	 * when a cell has 0, set its text color as the background color to make it looks like a blank cell.
+	 */
+	private void makeTextAsBlank(StopEditingEvent event) {
+		Range range = RangeHelper.getTargetRange(event);
+		if (event.getEditingValue().toString().equals("0")){
+			Color backgroundColor = range.getCellStyle().getBackColor();
+			CellOperationUtil.applyFontColor(range, backgroundColor.getHtmlColor());
+		}else {
+			//reset to default text color for a non-0 cell
+			if (range.getCellValue() != null && range.getCellData().getDoubleValue().intValue()==0) {
+				CellOperationUtil.applyFontColor(range, ColorImpl.BLACK.getHtmlColor());
+			}
+		}
+	}
+
 	/**
 	 * ON_CELL_FILTER //useless
 	 * ON_CELL_VALIDATOR //useless
