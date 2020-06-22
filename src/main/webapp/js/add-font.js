@@ -1,5 +1,5 @@
 /**
- * purpse: add more font families in the toolbar 
+ * purpose: add more font families in the toolbar
  * base version: 5.2.0
  */
 zk.afterLoad('zss', function() {
