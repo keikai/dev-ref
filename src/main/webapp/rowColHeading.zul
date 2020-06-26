@@ -1,0 +1,9 @@
+<?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    Show custom row/column heading
+    <spreadsheet height="80%"  width="100%" src="/WEB-INF/books/blank.xlsx"
+        columntitles="Name, Age, Address" rowtitles="1st, 2nd, 3rd"
+        maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"/>
+</zk>
