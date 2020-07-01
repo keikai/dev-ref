@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.2.0-Eval</version>
+	<version>5.3.0-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
-		<zk.version>9.0.0-Eval</zk.version>
+		<zk.version>9.0.1.2-Eval</zk.version>
 		<jsf-api.version>2.2.20</jsf-api.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
