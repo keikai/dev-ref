@@ -5,5 +5,5 @@
     Show custom row/column heading
     <spreadsheet height="80%"  width="100%" src="/WEB-INF/books/blank.xlsx"
         columntitles="Name, Age, Address" rowtitles="1st, 2nd, 3rd"
-        maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"/>
+        maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true" showSheetbar="true"/>
 </zk>
