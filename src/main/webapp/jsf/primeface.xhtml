@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:kkjsf="http://www.zkoss.org/jsf/zss">
+<h:head>
+    <kkjsf:head/>
+</h:head>
+
+<h:body>
+    <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+        <f:selectItem itemLabel="Select One" itemValue="" />
+        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+        <f:selectItem itemLabel="PS4" itemValue="PS4" />
+        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+        <f:facet name="footer">
+            <p:separator />
+            <h:outputText value="3 consoles" style="font-weight:bold;"/>
+        </f:facet>
+    </p:selectOneMenu>
+    <p:spinner />
+    <kkjsf:spreadsheet id="myzss"
+                       src="/WEB-INF/books/application_for_leave.xlsx"
+                       width="1024px" height="768px"
+                       maxVisibleRows="50" maxVisibleColumns="20"
+                       showToolbar="true" showFormulabar="true" showContextMenu="true" showSheetbar="true"/>
+</h:body>
+</html>
