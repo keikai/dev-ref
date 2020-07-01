@@ -1,7 +1,7 @@
 package io.keikai.devref;
 
 import io.keikai.api.*;
-import io.keikai.api.model.CellData;
+import io.keikai.api.model.*;
 import io.keikai.devref.util.ClientUtil;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.Events;
@@ -11,6 +11,8 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
+
+import java.util.Objects;
 
 /**
  * Demonstrate cell data API usage
@@ -37,8 +39,8 @@ public class CellDataComposer extends SelectorComposer<Component> {
 	@Wire
 	private Spreadsheet ss;
 	
-//	@Wire
-//	Textbox cellFormatTextBox;
+	@Wire
+	Textbox cellFormatTextBox;
 	
 	
 	@Listen(Events.ON_CELL_FOCUS + " = #ss")
@@ -64,7 +66,7 @@ public class CellDataComposer extends SelectorComposer<Component> {
 		
 		cellEditTextBox.setValue(data.getEditText());
 		
-//		cellFormatTextBox.setValue(range.getCellStyle().getDataFormat());
+		cellFormatTextBox.setValue(range.getCellStyle().getDataFormat());
 	}
 	
 	@Listen("onChange = #cellEditTextBox")
@@ -85,29 +87,21 @@ public class CellDataComposer extends SelectorComposer<Component> {
 		
 	}
 	
-	/*
 	@Listen("onChange = #cellFormatTextBox")
-	public void onFromatboxChange(){
-		Position pos = ss.getCellFocus();
-		Range range = Ranges.range(ss.getSelectedSheet(),pos.getRow(),pos.getColumn());
-		range.sync(new RangeRunner() {
-			public void run(Range range) {
-				CellStyle oldstyle = range.getCellStyle();
-				String format = cellFormatTextBox.getValue();
-				if(Objects.equals(oldstyle, format)){
-					return;
-				}
-				//don't edit old style directly, if it is shared with other cell
-				EditableCellStyle newstyle = range.getCellStyleHelper().createCellStyle(oldstyle);
-				newstyle.setDataFormat(format);
-				range.setCellStyle(newstyle);
-			}
-		});
-		
-		refreshCellInfo(pos.getRow(),pos.getColumn());
-		
+	public void onFormatboxChange(){
+		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());;
+		CellStyle oldStyle = selection.getCellStyle();
+		String format = cellFormatTextBox.getValue();
+		if (Objects.equals(oldStyle.getDataFormat(), format)) {
+			return;
+		}
+		//don't edit old style directly because it might be shared with other cell
+		CellStyle newStyle = selection.getCellStyleHelper().builder(oldStyle)
+				.dataFormat(format).build();
+		selection.setCellStyle(newStyle);
+		selection.notifyChange();
+		refreshCellInfo(selection.getRow(),selection.getColumn());
 	}
-	*/
 }
 
 

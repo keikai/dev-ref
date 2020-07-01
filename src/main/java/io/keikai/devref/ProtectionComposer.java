@@ -70,9 +70,10 @@ public class ProtectionComposer extends SelectorComposer<Component>{
 	@Listen("onClick = #toggleLock")
 	public void toggleLock(){
 		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
+
 		CellStyle oldStyle = selection.getCellStyle();
-		EditableCellStyle newStyle = selection.getCellStyleHelper().createCellStyle(oldStyle);
-		newStyle.setLocked(!oldStyle.isLocked());
+		CellStyle newStyle = selection.getCellStyleHelper().builder(oldStyle)
+				.locked(!oldStyle.isLocked()).build();
 		selection.setCellStyle(newStyle);
 		updateCellLockedStatus(newStyle.isLocked());
 	}

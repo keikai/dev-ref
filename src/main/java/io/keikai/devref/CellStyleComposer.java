@@ -117,8 +117,8 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 	public void applyAlignment() {
 		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
 		CellStyle oldStyle = selection.getCellStyle();
-		EditableCellStyle newStyle = selection.getCellStyleHelper().createCellStyle(oldStyle);
-		newStyle.setAlignment( (Alignment)hAlignBox.getSelectedItem().getValue());
+		CellStyle newStyle = selection.getCellStyleHelper().builder(oldStyle)
+				.alignment((Alignment)hAlignBox.getSelectedItem().getValue()).build();
 		selection.setCellStyle(newStyle);
 	}
 }
