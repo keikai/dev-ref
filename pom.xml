@@ -19,7 +19,7 @@
 	<licenses>
 		<license>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE, Version 3</name>
-			<url>http://www.gnu.org/licenses/lgpl.html</url>
+			<url>https://www.gnu.org/licenses/lgpl.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -43,7 +43,7 @@
 		<repository>
 			<id>OSE</id>
 			<name>Keikai OSE</name>
-			<url>http://mavensync.zkoss.org/maven2</url>
+			<url>https://mavensync.zkoss.org/maven2</url>
 		</repository>
 	</repositories>
 	<dependencies>
