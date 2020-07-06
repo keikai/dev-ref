@@ -13,11 +13,7 @@
     <client-config>
         <debug-js>true</debug-js>
     </client-config>
-    <!-- keikai related properties. See https://doc.keikai.io/dev-ref/Configuration
-    <library-property>
-        <name>io.keikai.colorPickerExUsed</name>
-        <value>false</value>
-    </library-property>
+    <!-- keikai configurable properties. See https://doc.keikai.io/dev-ref/Configuration
     <library-property>
         <name>io.keikai.import.cache</name>
         <value>true</value>
@@ -29,6 +25,10 @@
     <library-property>
         <name>io.keikai.ui.keepCellSelection</name>
         <value>false</value>
+    </library-property>
+    <library-property>
+        <name>io.keikai.ui.Spreadsheet.customFontFamily</name>
+        <value>Roboto, Helvetica Neue</value>
     </library-property>
     -->
 </zk>
