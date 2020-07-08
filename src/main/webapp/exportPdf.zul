@@ -8,6 +8,8 @@
             <listitem label="pdfExporting-HeaderFooter.xlsx" selected="true"/>
             <listitem label="pdfExporting-FitOnePage.xlsx"/>
             <listitem label="profile.xlsx"/>
+            <listitem label="sparklines.xlsx"/>
+            <listitem label="combo-chart.xlsx"/>
         </listbox>
             <button label="Print..." onClick='printDialog.visible=true'/>
         </hlayout>
