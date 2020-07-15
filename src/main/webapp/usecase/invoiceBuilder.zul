@@ -1,0 +1,33 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <style>
+        .z-image{
+            margin: 10px auto;
+            width: 80%;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .z-image:hover{
+            opacity: 0.5;
+        }
+        .selected{
+        border: 5px solid skyblue;
+        }
+        .z-groupbox-title-content{
+            font-size:24px;
+            font-weight: bold;
+        }
+    </style>
+    <hlayout vflex="1" width="100%" apply="io.keikai.devref.usecase.invoice.InvoiceBuilderController">
+        <spreadsheet height="100%" id="spreadsheet" hflex="8"
+                     maxVisibleRows="6" maxVisibleColumns="8"
+                     src="/WEB-INF/books/invoice-source.xlsx"
+                     showSheetbar="true"/>
+        <vlayout hflex="2" height="100%">
+            <groupbox id="templateBox" title="Template" style="text-align: center">
+            </groupbox>
+            <button id="create" label="Create" style="float: right"/>
+        </vlayout>
+    </hlayout>
+</zk>

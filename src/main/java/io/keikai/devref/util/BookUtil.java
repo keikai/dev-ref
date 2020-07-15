@@ -10,6 +10,10 @@ import org.zkoss.zk.ui.WebApps;
 
 
 public class BookUtil {
+	public static String DEFAULT_BOOK_FOLDER = "/WEB-INF/books/";
+	/**
+	 * Create a {@link Book} named "blank.xlsx" with one sheet "Sheet1".
+	 */
 	static public Book newBook() {
 		return newBook(null);
 	}
