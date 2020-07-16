@@ -1,0 +1,22 @@
+<?page title="My First ZK Spreadsheet application" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <button label="full screen (press F11 to restore)" onClick="fullscreen()"/> (This is a temporary alternative)
+    <div id="container" width="50%" height="50%" ctrlKeys="#f11" onCtrlKey="restore()">
+        <spreadsheet id="ss" style="" width="100%" height="100%"
+                     src="${empty param.file?'/WEB-INF/books/blank.xlsx':param.file}"
+                     maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
+                     showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
+    </div>
+    <zscript><![CDATA[
+public void fullscreen(){
+    ss.setStyle("position: fixed;top: 0; left: 0; right: 0; bottom: 0;");
+    ss.invalidate();
+}
+public void restore(){
+    ss.setStyle("");
+    ss.invalidate();
+}
+    ]]></zscript>
+</zk>
