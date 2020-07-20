@@ -3,13 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
 xmlns:ca="client/attribute">
-    <button label="full screen (press F11 to restore)" ca:onClick="fullscreen()"/>
-    <div id="container" width="50%" height="50%">
-        <spreadsheet id="ss" style="" width="100%" height="100%"
-                     src="${empty param.file?'/WEB-INF/books/blank.xlsx':param.file}"
-                     maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
-                     showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
-    </div>
+    <button label="full screen (press ESC to restore)" ca:onClick="fullscreen()"/>
+    <spreadsheet id="ss" style="" width="50%" height="50%"
+                 src="${empty param.file?'/WEB-INF/books/blank.xlsx':param.file}"
+                 maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
+                 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
     <script>
         function fullscreen(){
             zk.Widget.$('$ss').$n().requestFullscreen();
