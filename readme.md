@@ -1,6 +1,8 @@
 # Keikai Developer Reference
 Keikai, effortlessly build spreadsheet-driven web apps.
 
+![GitHub last commit](https://img.shields.io/github/last-commit/keikai/dev-ref)
+
 ![](keikai-preview.jpg)
 
 # For New Comers
