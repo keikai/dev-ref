@@ -17,18 +17,22 @@ import java.time.*;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Build invoice sheets based on template sheets. Fill customers and products via named ranges.
+ * Support checkmarks with characters.
+ */
 public class InvoiceBuilderController extends SelectorComposer<Component> {
 
-    //defined names
-    private static final String PRODUCTS = "products";
-    private static final String CUSTOMERS = "customers";
-    private static final String PRODUCT_TABLE = "ProductTable";
     @Wire
     private Spreadsheet spreadsheet;
     @Wire
     private Groupbox templateBox;
 
     private Image selectedPreview;
+    //defined names of named ranges
+    private static final String PRODUCTS = "products";
+    private static final String CUSTOMERS = "customers";
+    private static final String PRODUCT_TABLE = "ProductTable";
 
     private static final String TEMPLATE_KEY = "template";
     private static final String SELECTED = "selected";
@@ -45,7 +49,7 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
     private Range customerTable;
     private Range productTable;
     // key is template file name
-    private static HashMap<String, Book> templates = new HashMap<>();
+    private static HashMap<String, Book> templateWarehouse = new HashMap<>();
 
     private static Importer importer = Importers.getImporter();
 
@@ -83,11 +87,11 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
     private void importInvoiceTemplate() {
         CompletableFuture.runAsync(() -> {
             try {
-                for (String template : templateFileNameList) {
-                    if (!templates.containsKey(template)) { //avoid importing again
-                        templates.put(template
+                for (String fileName : templateFileNameList) {
+                    if (!templateWarehouse.containsKey(fileName)) { //avoid importing again
+                        templateWarehouse.put(fileName
                                 , importer.imports(new File(WebApps.getCurrent().getRealPath(BookUtil.DEFAULT_BOOK_FOLDER)
-                                        , template), template));
+                                        , fileName), fileName));
                     }
                 }
             } catch (IOException e) {
@@ -109,7 +113,6 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
     }
 
     private void populateCustomers() {
-
         List<String[]> customers = CustomerService.getCustomerList();
         Range startingCell = customerTable.toCellRange(0, 1); //the 1st column is for checkbox
         for (String[] c : customers) {
@@ -158,8 +161,7 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
         Book invoiceBook = Books.createBook("invoice.xlsx");
         for (Map customer : selectedCustomers) {
             Sheet invoiceSheet = Ranges.range(invoiceBook).cloneSheetFrom(customer.get("CompanyName").toString()
-                    , templates.get(getSelectedTemplateFileName()).getSheetAt(0));
-            generateAgentData();
+                    , templateWarehouse.get(getSelectedTemplateFileName()).getSheetAt(0));
             populateNamedRange(generateAgentData(), invoiceSheet);
             populateNamedRange(customer, invoiceSheet);
             populateProducts(selectedProducts, invoiceSheet);
@@ -215,8 +217,8 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
 
 
     private boolean validateSelection() {
-        if (validateSelection(selectedCustomers, "You  don't select any customer")) return false;
-        if (validateSelection(selectedProducts, "You  don't select any product")) return false;
+        if (validateSelection(selectedCustomers, "You don't select any customer")) return false;
+        if (validateSelection(selectedProducts, "You don't select any product")) return false;
         return true;
     }
 
@@ -234,8 +236,8 @@ public class InvoiceBuilderController extends SelectorComposer<Component> {
     }
 
     /**
-     * extract a row as a map. the key is header value, the value is the corresponding cell value.
-     * For example, {Name: Debra, Phone: 338-8777, ...}
+     * extract a row into a map. the key is header value, the value is the corresponding cell value.
+     * For example, {Name: Debra, Phone: 338-8777, Email:debra@yahoo.com...}
      */
     private List<Map> extractRow(Range dataRange) {
         List<Map> selected = new LinkedList();

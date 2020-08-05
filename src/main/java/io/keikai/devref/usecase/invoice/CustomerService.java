@@ -2,6 +2,9 @@ package io.keikai.devref.usecase.invoice;
 
 import java.util.*;
 
+/**
+ * A service layer class that simulates to get customers from a database.
+ */
 public class CustomerService {
 
     static String[][] customers =
