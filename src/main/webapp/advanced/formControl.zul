@@ -1,22 +1,17 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
+	xmlns:h="native">
 <div apply="io.keikai.devref.advanced.FormControlComposer" height="100%" >
-click each icon and get its name. click other cells to show a listbox
+	<h:h3>Click column C shows a popup</h:h3>
 	<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
 		showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="20" maxVisibleColumns="10"
-		src="/WEB-INF/books/symbol.xlsx" />
+		src="/WEB-INF/books/ui-controls.xlsx" />
 	<popup id="popup">
-		<listbox id="box" mold="select">
-			<listitem>
-				<listcell label="option A" />
-			</listitem>
-			<listitem>
-				<listcell label="option B" />
-			</listitem>
-			<listitem>
-				<listcell label="option C" />
-			</listitem>
+		<listbox id="optionBox" mold="select">
+			<listitem label="option A" value="option A"/>
+			<listitem label="option B" value="option B"/>
+			<listitem label="option C" value="option C"/>
 		</listbox>
 	</popup>
 </div>
