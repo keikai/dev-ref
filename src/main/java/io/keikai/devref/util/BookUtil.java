@@ -122,4 +122,11 @@ public class BookUtil {
 		Ranges.range(newBook.getSheetAt(0)).deleteSheet();
 		return newBook;
 	}
+
+	/**
+	 * get a file from {@link #DEFAULT_BOOK_FOLDER}
+	 */
+	static public File getFile(String fileName) {
+		return new File(WebApps.getCurrent().getRealPath(DEFAULT_BOOK_FOLDER + fileName));
+	}
 }
