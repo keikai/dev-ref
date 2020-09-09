@@ -1,0 +1,20 @@
+<zk>
+	<hlayout hflex="1" vflex="1" apply="io.keikai.devref.advanced.ZoomComposer">
+		<vlayout width="300px">
+			An example to Zoom in/out
+			<hlayout>
+				<button id="zoomOut" label="zoom -" />
+				<button id="zoomReset" label="zoom reset" />
+				<button id="zoomIn" label="zoom +" />
+			</hlayout>
+			<separator bar="true"></separator>
+			<hlayout>
+				<button id="doc1" label="load doc1" />
+				<button id="doc2" label="load doc2" />
+			</hlayout>
+		</vlayout>
+		<div vflex="1" hflex="1">
+			<iframe id="editorFrame"/>
+		</div>
+	</hlayout>
+</zk>
