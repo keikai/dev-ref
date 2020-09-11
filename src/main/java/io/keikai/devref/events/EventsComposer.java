@@ -194,7 +194,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	public void onCellSelection(CellSelectionEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Select on[").append(Ranges.getAreaRefString(event.getSheet(), event.getArea())).append("]");
-		
+		Ranges.getCellRefString(event.getArea().getLastRow(), event.getLastColumn()); //bottom-right corner
 		if(isShowEventInfo(event.getName())){
 			addInfo(info.toString());
 		}
