@@ -1,5 +1,7 @@
 package io.keikai.devref.advanced;
 
+import java.text.DecimalFormat;
+
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -10,10 +12,18 @@ public class ZoomComposer extends org.zkoss.zk.ui.select.SelectorComposer<Compon
 	@Wire
 	private Iframe editorFrame;
 	
+	// initial zoom value: 100%;
 	private Double currentZoom = 1D;
 	
+	// build the css rules based on the zoom value
 	private String getZoomStyle(Double zoomValue) {
-		return     "width: "+zoomValue*100+"%; height: "+zoomValue*100+"%; transform: scale("+1/zoomValue+"); transform-origin: 0 0;";
+		DecimalFormat df = new DecimalFormat("0.#");
+		double zoomPercent = zoomValue*100;
+		double inverseZoomRatio = 1/zoomValue;
+		return String.format("width: %s%%; height: %s%% ; transform: scale(%s); transform-origin: 0 0;",
+				df.format(zoomPercent),
+				df.format(zoomPercent),
+				df.format(inverseZoomRatio));
 	}
 
 	@Override
