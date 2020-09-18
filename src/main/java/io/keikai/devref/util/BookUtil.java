@@ -1,12 +1,14 @@
 package io.keikai.devref.util;
 
-import java.io.*;
-
 import io.keikai.api.*;
 import io.keikai.api.model.*;
-import io.keikai.api.model.Book.*;
+import io.keikai.api.model.Book.BookType;
+import io.keikai.range.*;
 import org.zkoss.lang.SystemException;
 import org.zkoss.zk.ui.WebApps;
+
+import java.io.*;
+import java.util.function.Supplier;
 
 
 public class BookUtil {
@@ -63,7 +65,7 @@ public class BookUtil {
 			synchronized (BookUtil.class) {
 				if (workingFolder == null) {
 					workingFolder = new File(
-							System.getProperty("java.io.tmpdir"), "zsswrk");
+							System.getProperty("java.io.tmpdir"), "kktmp");
 					if (!workingFolder.exists()) {
 						if (!workingFolder.mkdirs()) {
 							throw new SystemException(
@@ -79,41 +81,41 @@ public class BookUtil {
 
 	
 	static public String suggestName(Book book) {
-		String bn = book.getBookName();
+		String bookName = book.getBookName();
 		BookType type = book.getType();
 		
 		String ext = type==BookType.XLS?".xls":".xlsx";
-		int i = bn.lastIndexOf('.');
+		int i = bookName.lastIndexOf('.');
 		if(i==0){
-			bn = "book";
+			bookName = "book";
 		}else if(i>0){
-			bn = bn.substring(0,i);
+			bookName = bookName.substring(0,i);
 		}
-		return bn+ext;
+		return bookName+ext;
 	}
 
 	static public File saveBookToTemp(Book book) throws IOException{
 		Exporter exporter = Exporters.getExporter("excel");
-		String bn = book.getBookName();
+		String bookName = book.getBookName();
 		String ext = book.getType()==BookType.XLS?".xls":".xlsx";
-		int i = bn.lastIndexOf('.');
+		int i = bookName.lastIndexOf('.');
 		if(i==0){
-			bn = "book";
+			bookName = "book";
 		}else if(i>0){
-			bn = bn.substring(0,i);
+			bookName = bookName.substring(0,i);
 		}
 		
-		File f = File.createTempFile(Long.toString(System.currentTimeMillis()),ext,getWorkingFolder());
+		File tempFile = File.createTempFile(Long.toString(System.currentTimeMillis()),ext,getWorkingFolder());
 		FileOutputStream fos = null;
 		try {
-			fos = new FileOutputStream(f);
+			fos = new FileOutputStream(tempFile);
 			exporter.export(book, fos);
 		}finally{
 			if(fos!=null){
 				fos.close();
 			}
 		}
-		return f;
+		return tempFile;
 	}
 	
 	static public Book copySheetToNewBook(String bookName, Sheet sheet){
@@ -128,5 +130,25 @@ public class BookUtil {
 	 */
 	static public File getFile(String fileName) {
 		return new File(WebApps.getCurrent().getRealPath(DEFAULT_BOOK_FOLDER + fileName));
+	}
+
+	/**
+	 * override the default importer by "excel", all spreadsheets will import with this custom importer
+	 */
+	static public void overrideDefaultImporter(Supplier<SImporter> importerSupplier) {
+		registerCustomImporter("excel", importerSupplier);
+	}
+	/**
+	 * register an extra importer with any preferred type then retrieve it back by {@link Importers#getImporter(String)}
+	 * @param type any preferred type except "excel" reserved for default
+	 * @param importerSupplier suggest to return a new instance of {@link SImporter}
+	 */
+	static public void registerCustomImporter(String type, Supplier<SImporter> importerSupplier) {
+		SImporters.register(type, new SImporterFactory() {
+			@Override
+			public SImporter createImporter() {
+				return importerSupplier.get();
+			}
+		});
 	}
 }
