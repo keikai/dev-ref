@@ -1,4 +1,4 @@
-package io.keikai.devref.advanced;
+package io.keikai.devref.advanced.bean;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

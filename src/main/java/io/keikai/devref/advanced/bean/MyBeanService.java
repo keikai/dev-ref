@@ -1,4 +1,4 @@
-package io.keikai.devref.advanced;
+package io.keikai.devref.advanced.bean;
 
 import org.zkoss.zk.ui.Executions;
 

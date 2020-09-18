@@ -1,5 +1,6 @@
-package io.keikai.devref.advanced;
+package io.keikai.devref.advanced.bean;
 
+import io.keikai.devref.advanced.bean.MyBeanService;
 import org.zkoss.xel.*;
 
 /**

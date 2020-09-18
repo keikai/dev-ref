@@ -1,6 +1,7 @@
-package io.keikai.devref.advanced;
+package io.keikai.devref.advanced.bean;
 
 import io.keikai.api.*;
+import io.keikai.devref.advanced.bean.AssetsBean;
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
@@ -8,13 +9,15 @@ import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zul.Doublebox;
 
 /**
- * Reference JavaBeans example.
+ * Reference Spring beans example.
  * 
  * @author Hawk
  * 
  */
 
-public class RefBeanComposer extends SelectorComposer<Component> {
+@SuppressWarnings("serial")
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
+public class RefSpringBeanComposer extends SelectorComposer<Component> {
 	
 	@Wire
 	private Spreadsheet ss;
@@ -29,6 +32,9 @@ public class RefBeanComposer extends SelectorComposer<Component> {
 	@Wire
 	private Doublebox otherBox;
 	
+	@WireVariable
+	private AssetsBean assetsBean;
+	
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
@@ -39,19 +45,18 @@ public class RefBeanComposer extends SelectorComposer<Component> {
 	public void update() {
 		updateAssetsBean();
 		//notify spreadsheet about the bean's change
-		Ranges.range(ss.getSelectedSheet()).notifyChange(new String[] {"myBean"} );
+		Ranges.range(ss.getSelectedSheet()).notifyChange(new String[] {"assetsBean"} );
 	}
 
 	/**
 	 * load user input to the bean.
 	 */
 	private void updateAssetsBean() {
-		AssetsBean assetsBean = (AssetsBean)MyBeanService.getMyBeanService().get("myBean");
 		assetsBean.setLiquidAssets(liquidBox.getValue());
 		assetsBean.setFundInvestment(fundBox.getValue());
 		assetsBean.setFixedAssets(fixedBox.getValue());
 		assetsBean.setIntangibleAsset(intangibleBox.getValue());
 		assetsBean.setOtherAssets(otherBox.getValue());
 		
-	}	
+	}
 }
