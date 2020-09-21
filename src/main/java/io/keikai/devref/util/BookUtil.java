@@ -144,7 +144,8 @@ public class BookUtil {
 	}
 
 	/**
-	 * override the default importer, all spreadsheets will import a file with this custom importer
+	 * Override the default importer, all spreadsheets will import a file with this custom importer.
+	 * You need to override it before a spreadsheet starts to import a file, or it doesn't take effect.
 	 */
 	static public void overrideDefaultImporter(Supplier<SImporter> importerSupplier) {
 		registerCustomImporter("excel", importerSupplier);
