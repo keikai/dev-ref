@@ -20,6 +20,9 @@ public class BookUtil {
 		return newBook(null);
 	}
 
+	/**
+	 * Create a {@link Book} with specified name having one sheet "Sheet1".
+	 */
 	static public Book newBook(String bookName){
 		if (bookName == null){
 			bookName = "blank.xlsx";
@@ -29,6 +32,11 @@ public class BookUtil {
 		return book;
 	}
 
+	/**
+	 * Create a new book by importing one of the built-in files according to specified type:<br/>
+	 * /WEB-INF/books/blank.xlsx <br/>
+	 * /WEB-INF/books/blank.xls <br/>
+	 */
 	static public Book newBook(String bookName, BookType type) {
 		try {
 			return loadBlankBook(bookName, type);
@@ -117,7 +125,10 @@ public class BookUtil {
 		}
 		return tempFile;
 	}
-	
+
+	/**
+	 * @return a new book with the copied sheet
+	 */
 	static public Book copySheetToNewBook(String bookName, Sheet sheet){
 		Book newBook = newBook(bookName);
 		Ranges.range(newBook).cloneSheetFrom(sheet.getSheetName(), sheet);
@@ -133,7 +144,7 @@ public class BookUtil {
 	}
 
 	/**
-	 * override the default importer by "excel", all spreadsheets will import with this custom importer
+	 * override the default importer, all spreadsheets will import a file with this custom importer
 	 */
 	static public void overrideDefaultImporter(Supplier<SImporter> importerSupplier) {
 		registerCustomImporter("excel", importerSupplier);
