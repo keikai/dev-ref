@@ -1,7 +1,7 @@
 package io.keikai.devref;
 
-import java.io.File;
-import java.io.FileFilter;
+import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 
 import org.zkoss.zk.ui.Component;
@@ -21,40 +21,25 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 	@Wire
 	private Vlayout linkArea;
-	static private String INDEX_ZUL = "index.zul";
-	String webRootRealPath = WebApps.getCurrent().getRealPath("");
+	private Path webRootPath = Paths.get(WebApps.getCurrent().getRealPath(""));
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		List<File> folders = scanFolders();
+		List<File> folders = ExampleFileWalker.scanFolders(webRootPath);
 
 		for (File folder : folders){
 	    	File[] files = folder.listFiles(new PageFilter());
-	    	appendPageLinks(folder.getPath().substring(webRootRealPath.length()), files);
+	    	appendPageLinks(webRootPath.relativize(folder.toPath()).toString(), files);
 	    }
 	}
 
-	private List<File>  scanFolders() {
-		List<File> folders = new LinkedList<>();
-		File webRoot = new File(webRootRealPath);
-		folders.add(webRoot);
-		folders.addAll(Arrays.asList(webRoot.listFiles(new FileFilter() {
-			@Override
-			public boolean accept(File pathname) {
-				return pathname.isDirectory() && (!pathname.getName().equals("WEB-INF") && !pathname.getName().equals("js"));
-			}
-		})));
-		Collections.sort(folders);
-		return folders;
+	private void appendPageLinks(String folderPath, File[] files) {
+		renderFolderAsTitle(folderPath);
+		renderPageLinks(folderPath, files);
 	}
 
-	private void appendPageLinks(String folderPath, File[] files) {
-		if (!folderPath.equals("/")){
-			Label title = new Label(folderPath);
-			title.setSclass("title");
-			linkArea.appendChild(title);
-		}
+	private void renderPageLinks(String folderPath, File[] files) {
 		List<File> fileList = Arrays.asList(files);
 		Collections.sort(fileList);
 		for (File zulFile : fileList){
@@ -62,6 +47,12 @@ public class IndexComposer extends SelectorComposer<Component> {
 			link.setHref(folderPath + File.separator + zulFile.getName());
 			linkArea.appendChild(link);
 		}
+	}
+
+	private void renderFolderAsTitle(String folderPath) {
+		Label title = new Label(folderPath);
+		title.setSclass("title");
+		linkArea.appendChild(title);
 	}
 
 	/**
@@ -75,7 +66,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 					&& (pathname.getName().toLowerCase().endsWith("zul")
 						|| pathname.getName().toLowerCase().endsWith("jsp")
 						|| pathname.getName().endsWith("xhtml"))
-					&& !pathname.getName().equals(INDEX_ZUL);
+					&& !pathname.getName().equals("index.zul");
 		}
 		
 	}
