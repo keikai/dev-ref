@@ -26,32 +26,28 @@ public class LocaleComposer extends SelectorComposer<Component> {
 	private Label localeLabel;
 
 	private ListModelList localeModel;
-
-	@Override
-	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);  //wire variables and event listeners
-		Locale[] allLocales = Locale.getAvailableLocales();
+	static Locale[] allLocales = Locale.getAvailableLocales();
+	static{
 		Arrays.sort(allLocales, new Comparator(){
 			public int compare(Object o1, Object o2){
 				return o1.toString().compareTo(o2.toString());
 			}
 		});
+	}
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);  //wire variables and event listeners
 		localeModel = new ListModelList(allLocales);
 		localeBox.setModel(localeModel);
 
-		showLocale(ZssContext.getCurrent().getLocale());
+		localeModel.addToSelection(ZssContext.getCurrent().getLocale());
 	}
 
 	@Listen("onSelect = combobox")
 	public void selectLocale(){
 		Locale locale = (Locale)localeModel.getSelection().iterator().next();
 		ZssContext.setThreadLocal(new ZssContext(locale, -1));
-		showLocale(locale);
 		Ranges.range(ss.getSelectedSheet()).notifyChange();
-	}
-
-	public void showLocale(Locale l) {
-		localeLabel.setValue(l.toString());
 	}
 
 }

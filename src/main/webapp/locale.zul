@@ -1,11 +1,11 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-<div height="100%" apply="io.keikai.devref.LocaleComposer">
-
-current locale : <label id="localeLabel" />
-<combobox id="localeBox" readonly="true" />
-<spreadsheet id="ss"  src="/WEB-INF/books/numberFormat.xlsx" maxVisibleRows="100" maxVisibleColumns="20" width="100%"
-	height="90%" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true" />
-</div>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <div height="100%" apply="io.keikai.devref.LocaleComposer">
+        current locale :
+        <combobox id="localeBox" readonly="true"/>
+        <spreadsheet id="ss" src="/WEB-INF/books/numberFormat.xlsx" maxVisibleRows="100" maxVisibleColumns="20"
+                     width="100%" height="90%" showContextMenu="true" showSheetbar="true" showSheetTabContextMenu="true"
+                     showToolbar="true" showFormulabar="true"/>
+    </div>
 </zk>
