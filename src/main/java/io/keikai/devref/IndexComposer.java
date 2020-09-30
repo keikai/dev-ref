@@ -2,6 +2,7 @@ package io.keikai.devref;
 
 import java.io.*;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 import org.zkoss.zk.ui.Component;
@@ -30,13 +31,10 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 		for (File folder : folders){
 	    	File[] files = folder.listFiles(new PageFilter());
-	    	appendPageLinks(webRootPath.relativize(folder.toPath()).toString(), files);
-	    }
-	}
-
-	private void appendPageLinks(String folderPath, File[] files) {
-		renderFolderAsTitle(folderPath);
-		renderPageLinks(folderPath, files);
+			String folderPath = webRootPath.relativize(folder.toPath()).toString();
+			renderFolderAsTitle(folderPath);
+			renderPageLinks(folderPath, files);
+		}
 	}
 
 	private void renderPageLinks(String folderPath, File[] files) {
@@ -69,5 +67,39 @@ public class IndexComposer extends SelectorComposer<Component> {
 					&& !pathname.getName().equals("index.zul");
 		}
 		
+	}
+
+	public static class ExampleFileWalker {
+
+		/**
+		 * scan directories from basePath recursively excluding some irrelevant directories.
+		 * @return a list of directories that contain example pages
+		 */
+		static public List<File> scanFolders(Path basePath) throws IOException {
+			String[] dir2Skip = {"WEB-INF", "js"};
+			List<File> folders = new LinkedList<>();
+			Files.walkFileTree(basePath, new SimpleFileVisitor<Path>() {
+				@Override
+				public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+					if (isDir2Skip(basePath.relativize(dir))) {
+						return FileVisitResult.SKIP_SUBTREE;
+					} else {
+						folders.add(dir.toFile());
+						return FileVisitResult.CONTINUE;
+					}
+				}
+
+				private boolean isDir2Skip(Path path) {
+					for (String dir : dir2Skip) {
+						if (path.toString().endsWith(dir)) {
+							return true;
+						}
+					}
+					return false;
+				}
+			});
+			Collections.sort(folders);
+			return folders;
+		}
 	}
 }
