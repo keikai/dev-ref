@@ -44,7 +44,7 @@ public class CoeditComposer extends SelectorComposer<Component> {
 	private void initModel() {
 		availableBookModel.add("blank.xlsx");
 		availableBookModel.add("sample.xlsx");
-		availableBookModel.add("startzss.xlsx");
+		availableBookModel.add("demo_sample.xlsx");
 	}
 	
 	@Listen("onSelect = #availableBookList")

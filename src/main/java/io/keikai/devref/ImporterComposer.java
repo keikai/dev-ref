@@ -24,7 +24,7 @@ public class ImporterComposer extends SelectorComposer<Component> {
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);  //wire variables and event listeners
 		//access components after calling super.doAfterCompose()
-		//import and load the template excel file "/WEB-INF/books/startzss.xlsx"
+		//import and load the template excel file "/WEB-INF/books/demo_sample.xlsx"
 		Importer importer = Importers.getImporter();
 		Book book = importer.imports(getFile(), "sample");
 		ss.setBook(book);
@@ -33,6 +33,6 @@ public class ImporterComposer extends SelectorComposer<Component> {
 	
 	private File getFile() {
 		//get a file 
-		return new File(WebApps.getCurrent().getRealPath("/WEB-INF/books/startzss.xlsx"));
+		return new File(WebApps.getCurrent().getRealPath("/WEB-INF/books/demo_sample.xlsx"));
 	}
 }

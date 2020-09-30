@@ -9,7 +9,7 @@
 		<spreadsheet id="ss" width="100%" vflex="1"
 			showFormulabar="true" showContextMenu="false" showToolbar="true"
 			showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="20" ctrlKeys="^Z^Y^X^C^V^B^I^U#del^F"
-			src="/WEB-INF/books/startzss.xlsx" />
+			src="/WEB-INF/books/demo_sample.xlsx" />
 		<finddialog />
 	</div>
 </zk>

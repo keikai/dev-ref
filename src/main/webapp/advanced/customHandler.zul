@@ -3,5 +3,5 @@
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true" showContextMenu="true"
 		showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="20"
-		src="/WEB-INF/books/startzss.xlsx" apply="io.keikai.devref.advanced.customization.CustomHandlerComposer"/>
+		src="/WEB-INF/books/demo_sample.xlsx" apply="io.keikai.devref.advanced.customization.CustomHandlerComposer"/>
 </zk>

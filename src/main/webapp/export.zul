@@ -4,7 +4,7 @@
 	<hlayout hflex="1" vflex="1" apply="io.keikai.devref.ExportComposer">
 		<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true"
 			showContextMenu="true" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true"
-			maxVisibleRows="100" maxVisibleColumns="40" src="/WEB-INF/books/startzss.xlsx" />
+			maxVisibleRows="100" maxVisibleColumns="40" src="/WEB-INF/books/demo_sample.xlsx" />
 		<groupbox width="300px">
 			<caption label="Excel exporter" />
 			<button id="exportExcel" label="Export Excel" />

@@ -6,7 +6,7 @@
 	<div height="40px">
 	Select Sheet Name: <listbox id="sheetBox" mold="select"/>
 	</div>
-	<spreadsheet id="spreadsheet" src="/WEB-INF/books/startzss.xlsx"
+	<spreadsheet id="spreadsheet" src="/WEB-INF/books/demo_sample.xlsx"
 		showSheetbar="true" showSheetTabContextMenu="true"
 		maxVisibleRows="200" maxVisibleColumns="40"
 		width="100%" vflex="1"/>

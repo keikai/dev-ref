@@ -12,7 +12,7 @@
         }
     </style>
     scroll up/down or left/right to show rendering message
-    <spreadsheet id="ss" vflex="1" width="100%" src="/WEB-INF/books/startzss.xlsx"
+    <spreadsheet id="ss" vflex="1" width="100%" src="/WEB-INF/books/demo_sample.xlsx"
                  maxVisibleRows="500" maxVisibleColumns="40" showContextMenu="true"
                  showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
     <zscript><![CDATA[
