@@ -33,7 +33,7 @@ public class PerformanceComposer extends SelectorComposer<Component> {
 	
 	@Listen("onLoadDataAutoRefresh= #ss")
 	public void onLoadDataAutoRefresh(Event e) throws InterruptedException{
-		loadDataAutoRefresh();
+		loadData(true);
 		Clients.clearBusy();
 	}
 	
@@ -45,34 +45,26 @@ public class PerformanceComposer extends SelectorComposer<Component> {
 	
 	@Listen("onLoadData= #ss")
 	public void onLoadData(Event e) throws InterruptedException{
-		loadData();
+		loadData(false);
 		Clients.clearBusy();
 	}
 	
-	private void loadData() {
+	private void loadData(boolean autoRefresh) {
 		Sheet sheet = ss.getSelectedSheet();
 		for (int column  = 0 ; column < COLUMN_SIZE ; column++){
 			for (int row = 0 ; row < ROW_SIZE ; row++ ){
 				Range range = Ranges.range(sheet, row, column);
-				range.setAutoRefresh(false);
+				if (!autoRefresh) {
+					range.setAutoRefresh(autoRefresh);
+				}
 				range.getCellData().setEditText(row+", "+column);
 				CellOperationUtil.applyFontColor(range, "#0099FF");
 				CellOperationUtil.applyAlignment(range, Alignment.CENTER);
 			}
 		}
-		Ranges.range(ss.getSelectedSheet(), 0, 0, ROW_SIZE, COLUMN_SIZE).notifyChange();
-//		Ranges.range(ss.getSelectedSheet()).notifyChange(); // might make a sheet blank for a moment
-	}
-
-	private void loadDataAutoRefresh() {
-		Sheet sheet = ss.getSelectedSheet();
-		for (int column  = 0 ; column < COLUMN_SIZE ; column++){
-			for (int row = 0 ; row < ROW_SIZE ; row++ ){
-				Range range = Ranges.range(sheet, row, column);
-				range.getCellData().setEditText(row+", "+column);
-				CellOperationUtil.applyFontColor(range, "#0099FF");
-				CellOperationUtil.applyAlignment(range, Alignment.CENTER);
-			}
+		if (!autoRefresh) {
+			Ranges.range(ss.getSelectedSheet(), 0, 0, ROW_SIZE, COLUMN_SIZE).notifyChange();
+//			Ranges.range(ss.getSelectedSheet()).notifyChange(); // might make a sheet blank for a moment
 		}
 	}
 }
