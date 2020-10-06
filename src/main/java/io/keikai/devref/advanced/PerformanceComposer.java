@@ -52,12 +52,12 @@ public class PerformanceComposer extends SelectorComposer<Component> {
 	private void loadData() {
 		Sheet sheet = ss.getSelectedSheet();
 		for (int column  = 0 ; column < COLUMN_SIZE ; column++){
-			for (int row = 20 ; row < ROW_SIZE ; row++ ){
+			for (int row = 0 ; row < ROW_SIZE ; row++ ){
 				Range range = Ranges.range(sheet, row, column);
 				range.setAutoRefresh(false);
 				range.getCellData().setEditText(row+", "+column);
-//				CellOperationUtil.applyFontColor(range, "#0099FF");
-//				CellOperationUtil.applyAlignment(range, Alignment.CENTER);
+				CellOperationUtil.applyFontColor(range, "#0099FF");
+				CellOperationUtil.applyAlignment(range, Alignment.CENTER);
 			}
 		}
 		Ranges.range(ss.getSelectedSheet(), 0, 0, ROW_SIZE, COLUMN_SIZE).notifyChange();
