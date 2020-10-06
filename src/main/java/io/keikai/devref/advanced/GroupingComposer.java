@@ -65,15 +65,11 @@ public class GroupingComposer extends SelectorComposer<Component> {
     }
 
     private boolean isGroupingSymbol(String value) {
-        return value.equals(PLUS) || value.equals(MINUS);
-    }
-
-    private boolean isClosed(String value) {
-        return value.equals(PLUS);
+        return PLUS.equals(value) || MINUS.equals(value);
     }
 
     private boolean isOpen(String value) {
-        return value.equals(MINUS);
+        return MINUS.equals(value);
     }
 }
 
