@@ -30,11 +30,8 @@ public class CellHyperlinkComposer extends SelectorComposer<Component> {
 	private Label cellRef;
 	@Wire
 	private Spreadsheet ss;
-	
-//	@Wire
-//	Textbox cellFormatTextBox;
-	
-	
+
+
 	@Listen(Events.ON_CELL_FOCUS + " = #ss")
 	public void onCellFocus(){
 		CellRef pos = ss.getCellFocus();
