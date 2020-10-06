@@ -190,7 +190,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 	
-	@Listen(Events.ON_CELL_SELECTION + " = #ss")
+	@Listen(Events.ON_CELL_SELECTION + " = #ss") //known issue https://tracker.zkoss.org/browse/KEIKAI-362
 	public void onCellSelection(CellSelectionEvent event){
 		StringBuilder info = new StringBuilder();
 		info.append("Select on[").append(Ranges.getAreaRefString(event.getSheet(), event.getArea())).append("]");

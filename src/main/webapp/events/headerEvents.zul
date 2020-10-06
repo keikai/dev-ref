@@ -2,7 +2,7 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-	<window title="Header Events" border="normal" width="100%"
+	<div title="Header Events" border="normal" width="100%"
 		height="100%" apply="io.keikai.devref.events.MouseEventsComposer">
 		Right click the top or left header to see the custom context menu.
 		<spreadsheet width="100%" vflex="1" maxVisibleRows="100" maxVisibleColumns="40"
@@ -19,5 +19,5 @@
 			<menuitem id="insertBelowMenu" label="Insert Below" />
 			<menuitem id="deleteRowMenu" label="Delete" />
 		</menupopup>
-	</window>
+	</div>
 </zk>
