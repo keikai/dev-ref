@@ -11,7 +11,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Chart;
 
 import io.keikai.api.Range;
 import io.keikai.api.Ranges;
@@ -21,6 +20,7 @@ import io.keikai.ui.event.SheetSelectEvent;
 public class BudgetComposer extends SelectorComposer<Component>{
 
 	private static final String SUMMARY_SHEET_NAME = "Summary";
+	 // key:value = sheet name : table named Range
 	private HashMap<String,String> sheetNames;
 	private List<String> columnOrder;
 	
@@ -50,12 +50,11 @@ public class BudgetComposer extends SelectorComposer<Component>{
 
 
 	@Listen(io.keikai.ui.event.Events.ON_SHEET_SELECT + "=spreadsheet")
-    public void onCellClick(SheetSelectEvent e) {
+    public void onSheetSelect(SheetSelectEvent e) {
         String sheetName = e.getSheet().getSheetName();
         if(SUMMARY_SHEET_NAME.equals(sheetName)) {
         	doMergeWorkflow();
         }
-        spreadsheet.invalidate();
     }
 
 	private void doMergeWorkflow() {
@@ -68,20 +67,20 @@ public class BudgetComposer extends SelectorComposer<Component>{
 	}
 	
 	private void fillPeriodTable(Range periodTable, Map<String, List<Number>> mergedMap) {
-		for (int i = periodTable.getRow(); i < periodTable.getRow() + periodTable.getRowCount(); i++) {
-			String rowLabel = (String) Ranges.range(periodTable.getSheet(), i, 0).getCellValue();
-			for (int j = 0; j < 4; j++) {
-				Ranges.range(periodTable.getSheet(), i, j+1).setCellValue(mergedMap.get(rowLabel).get(j));
+		for (int row = periodTable.getRow(); row < periodTable.getRow() + periodTable.getRowCount(); row++) {
+			String rowLabel = (String) Ranges.range(periodTable.getSheet(), row, 0).getCellValue();
+			for (int col = 0; col < 4; col++) {
+				Ranges.range(periodTable.getSheet(), row, col+1).setCellValue(mergedMap.get(rowLabel).get(col));
 			}
 		}
 	}
 
 
 	private void fillDeptTable(Range deptTable, Map<String, List<Number>> mergedMap) {
-		for (int i = deptTable.getRow(); i < deptTable.getRow() + deptTable.getRowCount(); i++) {
-			String rowLabel = (String) Ranges.range(deptTable.getSheet(), i, 0).getCellValue();
-			for (int j = 0; j < 4; j++) {
-				Ranges.range(deptTable.getSheet(), i, j+1).setCellValue(mergedMap.get(rowLabel).get(j));
+		for (int row = deptTable.getRow(); row < deptTable.getRow() + deptTable.getRowCount(); row++) {
+			String rowLabel = (String) Ranges.range(deptTable.getSheet(), row, 0).getCellValue();
+			for (int col = 0; col < 4; col++) {
+				Ranges.range(deptTable.getSheet(), row, col+1).setCellValue(mergedMap.get(rowLabel).get(col));
 			}
 		}
 	}
@@ -89,19 +88,19 @@ public class BudgetComposer extends SelectorComposer<Component>{
 	private List<BudgetEntry> getBudgetData(){
 		List<BudgetEntry> sheetEntries = new ArrayList<BudgetEntry>();
 		for (Map.Entry<String, String> sheetNamesEntry : sheetNames.entrySet()) {
-			sheetEntries.addAll(getBudgetEntries(Ranges.rangeByName(spreadsheet.getBook().getSheet(sheetNamesEntry.getKey()), sheetNamesEntry.getValue()),sheetNamesEntry.getKey()));
+			sheetEntries.addAll(getDeptBudgetEntries(Ranges.rangeByName(spreadsheet.getBook().getSheet(sheetNamesEntry.getKey()), sheetNamesEntry.getValue()),sheetNamesEntry.getKey()));
 		}
 		return sheetEntries;
 	}
 
-	private Collection<? extends BudgetEntry> getBudgetEntries(Range dataRange, String deptName) {
+	private Collection<? extends BudgetEntry> getDeptBudgetEntries(Range dataRange, String deptName) {
 		List<BudgetEntry> entries = new ArrayList<BudgetEntry>();
-		for (int i = dataRange.getRow(); i < dataRange.getRow() + dataRange.getRowCount(); i++) {
+		for (int row = dataRange.getRow(); row < dataRange.getRow() + dataRange.getRowCount(); row++) {
 			List<Number> periodList = new ArrayList<Number>();
-			for (int j = 1; j <= 4; j++) {
-				periodList.add((Number)Ranges.range(dataRange.getSheet(), i, j).getCellValue());
+			for (int col = 1; col <= 4; col++) {
+				periodList.add((Number)Ranges.range(dataRange.getSheet(), row, col).getCellValue());
 			}
-			entries.add(new BudgetEntry((String)Ranges.range(dataRange.getSheet(), i, 0).getCellValue(),deptName, periodList));
+			entries.add(new BudgetEntry((String)Ranges.range(dataRange.getSheet(), row, 0).getCellValue(),deptName, periodList));
 		}
 		return entries;
 	}

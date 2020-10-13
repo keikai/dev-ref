@@ -2,9 +2,12 @@ package io.keikai.devref.usecase.budget;
 
 import java.util.List;
 
+/**
+ * represents one row in a budget table.
+ */
 public class BudgetEntry {
 
-	private String label;
+	private String label; //expense category
 	private String dept;
 	private List<Number> periods;
 	
