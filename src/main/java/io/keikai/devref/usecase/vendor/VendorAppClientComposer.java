@@ -27,9 +27,6 @@ public class VendorAppClientComposer extends SelectorComposer<Component>{
 	@Wire("#spreadsheetClient")
     private Spreadsheet spreadsheetClient;
 
-	@Wire
-	private Tabbox tabbox;
-	
 	private VendorMap currentVendor;
 
     @Override

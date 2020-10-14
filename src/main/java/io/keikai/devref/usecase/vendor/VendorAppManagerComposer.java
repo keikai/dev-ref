@@ -42,11 +42,11 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 	public final static Map<String, String> DISPLAY_COLUMN_NAMES;
 	static {
 		DISPLAY_COLUMN_NAMES = new HashMap<String, String>();
+		DISPLAY_COLUMN_NAMES.put("companyName", "Company Name");
+		DISPLAY_COLUMN_NAMES.put("companyAddress", "Company Address");
 		DISPLAY_COLUMN_NAMES.put("businessCategory1", "Business Category 1");
 		DISPLAY_COLUMN_NAMES.put("businessCategory2", "Business Category2");
 		DISPLAY_COLUMN_NAMES.put("businessProductsAndServices", "Business Products And Services");
-		DISPLAY_COLUMN_NAMES.put("companyAdress", "Company Adress");
-		DISPLAY_COLUMN_NAMES.put("companyName", "Company Name");
 		DISPLAY_COLUMN_NAMES.put("contact1Designation", "Contact 1 Designation");
 		DISPLAY_COLUMN_NAMES.put("contact1Name", "Contact 1 Name");
 		DISPLAY_COLUMN_NAMES.put("contact1phone", "Contact 1 Phone");
@@ -106,17 +106,15 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 	private void vendorDataManagerToWorkbook() {
 		/*retrieve all vendors objects from persistence*/
 		VendorMap[] allVendors = PersistenceUtil.getAllVendors();
-		System.out.println(allVendors.length + " vendors to display");
-		spreadsheetManager.setSrc(null);
-		spreadsheetManager.setSrc("/WEB-INF/books/vendor-app-manager.xlsx");
+
 		Sheet worksheet = spreadsheetManager.getBook().getSheet("Sheet1");
 		/*retrieve rows from the worksheet*/
-		Range firstrow = Ranges.range(worksheet, new AreaRef("A1")).toRowRange();
+		Range firstRow = Ranges.range(worksheet, new AreaRef("A1")).toRowRange();
 		Range displayTable = Ranges.range(worksheet, new AreaRef("A2")).toRowRange();
-		/*retrive column names, and prepare them into an array for easy iteration*/
+		/*retrieve column names, and prepare them into an array for easy iteration*/
 		String[] rangeNames = DISPLAY_COLUMN_NAMES.keySet().toArray(new String[] {});
-		for (int i = 0; i < rangeNames.length; i++) {
-			firstrow.toCellRange(firstrow.getRow(), i).setCellValue(DISPLAY_COLUMN_NAMES.get(rangeNames[i]));
+		for (int col = 0; col < rangeNames.length; col++) {
+			firstRow.toCellRange(firstRow.getRow(), col).setCellValue(DISPLAY_COLUMN_NAMES.get(rangeNames[col]));
 		}
 		int currentRow = 0;
 		/* loop on vendor objects. For each vendor, create a new row in the table, and fill each column with the relevant value*/
@@ -140,6 +138,4 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
             Ranges.range(spreadsheet.getBook().getSheetAt(i)).protectSheet(VIEW_ONLY);
         }
     }
-    
-    
 }
