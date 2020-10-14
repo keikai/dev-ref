@@ -82,6 +82,7 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
         vendorDataManagerToWorkbook();
+        protectAllSheets(spreadsheetManager);
     }
 
     @Listen(Events.ON_CELL_CLICK + "=#spreadsheetManager")

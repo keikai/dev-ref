@@ -5,7 +5,6 @@
 		apply="io.keikai.devref.usecase.vendor.VendorAppManagerComposer">
 		<spreadsheet height="100%" width="100%" id="spreadsheetManager"
 			src="/WEB-INF/books/vendor-app-manager.xlsx" maxVisibleColumns="15"
-			maxVisibleRows="20" hidecolumnhead="false" showFormulabar="true"
-			hiderowhead="false" showToolbar="true" showSheetbar="true" />
+			maxVisibleRows="20" hidecolumnhead="false" hiderowhead="false" />
 	</div>
 </zk>

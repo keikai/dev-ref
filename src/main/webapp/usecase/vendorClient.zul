@@ -5,6 +5,6 @@
 			<spreadsheet height="100%" width="100%" id="spreadsheetClient"
 				src="/WEB-INF/books/vendor-app-client.xlsx" maxVisibleColumns="15"
 				maxVisibleRows="60" hidecolumnhead="false" showFormulabar="true"
-				hiderowhead="false" showToolbar="true" showSheetbar="true" />
+				hiderowhead="false" />
 	</div>
 </zk>

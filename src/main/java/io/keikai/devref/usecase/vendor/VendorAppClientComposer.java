@@ -23,7 +23,7 @@ import io.keikai.ui.event.Events;
 public class VendorAppClientComposer extends SelectorComposer<Component>{
 
 	final private static String SOURCE_SHEET = "Form";
-	private static final SheetProtection VIEW_ONLY = SheetProtection.Builder.create().withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).withAutoFilterAllowed(true).build();
+	private static final SheetProtection VIEW_ONLY = SheetProtection.Builder.create().withSelectUnlockedCellsAllowed(true).withAutoFilterAllowed(true).build();
 	@Wire("#spreadsheetClient")
     private Spreadsheet spreadsheetClient;
 
@@ -42,6 +42,7 @@ public class VendorAppClientComposer extends SelectorComposer<Component>{
 		}else {
 			currentVendor = new VendorMap("", new HashMap<String, Object>());
 		}
+		protectAllSheets();
     }
 
     @Listen(Events.ON_CELL_CLICK + "=#spreadsheetClient")
@@ -85,11 +86,9 @@ public class VendorAppClientComposer extends SelectorComposer<Component>{
 	}
 	
 
-	private void protectAllSheets(Spreadsheet spreadsheet) {
-        for (int i = 0; i < spreadsheet.getBook().getNumberOfSheets(); i++) {
-            Ranges.range(spreadsheet.getBook().getSheetAt(i)).protectSheet(VIEW_ONLY);
+	private void protectAllSheets() {
+        for (int i = 0; i < spreadsheetClient.getBook().getNumberOfSheets(); i++) {
+            Ranges.range(spreadsheetClient.getBook().getSheetAt(i)).protectSheet(VIEW_ONLY);
         }
     }
-    
-    
 }
