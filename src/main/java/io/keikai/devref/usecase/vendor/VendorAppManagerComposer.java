@@ -90,7 +90,7 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
         String sheetName = e.getSheet().getSheetName();
         switch (sheetName) {
             case MANAGER_SHEET :
-            	if(e.getRow() > 0 && e.getRow() <= PersistenceUtil.getAllVendors().length && e.getColumn() == 3) {
+            	if(e.getRow() > 0 && e.getRow() <= PersistenceUtil.getAllVendors().length && e.getColumn() == 2) {
 					String cellValue = (String) Ranges.range(spreadsheetManager.getBook().getSheet(MANAGER_SHEET), e.getRow(), e.getColumn()).getCellValue();
             		displayClientView(cellValue);
 				}
