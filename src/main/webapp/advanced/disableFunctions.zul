@@ -1,22 +1,25 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-	<hlayout apply="io.keikai.devref.advanced.customization.DisableFunctionsComposer"
-		width="100%" height="100%">
-		<spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true"
-			showContextMenu="true" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100"
-			maxVisibleColumns="20" src="/WEB-INF/books/blank.xlsx" />
-		<groupbox width="200px" mold="3d">
-			<caption>User Permission</caption>
-			<vlayout>
-			<checkbox id="add" label="Add a Sheet" checked="true"/>
-			<checkbox id="del" label="Delete a Sheet" checked="true"/>
-			<checkbox id="copy" label="Copy a Sheet" checked="true"/>
-			<checkbox id="hide" label="Hide a Sheet" checked="true"/>
-			<checkbox id="move" label="Move a Sheet" checked="true"/>
-			<checkbox id="rename" label="Rename a Sheet" checked="true"/>
-			<checkbox id="protect" label="Protect a Sheet" checked="true"/>
-			</vlayout>
-		</groupbox>
-	</hlayout>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <hlayout apply="io.keikai.devref.advanced.customization.DisableFunctionsComposer"
+             width="100%" height="100%">
+        <spreadsheet id="ss" hflex="1" vflex="1" showFormulabar="true"
+                     showContextMenu="true" showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true"
+                     maxVisibleRows="100"
+                     maxVisibleColumns="20" src="/WEB-INF/books/blank.xlsx"/>
+        <groupbox width="200px" mold="3d">
+            <caption>User Permission</caption>
+            <vlayout>
+                <checkbox id="add" label="Add a Sheet" checked="true"/>
+                <checkbox id="del" label="Delete a Sheet" checked="true"/>
+                <checkbox id="copy" label="Copy a Sheet" checked="true"/>
+                <checkbox id="hide" label="Hide a Sheet" checked="true"/>
+                <checkbox id="move" label="Move a Sheet" checked="true"/>
+                <checkbox id="rename" label="Rename a Sheet" checked="true"/>
+                <checkbox id="protect" label="Protect a Sheet" checked="true"/>
+                <separator bar="true"/>
+                <checkbox id="chart" label="Insert Chart Pictures" checked="true"/>
+            </vlayout>
+        </groupbox>
+    </hlayout>
 </zk>

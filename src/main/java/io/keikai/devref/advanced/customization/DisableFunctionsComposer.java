@@ -53,4 +53,10 @@ public class DisableFunctionsComposer extends SelectorComposer<Component> {
 	public void disableProtect(CheckEvent event) {
 		ss.disableUserAction(AuxAction.PROTECT_SHEET, !event.isChecked());
 	}
+
+	@Listen("onCheck = #chart")
+	public void disableChart(CheckEvent event) {
+		ss.disableUserAction(AuxAction.INSERT_CHART, !event.isChecked());
+		ss.disableUserAction(AuxAction.INSERT_PICTURE, !event.isChecked());
+	}
 }
