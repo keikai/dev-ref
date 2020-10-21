@@ -1,7 +1,7 @@
 package io.keikai.devref.usecase.vendor;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.DataInputStream;
+import java.util.*;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -32,6 +32,7 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 
 	final private static String MANAGER_SHEET = "Sheet1";
 	private static final SheetProtection VIEW_ONLY = SheetProtection.Builder.create().withSelectLockedCellsAllowed(true).withSelectUnlockedCellsAllowed(true).withAutoFilterAllowed(true).build();
+	private static final String TABLE_NAME = "displaytable";
 	@Wire("#spreadsheetManager")
 	private Spreadsheet spreadsheetManager;
 
@@ -41,9 +42,14 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 	/* columns and column names mapping */
 	public final static Map<String, String> DISPLAY_COLUMN_NAMES;
 	static {
-		DISPLAY_COLUMN_NAMES = new HashMap<String, String>();
+		DISPLAY_COLUMN_NAMES = new LinkedHashMap<String, String>();
 		DISPLAY_COLUMN_NAMES.put("companyName", "Company Name");
 		DISPLAY_COLUMN_NAMES.put("companyAddress", "Company Address");
+		DISPLAY_COLUMN_NAMES.put("country", "Country");
+		DISPLAY_COLUMN_NAMES.put("email", "Email");
+		DISPLAY_COLUMN_NAMES.put("phone", "Phone");
+		DISPLAY_COLUMN_NAMES.put("website", "Website");
+		DISPLAY_COLUMN_NAMES.put("legalStructure", "Legal Structure");
 		DISPLAY_COLUMN_NAMES.put("businessCategory1", "Business Category 1");
 		DISPLAY_COLUMN_NAMES.put("businessCategory2", "Business Category2");
 		DISPLAY_COLUMN_NAMES.put("businessProductsAndServices", "Business Products And Services");
@@ -56,8 +62,6 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 		DISPLAY_COLUMN_NAMES.put("contact3Designation", "Contact 3 Designation");
 		DISPLAY_COLUMN_NAMES.put("contact3Name", "Contact 3 Name");
 		DISPLAY_COLUMN_NAMES.put("contact3phone", "Contact 3 phone");
-		DISPLAY_COLUMN_NAMES.put("country", "country");
-		DISPLAY_COLUMN_NAMES.put("email", "email");
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear1production", "Financial Details Year 1 production");
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear1turnover", "Financial Details Year 1 turnover");
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear1year", "Financial Details Year 1 year");
@@ -67,13 +71,10 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear3production", "Financial Details Year 3 production");
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear3turnover", "Financial Details Year 3 turnover");
 		DISPLAY_COLUMN_NAMES.put("financialDetailsYear3year", "Financial Details Year 3 year");
-		DISPLAY_COLUMN_NAMES.put("legalStructure", "Legal Structure");
-		DISPLAY_COLUMN_NAMES.put("phone", "phone");
 		DISPLAY_COLUMN_NAMES.put("signatureDate", "Signature Date");
 		DISPLAY_COLUMN_NAMES.put("signatureDesignation", "Signature Designation");
 		DISPLAY_COLUMN_NAMES.put("signaturePrintName", "Signature PrintName");
 		DISPLAY_COLUMN_NAMES.put("signatureSign", "Signature Sign");
-		DISPLAY_COLUMN_NAMES.put("website", "website");
 	}
 
 	
@@ -90,14 +91,19 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
         String sheetName = e.getSheet().getSheetName();
         switch (sheetName) {
             case MANAGER_SHEET :
-            	if(e.getRow() > 0 && e.getRow() <= PersistenceUtil.getAllVendors().length && e.getColumn() == 2) {
-					String cellValue = (String) Ranges.range(spreadsheetManager.getBook().getSheet(MANAGER_SHEET), e.getRow(), e.getColumn()).getCellValue();
-            		displayClientView(cellValue);
+            	if(e.getRow() > 0 && e.getRow() <= PersistenceUtil.getAllVendors().length
+						&& isCompanyNameColumn(e)) {
+					String vendorId = (String) Ranges.range(e.getSheet(), e.getRow(), e.getColumn()).getCellValue();
+            		displayClientView(vendorId);
 				}
                 break;
         }
     }
-	
+
+	private boolean isCompanyNameColumn(CellMouseEvent e) {
+		return e.getColumn() == 0;
+	}
+
 
 	private void displayClientView(String cellValue) {
 		Executions.getCurrent().sendRedirect("./vendorClient.zul?vendorId="+cellValue);
@@ -107,21 +113,17 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 		/*retrieve all vendors objects from persistence*/
 		VendorMap[] allVendors = PersistenceUtil.getAllVendors();
 
-		Sheet worksheet = spreadsheetManager.getBook().getSheet("Sheet1");
-		/*retrieve rows from the worksheet*/
-		Range firstRow = Ranges.range(worksheet, new AreaRef("A1")).toRowRange();
-		Range displayTable = Ranges.range(worksheet, new AreaRef("A2")).toRowRange();
-		/*retrieve column names, and prepare them into an array for easy iteration*/
-		String[] rangeNames = DISPLAY_COLUMN_NAMES.keySet().toArray(new String[] {});
-		for (int col = 0; col < rangeNames.length; col++) {
-			firstRow.toCellRange(firstRow.getRow(), col).setCellValue(DISPLAY_COLUMN_NAMES.get(rangeNames[col]));
-		}
+		populateHeader();
+
 		int currentRow = 0;
 		/* loop on vendor objects. For each vendor, create a new row in the table, and fill each column with the relevant value*/
+		Sheet worksheet = spreadsheetManager.getBook().getSheet(MANAGER_SHEET);
+		String[] rangeNames = DISPLAY_COLUMN_NAMES.keySet().toArray(new String[] {});
+		Range vendorTable = Ranges.rangeByName(worksheet, TABLE_NAME);
 		for (VendorMap vendor : allVendors) {
-			CellOperationUtil.insert(displayTable.toCellRange(currentRow,0).toRowRange(), InsertShift.DOWN, InsertCopyOrigin.FORMAT_LEFT_ABOVE);
+			CellOperationUtil.insert(vendorTable.toCellRange(currentRow,0).toRowRange(), InsertShift.DOWN, InsertCopyOrigin.FORMAT_LEFT_ABOVE);
 			for (int i = 0; i < rangeNames.length; i++) {
-				Range currentCell = displayTable.toCellRange(currentRow, i);
+				Range currentCell = vendorTable.toCellRange(currentRow, i);
 				currentCell.setCellValue(vendor.getVendorData().get(rangeNames[i]));
 				if(rangeNames[i].equals("companyName")) {
 					CellOperationUtil.applyFontBoldweight(currentCell, Boldweight.BOLD);
@@ -130,7 +132,15 @@ public class VendorAppManagerComposer extends SelectorComposer<Component>{
 			}
 			currentRow++;
 		}
-		displayTable.toShiftedRange(displayTable.getLastRow(), 0);
+	}
+
+	private void populateHeader(){
+		Sheet worksheet = spreadsheetManager.getBook().getSheet(MANAGER_SHEET);
+		Range headerCell = Ranges.rangeByName(worksheet, TABLE_NAME).toShiftedRange(-1, 0).toCellRange(0, 0);
+		for (String name : DISPLAY_COLUMN_NAMES.values()) {
+			headerCell.setCellValue(name);
+			headerCell = headerCell.toShiftedRange(0, 1);
+		}
 	}
 
 	private void protectAllSheets(Spreadsheet spreadsheet) {
