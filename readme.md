@@ -1,5 +1,7 @@
-# Keikai Developer Reference
+# Keikai Developer Reference Example Project
 Keikai, effortlessly build spreadsheet-driven web apps.
+
+This project contains the sample code of [Keikai Developer Reference](https://doc.keikai.io/dev-ref).
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/keikai/dev-ref)
 
@@ -25,11 +27,10 @@ Run the Maven wrapper below which will download everything needed for you during
 `mvnw.cmd tomcat7:run`
 
 
-
-
 After Tomcat starts up, visit http://localhost:8080/dev-ref with your browser. You will be seeing a list of examples, these examples are explained in Keikai [Developer Reference](https://doc.keikai.io/dev-ref).
 
 After finishing trying it out, you can press `Ctrl+c` to stop the server.
+
 
 # Try Freshly Release
 Freshly release contains the latest features and bug fixes that are under development. It's built for testing and evaluation. Welcome to try it and [give us feedback](https://keikai.io/contact).
@@ -38,6 +39,10 @@ The steps are:
 1. check the latest freshly version at [evaluation repo](https://mavensync.zkoss.org/eval/io/keikai/keikai-ex/)
 2. change the keikai version in `pom.xml`
 3. run the project according to [How to Run This Project](#How-to-Run-This-Project)
+
+
+# Naming Convention
+We create the folder and file names according to the section name of Developer Reference. So that you can easily identify a section and its corresponding example zul.  
 
 # Related resources. Welcome to check them out:
 ## [Website](https://keikai.io)  
