@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Embedded ZK Demo</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<style>
+			#success-alert {
+			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid"> 
+			<div class="navbar-header">
+				<span class="navbar-brand">Embedded Keikai Spreadsheet</span>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="#" id="a_load">Load Demo Xlsx</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							View
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" id="a_toggleToolbar">Toggle Toolbar</a></li>
+							<li><a href="#" id="a_toggleSheetbar">Toggle Sheetbar</a></li>
+							<li><a href="#" id="a_toggleFormulabar">Toggle Formulabar</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			</div>
+		</nav>
+		<div class="alert alert-success" id="success-alert" style="display: none">
+		  <button type="button" class="close" data-dismiss="alert">x</button>
+		  <strong>Load Demo Xlsx... </strong>
+		</div>
+		<br />
+		<div id="embeddedZK" style="height:80%">
+		    Loading...
+		</div>
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script id="embeddedScript" src="http://localhost:8080/dev-ref/zkau/web/js/zkmax/embedded/embedded.js"></script>
+		<script src="page-controller.js"></script>
+	</body>
+</html>

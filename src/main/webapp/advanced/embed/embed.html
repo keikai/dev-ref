@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Embed Keikai</title>
+</head>
+<body>
+An example to embed Keikai in an HTML
+<div id="embeddedZK" style="height:80%">
+    Loading...
+</div>
+<script id="embeddedScript" src="http://localhost:8080/dev-ref/zkau/web/js/zkmax/embedded/embedded.js" ></script>
+<script>
+        zEmbedded.load('embeddedZK', 'http://localhost:8080/dev-ref/advanced/embed/embed.zul');
+</script>
+</body>
+</html>
