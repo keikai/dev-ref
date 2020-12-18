@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.5.0-Eval</version>
+	<version>5.5.0</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
-		<zk.version>9.0.1.2-Eval</zk.version>
+		<zk.version>9.5.0.2-Eval</zk.version>
 		<jsf-api.version>2.2.20</jsf-api.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
@@ -48,9 +48,21 @@
 	</repositories>
 	<dependencies>
 		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkmax</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-ex</artifactId>
 			<version>${project.version}</version>
+			<!-- to include different version of ZK, required to exclude default one -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.zkoss.zk</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
