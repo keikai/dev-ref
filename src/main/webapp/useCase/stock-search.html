@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeanette Market</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="stock-search.css">
+    <script id="embeddedScript" src="http://localhost:8080/dev-ref/zkau/web/js/zkmax/embedded/embedded.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row py-3">
+        <div class="col-12">
+            <p class="h1 text-center">Jeanette Market</p>
+        </div>
+    </div>
+    <div class="row justify-content-center py-1">
+        <div class="col-12">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="">Stock</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" disabled>Turnover</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" disabled>Record</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" disabled>Setting</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row py-3 px-3 align-items-end">
+        <div class="col-4">
+            <label>Category:</label>
+            <select id="category" class="custom-select">
+                <option selected>Diary</option>
+                <option>Drinks</option>
+                <option>Produce</option>
+                <option>Supplies</option>
+                <option>Meat</option>
+                <option>Pasta</option>
+                <option>Soup</option>
+                <option>Bakery</option>
+                <option>Snacks</option>
+            </select>
+        </div>
+        <div class="col-4">
+            <label style="display:block">Qty:</label>
+            <input id="min" type="number" class="form-control number-box" placeholder="minimum" value="0">
+            ~
+            <input id="max" type="number" class="form-control number-box" placeholder="maximum" value="20">
+        </div>
+        <div class="col-4">
+            <button id="search" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <div id="embed">
+    </div>
+    <div class="row justify-content-end py-3 px-3">
+        <div class="toolbar">
+            <button id="exprtExcel" class="btn btn-primary">Export to Excel</button>
+            <button id="exprtPdf" class="btn btn-primary">Export to PDF</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row py-1 px-3">
+        <div class="col-3 h4">
+            Contact Vendor
+        </div>
+    </div>
+    <div class="row py-1 px-3">
+        <div class="col-4">
+            <h5 id="name"></h5>
+        </div>
+        <div class="col-4">
+            <h5>Tel:</h5><span id="tel"></span>
+        </div>
+        <div class="col-4">
+            <h5>Email:</h5><span id="email"></span>
+        </div>
+    </div>
+    <hr>
+</div>
+<script src="embed-controller.js"></script>
+</body>
+</html>

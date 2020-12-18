@@ -1,0 +1,64 @@
+﻿Part No.,Category,Product,Vendor,Qty,Price
+DD-234,Diary,Eggs (BR),Best Farm,5,$3 
+DD-268,Diary,Eggs (WH),Fresh Fresh,38,$6 
+DD-252,Diary,Cottage Cheeze,Natural,6,$7 
+DD-364,Diary,Sour Cream,WholeF,22,$4 
+DD-248,Diary,Cheeze,Best Farm,21,$8 
+DD-249,Diary,Cheeze,Fresh Fresh,28,$8 
+DD-236,Diary,Milk,Natural,12,$4 
+DD-194,Diary,Milk,WholeF,49,$3 
+DD-334,Diary,Yogurt,Fresh Fresh,7,$2 
+DR-170,Drinks,Coke,Cooca,26,$2 
+DR-171,Drinks,Diet Coke,Cooca,23,$3 
+DR-180,Drinks,Ginger Ale,Cooca,6,$2 
+DR-235,Drinks,Lemon Tea,Cooca,27,$6 
+DR-376,Drinks,Pineapple Juice,Natural,8,$3 
+DR-493,Drinks,Apple Juice,Natural,16,$3 
+DR-495,Drinks,Tomato Juice,Natural,12,$2 
+DR-596,Drinks,Coffee,Cooca,16,$5 
+DR-011,Drinks,Water,Cooca,49,$4 
+ME-012,Meat,Chicken (Whole),Best Farm,32,$28 
+ME-013,Meat,Chicken Thigh,Fresh Fresh,37,$14 
+ME-014,Meat,Chicken Wing,Natural,10,$12 
+ME-115,Meat,Turkey Breast,Sfway,45,$12 
+ME-046,Meat,Ham,Valued,42,$18 
+ME-752,Meat,Seafood,Valued,43,$15 
+ME-069,Meat,Lunch Meat,Valued,15,$5 
+ME-216,Meat,Lamb Roast,Sfway,44,$13 
+ME-317,Meat,Beef,Sfway,36,$23 
+ME-018,Meat,Pork Belly,Fresh Fresh,36,$20 
+DP-323,Produce,Lemon,Natural,45,$8 
+DP-124,Produce,Lettuce,Best Farm,22,$4 
+DP-125,Produce,Pumpkin,Best Farm,41,$7 
+DP-126,Produce,Onion,Fresh Fresh,5,$8 
+DP-127,Produce,Broccoli,Natural,29,$4 
+DP-128,Produce,Avocado,WholeF,31,$7 
+DP-329,Produce,Tomato,Fresh Fresh,12,$7 
+DP-330,Produce,Apple ,Best Farm,31,$2 
+DP-331,Produce,Orange,Fresh Fresh,30,$7 
+DP-332,Produce,Cherry,Natural,47,$8 
+DP-333,Produce,Grapes (GR),WholeF,35,$6 
+DP-334,Produce,Grapes (PUR),Fresh Fresh,18,$6 
+DP-393,Produce,Bananas,WholeF,44,$4 
+DP-182,Produce,Squash,WholeF,46,$4 
+DP-164,Produce,Celery,Best Farm,32,$4 
+DP-165,Produce,Cucumber,Best Farm,14,$6 
+DP-166,Produce,Mushrooms,WholeF,34,$7 
+PA-102,Pasta,Noodles,WholeF,33,$3 
+PA-201,Pasta,Rice,Best Farm,47,$3 
+SP-193,Soup,Corn Soup,Sfway,48,$1 
+SP-120,Soup,Tomato Soup,Sfway,49,$3 
+SP-148,Soup,Onion Soup,Sfway,43,$2 
+SP-204,Soup,Chouder,Sfway,33,$3 
+BA-028,Bakery,Bagels,Fresh Fresh,37,$4 
+BA-073,Bakery,Blueberry Bagels,Natural,16,$1 
+BA-025,Bakery,Muffins,Natural,10,$4 
+BA-208,Bakery,Cake,Natural,27,$3 
+SN-001,Snacks,Potato chips,Fresh Fresh,26,$4 
+SN-208,Snacks,Pretzels,Fresh Fresh,27,$4 
+SN-157,Snacks,Ice cream,Natural,20,$2 
+SN-348,Snacks,Cookies,Fresh Fresh,16,$1 
+SU-329,Supplies,Paper plates,G&P,43,$10 
+SU-027,Supplies,Napkins,G&P,9,$11 
+SU-038,Supplies,Garbage bags,G&P,39,$13 
+SU-432,Supplies,Detergent,G&P,44,$13 

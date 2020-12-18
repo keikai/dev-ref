@@ -13,11 +13,15 @@
     <client-config>
         <debug-js>true</debug-js>
     </client-config>
-    <!-- keikai configurable properties. See https://doc.keikai.io/dev-ref/Configuration
+    <library-property>
+        <name>org.zkoss.web.servlet.http.embedded.enabled</name>
+        <value>true</value>
+    </library-property>
     <library-property>
         <name>io.keikai.import.cache</name>
         <value>true</value>
     </library-property>
+    <!-- keikai configurable properties. See https://doc.keikai.io/dev-ref/Configuration
     <library-property>
         <name>io.keikai.export.cache</name>
         <value>true</value>

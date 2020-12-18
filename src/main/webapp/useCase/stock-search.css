@@ -1,0 +1,12 @@
+#embed{
+    height: 50%;
+}
+
+.container{
+    height: 100%;
+}
+
+.number-box{
+    width: 40%;
+    display: inline-block;
+}
