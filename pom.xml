@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.5.0</version>
+	<version>5.6.0.FL.20201221-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<zk.version>9.5.0.2-Eval</zk.version>
