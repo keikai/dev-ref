@@ -54,7 +54,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 	}
 
 	/**
-	 * accept .zul, .jsp, .xhtml
+	 * define those files to show by their extension
 	 */
 	class PageFilter implements FileFilter{
 
@@ -63,7 +63,8 @@ public class IndexComposer extends SelectorComposer<Component> {
 			return pathname.isFile()
 					&& (pathname.getName().toLowerCase().endsWith("zul")
 						|| pathname.getName().toLowerCase().endsWith("jsp")
-						|| pathname.getName().endsWith("xhtml"))
+						|| pathname.getName().endsWith("xhtml")
+						|| pathname.getName().endsWith("html"))
 					&& !pathname.getName().equals("index.zul");
 		}
 		
