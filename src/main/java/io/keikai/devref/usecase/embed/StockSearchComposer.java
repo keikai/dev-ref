@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author hawk
  */
-public class ProductFilterComposer extends SelectorComposer<Component> {
+public class StockSearchComposer extends SelectorComposer<Component> {
 
     @Wire
     private Spreadsheet spreadsheet;
@@ -41,7 +41,7 @@ public class ProductFilterComposer extends SelectorComposer<Component> {
     }
 
     @Listen("onSearch = spreadsheet")
-    public void exportExcel(Event event) {
+    public void search(Event event) {
         FilterCriteria criteria = convertCriteria((JSONObject) event.getData());
         List<Product> result = productService.query(criteria);
         populateResult(result);

@@ -27,7 +27,7 @@ public class ProductService {
         });
     }
 
-    public List<Product> query(ProductFilterComposer.FilterCriteria criteria) {
+    public List<Product> query(StockSearchComposer.FilterCriteria criteria) {
         List<Product> result = new LinkedList<>();
         for (Product p :productList){
             if (p.getCategory().equals(criteria.getCategory())
