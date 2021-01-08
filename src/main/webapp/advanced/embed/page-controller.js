@@ -1,6 +1,6 @@
 /**
-* This js demonstrate:
-* - Embed a zul with ZK embed API
+* This js demonstrates:
+* - Embed a zul with ZK embed API (you need to include zkmax in the classpath to access zEmbedded)
 * - communicate with ZK server composer by firing an event
 */
 zEmbedded.load('embeddedZK', 'http://localhost:8080/dev-ref/advanced/embed/embed.zul')

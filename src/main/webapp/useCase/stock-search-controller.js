@@ -1,4 +1,4 @@
-
+/* you need to include zkmax in the classpath to use zEmbedded */
 zEmbedded.load('embed', 'http://localhost:8080/dev-ref/useCase/stock-search.zul')
     .then(function(result) {
         // add event listener for buttons
