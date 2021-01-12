@@ -29,5 +29,6 @@ public class CopySheetComposer extends SelectorComposer<Component> {
 	@Listen(Events.ON_CLICK + "= #hide")
 	public void hideCurrentSheet(){
 		Ranges.range(srcSpreadsheet.getSelectedSheet()).setSheetVisible(Range.SheetVisible.HIDDEN);
+//		Ranges.range(srcSpreadsheet.getSelectedSheet()).setSheetVisible(Range.SheetVisible.VISIBLE);
 	}
 }
