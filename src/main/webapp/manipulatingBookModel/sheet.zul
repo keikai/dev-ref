@@ -1,14 +1,14 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-	<window border="normal" height="100%" width="100%"
-		title="Copy a sheet to a new book"
+	<div height="100%" width="100%"
 		apply="io.keikai.devref.CopySheetComposer">
 		<button id="copy" label="copy the selected sheet to a new book"/>
+		<button id="hide" label="hide the selected sheet"/>
 		<spreadsheet id="srcSpreadsheet" width="100%" height="45%" src="/WEB-INF/books/demo_sample.xlsx" maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
 		 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
 		 <separator height="30px" bar="true"/>
 		<spreadsheet id="targetSpreadsheet" width="100%" height="45%" maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"
 		 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
-	</window>
+	</div>
 </zk>
