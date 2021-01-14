@@ -1,0 +1,25 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
+    xmlns:h="native">
+    <hlayout height="100%" width="100%" apply="io.keikai.devref.TraceFormulaComposer">
+        <spreadsheet id="spreadsheet" src="/WEB-INF/books/demo_sample.xlsx"
+                     showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true"
+                     maxVisibleRows="200" maxVisibleColumns="40"
+                     hflex="1" vflex="1"/>
+        <div >
+            For cell: [ <label id="cellRef"/> ]
+            <h:br/>
+            <button id="precedent" label="trace precedents"/>
+            <button id="dependent" label="trace dependents"/>
+            <separator bar="true" height="20px"/>
+            Select an item below to focus the cell:
+            <listbox width="250px" emptyMessage="no data">
+                <listhead>
+                    <listheader label="Precedents/Dependents"/>
+                </listhead>
+            </listbox>
+        </div>
+    </hlayout>
+</zk>
