@@ -8,6 +8,7 @@
 				showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40"
 				src="/WEB-INF/books/chart.xlsx" />
 			<vlayout width="350px" vflex="1">
+				select a range of data to create a chart
 				<groupbox hflex="1">
 					<caption label="Chart" />
 					<listbox id="chartListbox" checkmark="true">
@@ -32,10 +33,6 @@
 				<groupbox hflex="1">
 					<caption label="Control" />
 					<grid>
-						<columns>
-							<column></column>
-							<column></column>
-						</columns>
 						<rows>
 							<row spans="2">
 								<hlayout >
@@ -45,10 +42,6 @@
 								<intbox id="toColumnBox" value="0" width="70px"/>
 								<button id="moveButton" label="Move" />
 								</hlayout>
-							</row>
-							<row>
-							</row>
-							<row spans="2" align="right">
 							</row>
 							<row spans="2" align="right">
 								<hlayout>
