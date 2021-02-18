@@ -1,0 +1,15 @@
+/* vertical width and horizontal height should be set with the same size.
+*/
+.zssheet .simplebar-vertical{
+    width: 20px;
+}
+.zssheet .simplebar-vertical .simplebar-scrollbar {
+    width: 12px;
+}
+
+.zssheet .simplebar-horizontal{
+    height: 20px;
+}
+.zssheet .simplebar-horizontal .simplebar-scrollbar {
+    height: 12px;
+}
