@@ -1,0 +1,11 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <nodom apply="io.keikai.devref.usecase.HelpTextComposer">
+        <spreadsheet id="ss" height="100%" width="60%" style="margin: 0 auto;" src="/WEB-INF/books/helpTemplate.xlsx"
+                     maxVisibleRows="40" maxVisibleColumns="5"/>
+        <drawer id="helpDrawer" visible="false" position="right" width="40%">
+            <include src="help.html"/>
+        </drawer>
+    </nodom>
+</zk>
