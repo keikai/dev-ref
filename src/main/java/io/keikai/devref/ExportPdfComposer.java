@@ -36,8 +36,10 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
 	@Wire("#printDialog #printGridlines")
 	private Checkbox printGridlines;
 
-//	Exporter exporter = Exporters.getExporter("pdf"); //another way
-	PdfExporter pdfExporter = new PdfExporter();
+	//the default way, it uses the file's printing setup
+//	private Exporter exporter = Exporters.getExporter("pdf");
+	// use this if you need to change print setup
+	private PdfExporter pdfExporter = new PdfExporter();
 	
 	@Listen("onClick = #printDialog #exportPdf")
 	public void doExport(Event event) throws IOException{
