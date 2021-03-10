@@ -17,7 +17,7 @@ msgzss.action = {
     insertPanel: "插入",
     newBook: "新檔案",
     saveBook: "儲存",
-    closeBook: "孤必",
+    closeBook: "關閉",
     exportPDF: "匯出成 PDF",
     paste: "貼上",
     pasteFormula: "公式",
