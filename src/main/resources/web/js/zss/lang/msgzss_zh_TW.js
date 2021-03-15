@@ -1,3 +1,6 @@
+/*
+ * This is just an example to demonstrate how to override. Please get the complete file in keikai.jar/web/js/zss/lang/msgzss.js
+ */
 msgzss = {
     cannotEditProtected: "無法編輯受保護的儲存格"
 };
