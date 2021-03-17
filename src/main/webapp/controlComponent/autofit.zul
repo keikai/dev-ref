@@ -1,14 +1,22 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-    <div apply="io.keikai.devref.AutoFitComposer" height="100%">
-    <div>
-        starting column index: <intbox id="startCol" value="0" constraint="no negative"/>
-        ending column index: <intbox id="endCol" value="0" constraint="no negative"/>
-        <button label="auto fit column width"/>
-    </div>
-    <spreadsheet id="spreadsheet" vflex="1" width="100%" src="/WEB-INF/books/autofit.xlsx"
-                 maxVisibleRows="50" maxVisibleColumns="40" showContextMenu="true"
-                 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
-    </div>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
+    xmlns:h="native">
+    <hlayout apply="io.keikai.devref.AutoFitComposer" height="100%">
+        <spreadsheet id="spreadsheet" vflex="1" width="100%" src="/WEB-INF/books/autofit.xlsx"
+                     maxVisibleRows="50" maxVisibleColumns="40" showContextMenu="true"
+                     showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"/>
+        <div width="200px">
+            <h:h3>Manual AutoFit:</h:h3>
+            Double-click a header's right border to auto-fit single column.<h:br/>
+            Select multiple columns and double-click to auto-fit them at once. <h:br/>
+            <h:h3>AutoFit by API:</h:h3>
+            starting column index:
+            <intbox id="startCol" value="0" constraint="no negative"/>
+            <h:br/>
+            ending column index:
+            <intbox id="endCol" value="0" constraint="no negative"/>
+            <button label="auto fit column width"/>
+        </div>
+    </hlayout>
 </zk>
