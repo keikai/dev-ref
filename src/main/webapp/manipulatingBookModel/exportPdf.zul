@@ -23,8 +23,11 @@
             <checkbox id="centerH" label="Horizontally"/>
             <checkbox id="centerV" label="Vertically"/>
             <separator bar="true"/>
-            <h:bold>Print Options</h:bold><h:br/>
+            <h:bold>Print Options:</h:bold><h:br/>
             <checkbox id="printGridlines" label="print gridlines"/>
+            <separator bar="true"/>
+            <h:bold>Print:</h:bold><h:br/>
+            <selectbox/>
             <separator bar="true"/>
             <button id="exportPdf" label="Export PDF" style="float:right"/>
         </window>
