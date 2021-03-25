@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.advanced;
 
 import io.keikai.api.*;
 import io.keikai.ui.Spreadsheet;

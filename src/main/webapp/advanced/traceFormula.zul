@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
     xmlns:h="native">
-    <hlayout height="100%" width="100%" apply="io.keikai.devref.TraceFormulaComposer">
+    <hlayout height="100%" width="100%" apply="io.keikai.devref.advanced.TraceFormulaComposer">
         <spreadsheet id="spreadsheet" src="/WEB-INF/books/demo_sample.xlsx"
                      showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true"
                      maxVisibleRows="200" maxVisibleColumns="40"
