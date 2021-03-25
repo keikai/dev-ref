@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.6.1-Eval</version>
+	<version>5.7.0-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<zk.version>9.5.0.2-Eval</zk.version>
@@ -149,7 +149,7 @@
 						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
 						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
 					</webAppConfig>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
+<!--					<scanIntervalSeconds>5</scanIntervalSeconds>-->
 				</configuration>
 			</plugin>
 		</plugins>
