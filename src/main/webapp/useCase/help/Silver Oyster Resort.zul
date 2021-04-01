@@ -1,0 +1,11 @@
+<div>
+    <custom-attributes name="Silver Oyster Resort"
+                       address="5 Woodside, Blackwater, GU17 9JJ"
+                       price="100"
+                       rating="4.5"
+                       facilities="${['Non-smoking rooms','Fitness center', 'Free WiFi']}"
+                       description="The Silver Oyster Resort provides guest rooms with iPod docking stations and flat-screen TVs. Deluxe linens and bathroom amenities are available in every room as well.
+&lt;br/&gt;&lt;br/&gt;
+The Ruby Room lounge located in the Silver Oyster Resort, serves a European-Style breakfast buffet, dinner and drinks are available as well. The hotel also offers an evening wine reception in the lobby."/>
+    <apply templateURI="moreInfo.zul"/>
+</div>

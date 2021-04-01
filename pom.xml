@@ -53,6 +53,11 @@
 			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zuti</artifactId>
+			<version>${zk.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-ex</artifactId>
 			<version>${project.version}</version>

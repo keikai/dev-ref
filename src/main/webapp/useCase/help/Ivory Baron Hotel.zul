@@ -1,0 +1,10 @@
+<div>
+    <custom-attributes name="Ivory Baron Hotel"
+                       address="Lake Forest St. District Heights, 20747"
+                       price="150"
+                       rating="4.1"
+                       facilities="${['Non-smoking rooms','Fitness center', 'Free WiFi']}"
+                       description="The homely suites are well appointed with spacious interiors and modern Asian furnishings. Each has a private balcony, living area and kitchenette. A TV and tea/coffee maker are also provided.&lt;br/&gt;&lt;br/&gt;
+Guests can work out in the fitness center or try water activities like snorkeling and kayaking."/>
+    <apply templateURI="moreInfo.zul"/>
+</div>

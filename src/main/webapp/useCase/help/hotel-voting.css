@@ -1,0 +1,83 @@
+.more-info{
+    padding: 20px;
+    font-family: Helvetica Neue;
+
+}
+
+.thumbnail{
+    margin: 24px 0px;
+}
+
+.rating{
+    width: 43px;
+    height: 22px;
+    background: #FFF2D0;
+    border-radius: 4px;
+    padding: 4px;
+    color: #FFB801;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+
+.name{
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+    width: 80%;
+    margin: 4px 0;
+}
+
+.price{
+    font-weight: bold;
+    font-size: 24px;
+    color: #4D72FF;
+}
+
+.address{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+}
+
+.per-night{
+    font-size: 10px;
+    color: rgba(77, 114, 255, 0.5);
+}
+
+.description{
+    color: rgba(0, 0, 0, 0.5);
+    align-self: stretch;
+    margin: 4px 0px;
+    font-size: 14px;
+}
+
+.tag{
+    color: #4D72FF;
+    background: #EDF3FF;
+    border-radius: 4px;
+    margin: 0px 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.vote-button{
+    font-size:16px;
+    margin: 24px 0px;
+    background: #4D72FF;
+    border-radius: 4px;
+}
+
+h6{
+    margin: 8px 0px;
+    margin-top: 25px;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+}
+
+.flexbox > *:first-child{
+    flex: 1;
+}

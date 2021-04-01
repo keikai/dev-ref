@@ -1,0 +1,10 @@
+<div>
+    <custom-attributes name="Crown Lodge Resort &amp; Spa"
+                       address="92 Morris St.Rosemount, MN 55068"
+                       price="130"
+                       rating="4.5"
+                       facilities="${['1 swimming pool','Family rooms', 'Free WiFi']}"
+                       description="Crown Lodge Resort &amp; Spa Coffee House features all-day dining of both local and international favorites. The Lobby Bar serves a range of beverages including cocktails, fresh juice, and hot drinks.&lt;br/&gt;&lt;br/&gt;
+Guests can relax in the sauna or take a dip in the hot tub. The young ones can swim in the children’s pool. Other facilities include a business center and a karaoke room."/>
+    <apply templateURI="moreInfo.zul"/>
+</div>

@@ -1,0 +1,12 @@
+<?style src="hotel-voting.css" ?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <nodom apply="io.keikai.devref.usecase.help.HotelVotingComposer">
+        <spreadsheet id="spreadsheet" height="100%" width="60%"
+                     src="/WEB-INF/books/hotelVoting.xlsx"
+                     maxVisibleRows="28" maxVisibleColumns="6"/>
+        <drawer id="helpDrawer" visible="false" position="right" width="30%">
+        </drawer>
+    </nodom>
+</zk>

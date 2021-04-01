@@ -1,0 +1,10 @@
+<div>
+    <custom-attributes name="Silver Mountain Resort"
+                       address="Acacia Ave. Chippewa Falls, WI 54729"
+                       price="120"
+                       rating="4.2"
+                       facilities="${['Beachfront','Family rooms', 'Free WiFi']}"
+                       description="Offering an outdoor pool and an indoor pool, Lexis Hibiscus Port Dickson is in Port Dickson. Free Wi-Fi access is available in this chalet.&lt;br/&gt;&lt;br/&gt;
+The accommodations includes air conditioning and a minibar. Featuring a hairdryer, private bathroom also comes with a bidet and bathrobes. Extras include a private pool, a desk and ironing facilities."/>
+    <apply templateURI="moreInfo.zul"/>
+</div>

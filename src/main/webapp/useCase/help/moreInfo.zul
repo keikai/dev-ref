@@ -1,0 +1,27 @@
+<div xmlns="native" xmlns:z="zul" class="more-info">
+    <h1>Day 1</h1>
+    <z:image src="${name}.png" sclass="thumbnail" width="100%"/>
+
+    <div class="rating">
+        <i class="z-icon-star"/>
+        <span>${rating}</span>
+    </div>
+    <div class="flexbox">
+        <span class="name">${name}</span>
+        <span class="price">$${price}</span>
+    </div>
+    <div class="flexbox">
+        <span class="address">${address}</span>
+        <span class="per-night">per night</span>
+    </div>
+
+    <h6>Facilities</h6>
+    <div class="facilities">
+        <span class="tag" forEach="${facilities}">${each}</span>
+    </div>
+    <h6>About</h6>
+    <p class="description">
+        ${description}
+    </p>
+    <z:button id="vote" label="Vote This Hotel" width="100%" height="40px" sclass="vote-button" forward="helpDrawer.onVote"/>
+</div>
