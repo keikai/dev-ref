@@ -1,4 +1,4 @@
-package io.keikai.devref.usecase;
+package io.keikai.devref.usecase.help;
 
 import io.keikai.api.Range;
 import io.keikai.devref.util.RangeHelper;
