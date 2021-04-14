@@ -8,6 +8,7 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 
 /**
+ * Demonstrate an alternative to group rows.
  * @author Hawk
  */
 public class GroupingComposer extends SelectorComposer<Component> {
@@ -20,16 +21,9 @@ public class GroupingComposer extends SelectorComposer<Component> {
     @Wire
     private Spreadsheet ss;
 
-    @Override
-    public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);
-    }
-
     /**
-     * if a grouping symbol + clicked
-     * show hidden rows
-     * else if a grouping symbol - clicked
-     * hide rows
+     * if a grouping symbol '+' is clicked, show hidden rows
+     * else if a grouping symbol '-' is clicked, hide rows
      */
     @Listen(Events.ON_CELL_CLICK + "= #ss")
     public void toggleGrouping(CellMouseEvent e) {
