@@ -1,0 +1,54 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd"
+    xmlns:h="native">
+    <style>
+        .precedentBox .z-listcell-content,
+        .precedentBox .z-listitem.z-listitem-selected>.z-listcell>.z-listcell-content {
+            color: green;
+        }
+        .dependentBox .z-listcell-content,
+        .dependentBox .z-listitem.z-listitem-selected>.z-listcell>.z-listcell-content{
+            color: orange;
+        }
+    </style>
+    <hlayout height="100%" width="100%" apply="io.keikai.devref.usecase.DisplayFormulaTraceComposer">
+        <spreadsheet id="spreadsheet" src="/WEB-INF/books/demo_sample.xlsx"
+                     showSheetbar="true" showSheetTabContextMenu="true" showToolbar="true" showFormulabar="true"
+                     maxVisibleRows="200" maxVisibleColumns="40"
+                     hflex="2" vflex="1"/>
+        <div vflex="1" style="max-width: 450px">
+            <h:h3 style="margin: 10px 0;">Formula Tracking</h:h3>
+            <h:div>
+                    Trace cell: [
+                    <label id="cellAddress"/>
+                    ]
+                <button id="trace" label="trace" style="float:right"/>
+            </h:div>
+            <separator bar="true" height="20px"/>
+            <window id="rangeWin" title="List" vflex="1" border="normal" contentStyle="overflow-y: auto">
+                Select an item below to focus the cell:
+                <listbox width="100%" emptyMessage="no data" rows="3" sclass="precedentBox">
+                    <listhead>
+                        <listheader label="Precedents"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem label="${each}" forward="rangeWin.onFocusCell"/>
+                    </template>
+                </listbox>
+                <listbox width="100%" emptyMessage="no data" rows="3" sclass="dependentBox">
+                    <listhead>
+                        <listheader label="Dependents"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem label="${each}" forward="rangeWin.onFocusCell"/>
+                    </template>
+                </listbox>
+            </window>
+            <window title="Chart" vflex="1" border="normal">
+                <charts hflex="1"/>
+            </window>
+        </div>
+    </hlayout>
+</zk>
