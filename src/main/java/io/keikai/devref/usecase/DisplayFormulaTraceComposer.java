@@ -12,7 +12,8 @@ import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zul.*;
 
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
 
 /**
  * @author Hawk
@@ -43,7 +44,7 @@ public class DisplayFormulaTraceComposer extends SelectorComposer<Component> {
         charts.setType(Charts.NETWOKRGRAPH);
         charts.setModel(fromToModel);
         NetworkGraphLayoutAlgorithm algorithm = charts.getPlotOptions().getNetworkGraph().getLayoutAlgorithm();
-        algorithm.setLinkLength(40);
+        algorithm.setLinkLength(20);
         algorithm.setEnableSimulation(true);
         charts.getPlotOptions().getSeries().getDataLabels().setEnabled(true);
         charts.getPlotOptions().getSeries().getDataLabels().setLinkFormat(""); //make link text empty
@@ -75,35 +76,88 @@ public class DisplayFormulaTraceComposer extends SelectorComposer<Component> {
     }
 
     private void renderChart(){
-        for (int n=0 ; n <charts.getSeriesSize(); n++){
-            charts.getSeries(n).remove();
+        clearSeries();
+        int maxLevel = Integer.parseInt(Optional.ofNullable(charts.getAttribute("maxLevel", true)).orElse("1").toString());
+        addDependent(maxLevel);
+        addPrecedent(maxLevel);
+    }
+
+    private void clearSeries() {
+        int size = charts.getSeriesSize();
+        for (int n=0 ; n < size; n++){
+            charts.getSeries().remove();
         }
-        addDependent();
-        addPrecedent();
     }
 
     private static final String PRECEDENT_COLOR = "green";
     private static final String DEPENDENT_COLOR = "orange";
 
-    /**
-     * precedent is "from", dependent is "to".
-     */
-    private void addDependent() {
+    private void addDependent(int maxLevel) {
+        List<Point> points = traceCells(Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection())
+                , maxLevel, DisplayFormulaTraceComposer::getDirectDependents);
+
         String selectedCellRef = spreadsheet.getCellFocus().asString();
         charts.getSeries().setName(selectedCellRef);
         charts.getSeries().setColor(DEPENDENT_COLOR);
-        dependentList.stream().forEach(range -> {
-            charts.getSeries().addPoint(selectedCellRef, range.toString());
-        });
+        points.stream().forEach(p -> { charts.getSeries().addPoint(p); });
     }
 
-    private void addPrecedent() {
+    private void addPrecedent(int maxLevel) {
+        List<Point> points = traceCells(Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection())
+                , maxLevel, DisplayFormulaTraceComposer::getDirectPrecedents);
+
         String selectedCellRef = spreadsheet.getCellFocus().asString();
         charts.getSeries(1).setName(selectedCellRef);
         charts.getSeries(1).setColor(PRECEDENT_COLOR);
-        precedentList.stream().forEach(range -> {
-            charts.getSeries(1).addPoint(range.toString(), selectedCellRef);
-        });
+        points.stream().forEach(p -> { charts.getSeries(1).addPoint(p); });
     }
 
+    /**
+     * @param origin the starting cell to trace
+     * @param maxLevel the max level to trace. A1 -> B1 -> C1 is 2 levels.
+     * @return a list of from-to points
+     */
+    private List<Point> traceCells(Range origin, int maxLevel, Function<Range, Set<Range>> getNextLevelCell) {
+        List<Range> cellsToTrace = new LinkedList<>();
+        cellsToTrace.add(origin);
+
+        List<Point> points = new LinkedList<>();
+        for (int pointLevel = 1 ; pointLevel <= maxLevel ; pointLevel++){
+            List<Range> referencedCells = new LinkedList<>();
+            while (!cellsToTrace.isEmpty()){
+                Range cell = cellsToTrace.remove(0);
+                // get direct referenced cells (precedents/dependents) of current level
+                // turn cells into points
+                Set<Range> directReferencedCells = getNextLevelCell.apply(cell);
+                for (Range range : directReferencedCells){
+                    Point p = new Point(cell.toString(), range.toString());
+                    points.add(p);
+                    if (pointLevel == 1){
+                        p.setWidth(5);
+                    }
+                };
+                // if doesn't reach the max level, collect the next level cells
+                if (pointLevel < maxLevel){
+                    referencedCells.addAll(directReferencedCells);
+                }
+            }
+            cellsToTrace.addAll(referencedCells);
+        }
+        return points;
+    }
+
+    static Set<Range> getDirectDependents(Range range){
+        Set<Range> dependents = new HashSet<>();
+        range.zOrderStream().forEach(cell ->  {
+            dependents.addAll(cell.getDirectDependents());
+        });
+        return dependents;
+    }
+    static Set<Range> getDirectPrecedents(Range range){
+        Set<Range> precedents = new HashSet<>();
+        range.zOrderStream().forEach(cell ->  {
+            precedents.addAll(cell.getDirectPrecedents());
+        });
+        return precedents;
+    }
 }
