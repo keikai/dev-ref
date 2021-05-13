@@ -12,7 +12,7 @@
 Copyright (C) 2009 Potix Corporation. All Rights Reserved.
 
 */
-package io.keikai.devref;
+package io.keikai.devref.component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import org.zkoss.zul.Listbox;
  *
  */
 @SuppressWarnings("serial")
-public class BookSheetComposer extends SelectorComposer<Component>{
+public class SelectSheetComposer extends SelectorComposer<Component>{
 	
 	@Wire
 	Listbox sheetBox;

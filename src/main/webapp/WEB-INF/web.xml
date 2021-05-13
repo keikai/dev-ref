@@ -7,7 +7,7 @@
 	<display-name>Keikai Developer Reference Example</display-name>
 	<servlet>
 		<servlet-name>importServlet</servlet-name>
-		<servlet-class>io.keikai.devref.ImportServlet</servlet-class>
+		<servlet-class>io.keikai.devref.importer.ImportServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>importServlet</servlet-name>

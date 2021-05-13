@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.misc;
 
 import io.keikai.api.Ranges;
 import io.keikai.devref.advanced.SpreadsheetCellPopup;

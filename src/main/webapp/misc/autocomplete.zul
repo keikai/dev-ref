@@ -6,7 +6,7 @@
     <label>
         when you start editing a cell in column A, a combobox pops up for autocomplete.
     </label>
-    <div apply="io.keikai.devref.AutoCompleteComposer" width="100%" vflex="1">
+    <div apply="io.keikai.devref.misc.AutoCompleteComposer" width="100%" vflex="1">
         <spreadsheet id="ss" hflex="1" vflex="1"
                      showFormulabar="true" showContextMenu="true" showToolbar="true"
                      showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40"

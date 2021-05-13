@@ -3,7 +3,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<window title="My First ZK Spreadsheet Application" 
-	apply="io.keikai.devref.ImporterComposer"
+	apply="io.keikai.devref.importer.ImporterComposer"
 		border="normal" height="100%" width="100%">
 		<spreadsheet id="ss" height="100%" width="100%"
 		maxVisibleRows="150" maxVisibleColumns="40" showContextMenu="true"

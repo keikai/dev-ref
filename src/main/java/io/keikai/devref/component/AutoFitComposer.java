@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.component;
 
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.select.SelectorComposer;

@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.model;
 
 import io.keikai.api.Ranges;
 import io.keikai.ui.Spreadsheet;

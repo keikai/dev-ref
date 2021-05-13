@@ -1,7 +1,7 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
-    <div height="100%" apply="io.keikai.devref.LocaleComposer">
+    <div height="100%" apply="io.keikai.devref.misc.LocaleComposer">
         current locale :
         <combobox id="localeBox" readonly="true"/>
         <spreadsheet id="ss" src="/WEB-INF/books/numberFormat.xlsx" maxVisibleRows="100" maxVisibleColumns="20"

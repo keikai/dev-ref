@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.util;
 
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.*;
