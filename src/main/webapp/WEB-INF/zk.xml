@@ -17,6 +17,9 @@
         <name>org.zkoss.web.servlet.http.embedded.enabled</name>
         <value>true</value>
     </library-property>
+    <listener>
+        <listener-class>io.keikai.devref.ParameterImportComposer</listener-class>
+    </listener>
 <!--    <library-property>-->
 <!--        <name>io.keikai.import.cache</name>-->
 <!--        <value>true</value>-->
