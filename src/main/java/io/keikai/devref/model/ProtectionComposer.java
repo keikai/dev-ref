@@ -12,7 +12,7 @@
 Copyright (C) 2009 Potix Corporation. All Rights Reserved.
 
 */
-package io.keikai.devref;
+package io.keikai.devref.model;
 
 import io.keikai.api.*;
 import io.keikai.api.SheetProtection;

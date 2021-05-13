@@ -1,7 +1,7 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd" xmlns:h="native">
-    <div height="100%" width="100%" apply="io.keikai.devref.ExportPdfComposer">
+    <div height="100%" width="100%" apply="io.keikai.devref.model.ExportPdfComposer">
         <hlayout height="50px">
         <h:span style="font-weight: bold">File to load:</h:span>
         <listbox id="fileBox" mold="select" width="">

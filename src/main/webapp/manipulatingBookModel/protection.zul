@@ -2,7 +2,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
 	<window hflex="1" vflex="1"
-		apply="io.keikai.devref.ProtectionComposer">
+		apply="io.keikai.devref.model.ProtectionComposer">
 		<hlayout hflex="1" vflex="1">
 			<spreadsheet id="ss" hflex="1" vflex="1" showContextMenu="true"
 				showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40"
