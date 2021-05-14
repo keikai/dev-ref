@@ -1,0 +1,9 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+    <spreadsheet height="100%" width="100%" src="/WEB-INF/books/scoresheet.xlsx"
+				 maxVisibleColumns="15" maxVisibleRows="20"
+				 hidecolumnhead="false"  hiderowhead="false" showContextMenu="false"
+				 showToolbar="true" showSheetbar="true" showFormulabar="true"
+				 apply="io.keikai.devref.usecase.ScoresheetComposer"/>
+</zk>
