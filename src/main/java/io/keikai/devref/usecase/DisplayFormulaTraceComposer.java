@@ -100,6 +100,13 @@ public class DisplayFormulaTraceComposer extends SelectorComposer<Component> {
         charts.getSeries().setName(selectedCellRef);
         charts.getSeries().setColor(DEPENDENT_COLOR);
         points.stream().forEach(p -> { charts.getSeries().addPoint(p); });
+        makeLargeCenter(points, charts.getSeries());
+    }
+
+    private void makeLargeCenter(List<Point> points, Series series) {
+        Node node = series.getNodes();
+        node.setId(points.get(0).getFrom());
+        node.getMarker().setRadius(10);
     }
 
     private void addPrecedent(int maxLevel) {
@@ -110,6 +117,7 @@ public class DisplayFormulaTraceComposer extends SelectorComposer<Component> {
         charts.getSeries(1).setName(selectedCellRef);
         charts.getSeries(1).setColor(PRECEDENT_COLOR);
         points.stream().forEach(p -> { charts.getSeries(1).addPoint(p); });
+        makeLargeCenter(points, charts.getSeries(1));
     }
 
     /**
