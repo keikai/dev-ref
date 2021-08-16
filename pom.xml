@@ -45,10 +45,6 @@
 			<name>Keikai OSE</name>
 			<url>https://mavensync.zkoss.org/maven2</url>
 		</repository>
-		<repository> <!-- for itext 2.1.7.js6 -->
-			<id>jaspersoft-third-party</id>
-			<url>https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
-		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -83,16 +79,34 @@
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsp</artifactId>
 			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-pdf</artifactId>
 			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsf</artifactId>
 			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
