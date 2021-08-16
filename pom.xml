@@ -45,6 +45,10 @@
 			<name>Keikai OSE</name>
 			<url>https://mavensync.zkoss.org/maven2</url>
 		</repository>
+		<repository> <!-- for itext 2.1.7.js6 -->
+			<id>jaspersoft-third-party</id>
+			<url>https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
