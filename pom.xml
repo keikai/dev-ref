@@ -46,17 +46,26 @@
 			<url>https://mavensync.zkoss.org/maven2</url>
 		</repository>
 	</repositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.zkoss.zk</groupId>
+				<artifactId>zkex</artifactId>
+				<version>${zk.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>net.sf.jasperreports</groupId>
+						<artifactId>jasperreports</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkmax</artifactId>
 			<version>${zk.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.jasperreports</groupId>
-					<artifactId>jasperreports</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
@@ -79,34 +88,16 @@
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsp</artifactId>
 			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.jasperreports</groupId>
-					<artifactId>jasperreports</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-pdf</artifactId>
 			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.jasperreports</groupId>
-					<artifactId>jasperreports</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsf</artifactId>
 			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.sf.jasperreports</groupId>
-					<artifactId>jasperreports</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
