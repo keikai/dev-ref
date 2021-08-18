@@ -12,7 +12,10 @@ import java.util.*;
  */
 public class ExchangeRateFetcher {
 
-    private static String EXCHANGE_RATES_URL = "https://api.exchangeratesapi.io/latest";
+    public static String[] interested_currency_list = new String[]{"USD", "GBP", "AUD", "CHF", "NZD", "JPY", "CAD"};
+    private static String access_key = "b3a129fbe94e768ee520ec48788c6261";
+    private static String EXCHANGE_RATES_URL = "http://api.exchangeratesapi.io/v1/latest?access_key=" + access_key
+            + "&symbol=" + String.join(",", interested_currency_list);
 
     public static Map<String, Double> fetch() throws IOException {
         URL url = new URL(EXCHANGE_RATES_URL);

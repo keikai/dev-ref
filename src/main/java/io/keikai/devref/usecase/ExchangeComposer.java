@@ -107,11 +107,10 @@ public class ExchangeComposer extends SelectorComposer {
 
     private void displayExchangeRate() {
         spreadsheet.focus();
-        String[] INTERESTED_CURRENCY_LIST = {"USD", "GBP", "AUD", "CHF", "NZD", "JPY", "CAD"};
         int startingRow = 8;
         try {
             rates = ExchangeRateFetcher.fetch();
-            for (String currency : INTERESTED_CURRENCY_LIST) {
+            for (String currency : ExchangeRateFetcher.interested_currency_list) {
                 Ranges.range(spreadsheet.getSelectedSheet(), startingRow, 6).setCellValue(currency);
                 Ranges.range(spreadsheet.getSelectedSheet(), startingRow, 6 + 1).setCellValue(rates.get(currency));
                 startingRow++;
