@@ -20,6 +20,9 @@
     <listener>
         <listener-class>io.keikai.devref.util.ParameterImportComposer</listener-class>
     </listener>
+    <listener>
+        <listener-class>io.keikai.devref.advanced.FunctionRegistration</listener-class>
+    </listener>
 <!--    <library-property>-->
 <!--        <name>io.keikai.import.cache</name>-->
 <!--        <value>true</value>-->
