@@ -12,11 +12,11 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * This class shows how to enable collaboration edit.
+ * This class shows how to enable collaboration edit mode.
  * @author dennis, Hawk
  *
  */
-public class CoeditComposer extends SelectorComposer<Component> {
+public class CollaborationEditComposer extends SelectorComposer<Component> {
 
 	private static final long serialVersionUID = 1L;
 	
