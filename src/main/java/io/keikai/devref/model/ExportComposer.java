@@ -43,8 +43,8 @@ public class ExportComposer extends SelectorComposer<Component> {
 			}
 		}
 		//generate file name upon book type (2007,2003)
-		String dlname = BookUtil.suggestName(book);
-		Filedownload.save(new AMedia(dlname, "xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", file, true));
+		String fileName = BookUtil.suggestName(book);
+		Filedownload.save(new AMedia(fileName, "xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", file, true));
 	}
 
 }
