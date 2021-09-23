@@ -1,4 +1,4 @@
-package io.keikai.devref;
+package io.keikai.devref.util;
 
 import org.zkoss.zk.ui.WebApp;
 import org.zkoss.zk.ui.util.WebAppInit;
