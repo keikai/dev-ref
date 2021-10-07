@@ -7,12 +7,12 @@ import java.util.Optional;
 
 /**
  * a servlet to handle external API request and access a cell of a Book.
+ * API example: http://localhost:8080/dev-ref/api?r=6&c=5
  */
 public class ApiServlet extends HttpServlet {
 
     private int rowIndex;
     private int columnIndex;
-    private String result = "";
     private SpreadsheetService spreadsheetService;
 
     @Override
@@ -48,7 +48,7 @@ public class ApiServlet extends HttpServlet {
         if (rowArg.isPresent()){
             rowIndex = Integer.parseInt(rowArg.get());
         }else{
-            failureResponse(response);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
@@ -56,13 +56,9 @@ public class ApiServlet extends HttpServlet {
         if (colArg.isPresent()){
             columnIndex = Integer.parseInt(colArg.get());
         }else{
-            failureResponse(response);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
     }
 
-    private void failureResponse(HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        response.getWriter().println("parameter r is required");
-    }
 }
