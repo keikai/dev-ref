@@ -16,7 +16,8 @@
             <h:br/>
             ending column index:
             <intbox id="endCol" value="0" constraint="no negative"/>
-            <button label="auto fit column width"/>
+            <button id="autofit" label="auto fit column width"/>
+            <button id="populate" label="populate 100 cells and autofit"/>
         </div>
     </hlayout>
 </zk>
