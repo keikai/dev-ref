@@ -30,11 +30,17 @@ public class ChartComposer extends SelectorComposer<Component> {
 
 	private ListModelList<Chart> chartList = new ListModelList<Chart>();
 
-	
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		chartListbox.setModel(chartList);
+	}
+
 	public void add() {
 		Range dataRange = Ranges.range(ss.getSelectedSheet(),new AreaRef("A1:B6"));
 		SheetAnchor selectionAnchor = SheetOperationUtil.toChartAnchor(dataRange);
-		dataRange.addChart(selectionAnchor, Type.PIE, Grouping.STANDARD, LegendPosition.RIGHT);
+		Chart chart = dataRange.addChart(selectionAnchor, Type.PIE, Grouping.STANDARD, LegendPosition.RIGHT);
 		refreshChartList();
 	}
 
@@ -69,21 +75,29 @@ public class ChartComposer extends SelectorComposer<Component> {
 	private void refreshChartList(){
 		chartList.clear();
 		chartList.addAll(ss.getSelectedSheet().getCharts());
-		chartListbox.setModel(chartList);
 	}
 	
 	@Listen("onClick = #addButton")
 	public void addByUtil(){
-		SheetOperationUtil.addChart(Ranges.range(ss.getSelectedSheet(),new AreaRef("A1:B6")),
-		Type.PIE, Grouping.STANDARD, LegendPosition.RIGHT);
+		AreaRef selection = ss.getSelection();
+		if (isOneCell(selection)){
+			selection = new AreaRef("A1:B6");
+		}
+		SheetOperationUtil.addChart(Ranges.range(ss.getSelectedSheet(), selection),
+				Type.PIE, Grouping.STANDARD, LegendPosition.RIGHT);
 		refreshChartList();
 	}
-	
+
+	private boolean isOneCell(AreaRef areaRef) {
+		return (areaRef.getLastColumn() == areaRef.getColumn()) && (areaRef.getLastRow()==areaRef.getRow());
+	}
+
 	@Listen("onClick = #moveButton")
 	public void moveByUtil(){
 		if (chartListbox.getSelectedItem() != null){
+			Chart chart = chartListbox.getSelectedItem().getValue();
 			SheetOperationUtil.moveChart(Ranges.range(ss.getSelectedSheet()),
-					(Chart)chartListbox.getSelectedItem().getValue(),
+					chart,
 					toRowBox.getValue(), toColumnBox.getValue());
 			refreshChartList();
 		}
@@ -93,7 +107,7 @@ public class ChartComposer extends SelectorComposer<Component> {
 	public void deleteByUtil(){
 		if (chartListbox.getSelectedItem() != null){
 			SheetOperationUtil.deleteChart(Ranges.range(ss.getSelectedSheet()), 
-					(Chart)chartListbox.getSelectedItem().getValue());
+					chartListbox.getSelectedItem().getValue());
 			refreshChartList();
 		}
 	}
