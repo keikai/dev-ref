@@ -278,7 +278,7 @@ public class EventsComposer extends SelectorComposer<Component>{
 	public void onAfterCellChange(CellAreaEvent event){
 		StringBuilder info = new StringBuilder();
 
-		info.append("Cell changes on ").append(Ranges.getAreaRefString(event.getSheet(), event.getArea()));
+		info.append(String.format("%s %s", event.getName(), Ranges.getAreaRefString(event.getSheet(), event.getArea())));
 		info.append(", value is \""
 		+Ranges.range(event.getSheet(),event.getArea()).getCellFormatText()+"\"");
 
