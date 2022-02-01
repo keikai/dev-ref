@@ -2,8 +2,8 @@ package io.keikai.devref.analyzer;
 
 import io.keikai.model.SCell;
 
-public class FormulaProcessor extends Processor<SCell>{
-    public FormulaProcessor(Processor processor) {
+public class FormulaCounter extends Counter<SCell> {
+    public FormulaCounter(Counter processor) {
         super(processor);
         item = new ReportItem("Formulas");
     }

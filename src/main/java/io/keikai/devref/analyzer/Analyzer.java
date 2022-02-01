@@ -19,8 +19,9 @@ import java.util.Iterator;
 public class Analyzer {
     static private File file;
     static private Book book;
-    static private Processor processor;
-    static private Processor sheetProcessor;
+    static private Counter processor;
+    static private Counter sheetProcessor;
+    static private Counter<Book> bookProcessor;
 
     public static void main(String[] args) throws IOException {
         checkArguments(args);
@@ -36,11 +37,13 @@ public class Analyzer {
     }
 
     private static void setupProcessor() {
-        processor = new CellProcessor(new FormulaProcessor(null));
-        sheetProcessor = new SheetProcessor(new NameProcessor(null));
+        bookProcessor = new StyleCounter(null);
+        processor = new CellCounter(new FormulaCounter(null));
+        sheetProcessor = new SheetCounter(new NameCounter(null));
     }
 
     private static void analyze() {
+        bookProcessor.process(book);
         for (int i = 0 ; i < book.getNumberOfSheets() ; i++){
             Sheet sheet = book.getSheetAt(i);
             sheetProcessor.process(sheet);
@@ -61,6 +64,7 @@ public class Analyzer {
         file = new File(args[0]);
         if (!file.exists()){
             System.out.println(file.getAbsolutePath() + " not found!");
+            return;
         }
     }
 
@@ -68,12 +72,13 @@ public class Analyzer {
         System.out.println("----------------");
         System.out.println("Analyzer Result");
         System.out.println("----------------");
+        printReportItem(bookProcessor);
         printReportItem(sheetProcessor);
         printReportItem(processor);
     }
 
-    private static void printReportItem(Processor processor) {
-        Processor currentProcessor = processor;
+    private static void printReportItem(Counter processor) {
+        Counter currentProcessor = processor;
         while (currentProcessor !=null) {
             ReportItem item = currentProcessor.getItem();
             System.out.printf("%s : %s\n", item.getName(), item.getCounter());

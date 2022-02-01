@@ -2,8 +2,8 @@ package io.keikai.devref.analyzer;
 
 import io.keikai.api.model.Sheet;
 
-public class SheetProcessor extends Processor<Sheet>{
-    public SheetProcessor(Processor processor) {
+public class SheetCounter extends Counter<Sheet> {
+    public SheetCounter(Counter processor) {
         super(processor);
         item = new ReportItem("Sheets");
     }

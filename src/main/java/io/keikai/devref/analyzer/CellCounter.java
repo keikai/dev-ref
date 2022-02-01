@@ -2,8 +2,8 @@ package io.keikai.devref.analyzer;
 
 import io.keikai.model.SCell;
 
-public class CellProcessor extends Processor<SCell>{
-    public CellProcessor(Processor processor) {
+public class CellCounter extends Counter<SCell> {
+    public CellCounter(Counter processor) {
         super(processor);
         item = new ReportItem("Non-Empty Cell");
     }

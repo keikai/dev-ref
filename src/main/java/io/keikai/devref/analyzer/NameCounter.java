@@ -3,8 +3,8 @@ package io.keikai.devref.analyzer;
 import io.keikai.api.Ranges;
 import io.keikai.api.model.Sheet;
 
-public class NameProcessor extends Processor<Sheet>{
-    public NameProcessor(Processor processor) {
+public class NameCounter extends Counter<Sheet> {
+    public NameCounter(Counter processor) {
         super(processor);
         item = new ReportItem("Named Range");
     }
