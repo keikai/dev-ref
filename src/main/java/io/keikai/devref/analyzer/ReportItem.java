@@ -1,22 +1,25 @@
 package io.keikai.devref.analyzer;
 
+import io.keikai.devref.analyzer.counter.Counter;
+
 public class ReportItem {
     private String name;
-    private int counter;
+    private String result;
 
-    public ReportItem(String name) {
-        this.name = name;
+    public ReportItem(Counter counter){
+        this.name = counter.getName();
+        this.result = String.valueOf(counter.getCounter());
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCounter() {
-        return counter;
+    public String getResult() {
+        return result;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
+    public void setResult(String result) {
+        this.result = result;
     }
 }
