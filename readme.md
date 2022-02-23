@@ -7,11 +7,14 @@ This project contains the sample code of [Keikai Developer Reference](https://do
 
 ![](keikai-preview.jpg)
 
-# For New Comers
-If you are new to Keikai, we recommend you to read [Tutorial](https://doc.keikai.io/tutorial) first to know some basic ideas.
+# How you can use Keikai
+Please read various use cases in [blog](https://keikai.io/blog/).
+
+# For Newcomers
+If you are new to run Keikai, we recommend you to read [Tutorial](https://doc.keikai.io/tutorial) first to know some basic ideas.
 
 # How to Run This Project
-Clone the project and launch your command line interface in the keikai-tutorial folder. Execute the following commands based on your environment.
+Clone the project and launch your command line interface in the folder with `pom.xml`. Execute the following commands based on your OS.
 
 ## Maven installed
 `mvn tomcat7:run`
