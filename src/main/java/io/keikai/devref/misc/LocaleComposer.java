@@ -2,52 +2,57 @@ package io.keikai.devref.misc;
 
 import io.keikai.api.Ranges;
 import io.keikai.ui.Spreadsheet;
-import org.zkoss.poi.ss.usermodel.ZssContext;
+import org.zkoss.poi.ss.usermodel.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zul.*;
 
+import java.text.*;
 import java.util.*;
 
 /**
  * Set locale of ZSS
- * @author Hawk
  *
+ * @author Hawk
  */
 @SuppressWarnings("serial")
 public class LocaleComposer extends SelectorComposer<Component> {
 
-	@Wire
-	private Spreadsheet ss;
-	@Wire
-	private Combobox localeBox;
-	@Wire
-	private Label localeLabel;
+    @Wire
+    private Spreadsheet ss;
+    @Wire
+    private Combobox localeBox;
+    @Wire
+    private Label localeLabel;
 
-	private ListModelList localeModel;
-	static Locale[] allLocales = Locale.getAvailableLocales();
-	static{
-		Arrays.sort(allLocales, new Comparator(){
-			public int compare(Object o1, Object o2){
-				return o1.toString().compareTo(o2.toString());
-			}
-		});
-	}
-	@Override
-	public void doAfterCompose(Component comp) throws Exception {
-		super.doAfterCompose(comp);  //wire variables and event listeners
-		localeModel = new ListModelList(allLocales);
-		localeBox.setModel(localeModel);
+    private ListModelList localeModel;
+    static Locale[] allLocales = Locale.getAvailableLocales();
 
-		localeModel.addToSelection(ZssContext.getCurrent().getLocale());
-	}
+    static {
+        Arrays.sort(allLocales, new Comparator() {
+            public int compare(Object o1, Object o2) {
+                return o1.toString().compareTo(o2.toString());
+            }
+        });
+    }
 
-	@Listen("onSelect = combobox")
-	public void selectLocale(){
-		Locale locale = (Locale)localeModel.getSelection().iterator().next();
-		ZssContext.setThreadLocal(new ZssContext(locale, -1));
-		Ranges.range(ss.getSelectedSheet()).notifyChange();
-	}
+    @Override
+    public void doAfterCompose(Component comp) throws Exception {
+        super.doAfterCompose(comp);  //wire variables and event listeners
+        localeModel = new ListModelList(allLocales);
+        localeBox.setModel(localeModel);
 
+        localeModel.addToSelection(ZssContext.getCurrent().getLocale());
+    }
+
+    /**
+     * edit text of a date cell is determined by BuiltinFormats.getBuiltinFormat(14, locale)
+     */
+    @Listen("onSelect = combobox")
+    public void selectLocale() {
+        Locale locale = (Locale) localeModel.getSelection().iterator().next();
+        ZssContext.setThreadLocal(new ZssContext(locale, -1));
+        Ranges.range(ss.getSelectedSheet()).notifyChange();
+    }
 }
