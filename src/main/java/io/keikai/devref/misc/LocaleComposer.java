@@ -1,19 +1,19 @@
 package io.keikai.devref.misc;
 
-import io.keikai.api.Ranges;
 import io.keikai.ui.Spreadsheet;
-import org.zkoss.poi.ss.usermodel.*;
-import org.zkoss.zk.ui.Component;
+import org.zkoss.util.Locales;
+import org.zkoss.web.Attributes;
+import org.zkoss.zk.ui.*;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zul.*;
 
-import java.text.*;
 import java.util.*;
 
+
 /**
- * Set locale of ZSS
- *
+ * Set locale of ZSS.
+ * Please read https://www.zkoss.org/wiki/ZK_Developer%27s_Reference/Internationalization/Locale for details.
  * @author Hawk
  */
 @SuppressWarnings("serial")
@@ -23,8 +23,6 @@ public class LocaleComposer extends SelectorComposer<Component> {
     private Spreadsheet ss;
     @Wire
     private Combobox localeBox;
-    @Wire
-    private Label localeLabel;
 
     private ListModelList localeModel;
     static Locale[] allLocales = Locale.getAvailableLocales();
@@ -43,7 +41,7 @@ public class LocaleComposer extends SelectorComposer<Component> {
         localeModel = new ListModelList(allLocales);
         localeBox.setModel(localeModel);
 
-        localeModel.addToSelection(ZssContext.getCurrent().getLocale());
+        localeModel.addToSelection(Locales.getCurrent());
     }
 
     /**
@@ -52,7 +50,7 @@ public class LocaleComposer extends SelectorComposer<Component> {
     @Listen("onSelect = combobox")
     public void selectLocale() {
         Locale locale = (Locale) localeModel.getSelection().iterator().next();
-        ZssContext.setThreadLocal(new ZssContext(locale, -1));
-        Ranges.range(ss.getSelectedSheet()).notifyChange();
+        Sessions.getCurrent().setAttribute(Attributes.PREFERRED_LOCALE,locale);
+        Executions.getCurrent().sendRedirect(null); //reload page to render in new locale
     }
 }
