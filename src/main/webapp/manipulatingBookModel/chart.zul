@@ -47,6 +47,7 @@
 								<hlayout>
 									<button id="addButton" label="Add" />
 									<button id="deleteButton" label="Delete" />
+									<button id="find" label="find by selection"/>
 								</hlayout>
 							</row>
 						</rows>
