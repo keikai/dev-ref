@@ -18,7 +18,7 @@ public class ApiServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            spreadsheetService = new SpreadsheetService();
+            spreadsheetService = new SpreadsheetService("demo_sample.xlsx");
         } catch (IOException e) {
             e.printStackTrace();
         }

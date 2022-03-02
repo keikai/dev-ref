@@ -8,18 +8,20 @@ import java.io.*;
 import java.util.Optional;
 
 /**
- * the part of the example to demonstrate the example to handle external API request to access a {@link Book}.
+ * Provides methods to access a {@link Book}.
+ * If this class provides methods to set cell values, then it requires a write lock.
  */
 public class SpreadsheetService {
+    private static final String DEFAULT_BOOK_FOLDER = "/WEB-INF/books/";
     private Book book;
     static private final Importer importer = Importers.getImporter();
 
-    public SpreadsheetService() throws IOException {
-        importBook();
+    public SpreadsheetService(String fileName) throws IOException {
+        importBook(fileName);
     }
 
-    private void importBook() throws IOException {
-        book = importer.imports(new File(WebApps.getCurrent().getRealPath("/WEB-INF/books/demo_sample.xlsx")), "demo_sample.xlsx");
+    private void importBook(String fileName) throws IOException {
+        book = importer.imports(new File(WebApps.getCurrent().getRealPath(DEFAULT_BOOK_FOLDER + fileName)), fileName);
     }
 
 
