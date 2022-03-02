@@ -46,17 +46,15 @@ public class AutoFitComposer extends SelectorComposer {
 
     @Listen("onClick = #autofitHeight")
     public void autoFitRowHeight() {
-        if (useSelectionBox.isChecked()) {
-            Range selectedRange = Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection());
-            selectedRange.zOrderStream().forEach(range -> {
-                if (range.hasMergedCell()) {
-                    //only auto-fit the first row of a merged cell
-                    autoFitMergedCell(range);
-                } else {
-                    autoFitOneCell(range);
-                }
-            });
-        }
+        Range selectedRange = Ranges.range(spreadsheet.getSelectedSheet(), spreadsheet.getSelection());
+        selectedRange.zOrderStream().forEach(range -> {
+            if (range.hasMergedCell()) {
+                //only auto-fit the first row of a merged cell
+                autoFitMergedCell(range);
+            } else {
+                autoFitOneCell(range);
+            }
+        });
     }
 
     private void autoFitOneCell(Range range) {
