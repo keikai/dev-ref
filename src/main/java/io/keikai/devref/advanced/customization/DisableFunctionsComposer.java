@@ -1,6 +1,10 @@
 package io.keikai.devref.advanced.customization;
 
+import io.keikai.api.model.*;
 import io.keikai.ui.*;
+import io.keikai.ui.event.Events;
+import io.keikai.ui.impl.DefaultUserActionManagerCtrl;
+import io.keikaiex.ui.impl.ua.AutoFillHandler;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.CheckEvent;
 import org.zkoss.zk.ui.select.SelectorComposer;
@@ -16,7 +20,25 @@ public class DisableFunctionsComposer extends SelectorComposer<Component> {
 
 	@Wire
 	private Spreadsheet ss;
-	
+	static final char SPLIT_CHAR = '/';
+
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		//disabled after creating a spreadsheet
+		ss.getUserActionManager().setHandler(DefaultUserActionManagerCtrl.Category.EVENT.getName(), Events.ON_CELL_SELECTION_UPDATE + SPLIT_CHAR + "resize", new UserActionHandler() {
+			@Override
+			public boolean isEnabled(Book book, Sheet sheet) {
+				return false;
+			}
+
+			@Override
+			public boolean process(UserActionContext ctx) {
+				return false;
+			}
+		});
+	}
+
 	@Listen("onCheck = #add")
 	public void disableAdd(CheckEvent event) {
 		ss.disableUserAction(AuxAction.ADD_SHEET, !event.isChecked());
