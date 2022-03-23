@@ -42,7 +42,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 		Collections.sort(fileList);
 		for (File zulFile : fileList){
 			A link = new A(zulFile.getName());
-			link.setHref(folderPath + File.separator + zulFile.getName());
+			link.setHref(folderPath + "/" + zulFile.getName());
 			linkArea.appendChild(link);
 		}
 	}
