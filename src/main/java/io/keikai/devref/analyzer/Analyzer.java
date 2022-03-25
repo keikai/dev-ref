@@ -39,10 +39,10 @@ public class Analyzer {
 
     private static void setupCounter() {
         bookCounter = new StyleCounter(null);
-        cellCounter = new CellCounter(
-                      new FormulaCounter(null));
         sheetCounter = new SheetCounter(
                        new NameCounter(null));
+        cellCounter = new CellCounter(
+                      new FormulaCounter(null));
     }
 
     private static void analyze() {
@@ -62,7 +62,7 @@ public class Analyzer {
 
     private static void checkArguments(String[] args) {
         if (args.length<1){
-            System.out.println("file name is required");
+            System.out.println("a file with full path is required");
         }
         file = new File(args[0]);
         if (!file.exists()){
