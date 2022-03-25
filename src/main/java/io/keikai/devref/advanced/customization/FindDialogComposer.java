@@ -3,6 +3,7 @@ package io.keikai.devref.advanced.customization;
 import io.keikai.api.*;
 import io.keikai.api.model.*;
 import io.keikai.api.model.CellData.CellType;
+import io.keikai.model.CellRegion;
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.*;
@@ -46,7 +47,7 @@ public class FindDialogComposer extends SelectorComposer<Component> {
 		}else{
 			targetCell = findNext(ss.getBook(), ss.getSelectedSheet(), Ranges.range(ss.getSelectedSheet(), ss.getSelection()));
 		}
-		;
+
 		if (found(targetCell)){
 			focusToFoundCell(ss, targetCell);
 		}else{
@@ -104,8 +105,9 @@ public class FindDialogComposer extends SelectorComposer<Component> {
 	 * @return null if it's not found
 	 */
 	protected Range findNext(Sheet sheet, Range currentSelection) {
-		int lastColumn = Ranges.range(sheet).getDataRegion().getLastColumn();
-		int lastRow = Ranges.range(sheet).getDataRegion().getLastRow();
+		CellRegion dataRegion = Ranges.range(sheet).getDataRegion(); //only search those cells having data
+		int lastColumn = dataRegion.getLastColumn();
+		int lastRow = dataRegion.getLastRow();
 		String keyword = keywordBox.getValue().trim();
 		int row = getStartingRow(sheet, currentSelection);
 		int column = getStartingColumn(sheet, currentSelection); 
