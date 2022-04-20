@@ -6,6 +6,7 @@ import io.keikai.ui.Spreadsheet;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
+import org.zkoss.zul.Checkbox;
 
 /**
  * Demonstrate copy & cut , CellOperationUtil API usage
@@ -18,6 +19,10 @@ public class CopyCutComposer extends SelectorComposer<Component> {
 
 	@Wire
 	private Spreadsheet ss;
+	@Wire
+	private Spreadsheet ssTarget;
+	@Wire
+	private Checkbox crossBookBox;
 
 
 	@Listen("onClick = #copyButton")
@@ -25,6 +30,9 @@ public class CopyCutComposer extends SelectorComposer<Component> {
 		Range src = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
 		Range dest = Ranges.range(getDestinationSheet(), ss.getSelection());
 		CellOperationUtil.paste(src, dest);
+		if (crossBookBox.isChecked()) {
+			Ranges.range(ssTarget.getSelectedSheet()).notifyChange();
+		}
 	}
 
 
@@ -36,7 +44,11 @@ public class CopyCutComposer extends SelectorComposer<Component> {
 	}
 
 	private Sheet getDestinationSheet(){
-		return ss.getBook().getSheetAt(1);
+		if (crossBookBox.isChecked()){
+			return ssTarget.getBook().getSheetAt(0);
+		}else {
+			return ss.getBook().getSheetAt(1);
+		}
 	}
 
 	//demonstrate Range API usage
