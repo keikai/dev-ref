@@ -10,16 +10,20 @@
             <h:h3>Manual AutoFit Width:</h:h3>
             Double-click a header's right border to auto-fit single column.<h:br/>
             Select multiple columns and double-click to auto-fit them at once. <h:br/>
+
             <h:h3>AutoFit Width by API:</h:h3>
             starting column index: <intbox id="startCol" value="0" constraint="no negative" />
-
             ending column index: <intbox id="endCol" value="0" constraint="no negative"/>
             <button id="autofit" label="AutoFit width"/>
+
+            <h:h3>Use Case</h:h3>
+            populate data from a database dynamically, AutoFit width, so that end users don't need to manually resize every column
+            <button id="populate" label="populate 100 cells and autofit width"/>
+
             <h:h3>AutoFit Height by API:</h:h3>
             select cells first
             <button id="autofitHeight" label="AutoFit height"/>
             <separator bar="true"/>
-            <button id="populate" label="populate 100 cells and autofit"/>
         </div>
     </hlayout>
 </zk>
