@@ -6,8 +6,11 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * a servlet to handle external API request and access a cell of a Book.
+ * RESTful API example.
+ * a servlet to handle external API requests and access a cell of a Book.
  * API example: http://localhost:8080/dev-ref/api?r=6&c=5
+ * r means row index, 0-based.
+ * c means column index, 0-based.
  */
 public class ApiServlet extends HttpServlet {
 
