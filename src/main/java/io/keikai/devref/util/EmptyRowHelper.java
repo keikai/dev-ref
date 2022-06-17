@@ -21,7 +21,7 @@ public class EmptyRowHelper {
         return emptyRowIndexes;
     }
 
-    static public void hideEmptyRows(List<Integer> emptyRowIndexes, Sheet sheet) {
+    static public void hideEmptyRows(Sheet sheet, List<Integer> emptyRowIndexes) {
         for (Integer rowIndex : emptyRowIndexes)
             Ranges.range(sheet, rowIndex, 0).toRowRange().setHidden(true);
     }

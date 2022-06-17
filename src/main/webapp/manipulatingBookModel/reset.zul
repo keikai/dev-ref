@@ -1,0 +1,6 @@
+<zk>
+    <spreadsheet id="ss" width="100%" height="80%" src="/WEB-INF/books/reset.xlsx" maxVisibleRows="150" maxVisibleColumns="40"
+                 showContextMenu="true"
+                 showToolbar="true" showSheetbar="true" showSheetTabContextMenu="true" showFormulabar="true"
+                 apply=" io.keikai.devref.model.ResetDefaultComposer"/>
+</zk>
