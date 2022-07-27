@@ -1,3 +1,4 @@
+<?init class="io.keikai.devref.advanced.RegisterCustomFormulaInfo"?>
 <?xel-method prefix="keikai" name="EXCHANGE"
         class="io.keikai.devref.advanced.MyCustomFunctions"
         signature="double exchange(double,double)"?>
