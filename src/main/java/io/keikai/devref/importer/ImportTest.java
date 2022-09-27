@@ -13,6 +13,8 @@ import java.net.*;
 
 /**
  * demonstrate how to import a file without web environment.
+ * Run this class with Maven: 
+ * <code>mvn compile exec:java -Dexec.mainClass="io.keikai.devref.importer.ImportTest"</code>
  */
 public class ImportTest {
     final static String TAGLIB_KEY = "http://www.zkoss.org/zss/functions";
