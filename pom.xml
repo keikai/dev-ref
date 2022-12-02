@@ -6,7 +6,7 @@
 	<version>5.10.0</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
-		<zk.version>9.0.1.2</zk.version>
+		<zk.version>9.6.2-Eval</zk.version>
 		<jsf-api.version>2.2.20</jsf-api.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>3.1.4.RELEASE</version>
+			<version>4.3.30.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
