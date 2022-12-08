@@ -17,7 +17,9 @@ If you are new to run Keikai, we recommend you to read [Tutorial](https://doc.ke
 Clone the project and launch your command line interface in the folder with `pom.xml`. Execute the following commands based on your OS.
 
 ## Maven installed
-`mvn tomcat7:run`
+`mvn tomcat7:run` (support JSP)
+
+`mvn jetty:run`
 
 ## No Maven installed yet
 Run the Maven wrapper below which will download everything needed for you during starting up: 
