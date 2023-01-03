@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>5.10.0</version>
+	<version>5.10.0-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
 		<zk.version>9.6.2-Eval</zk.version>
@@ -81,6 +81,10 @@
 				<exclusion>
 					<groupId>org.zkoss.zk</groupId>
 					<artifactId>*</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-to-slf4j</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
