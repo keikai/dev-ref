@@ -31,10 +31,15 @@ public class IndexComposer extends SelectorComposer<Component> {
 
 		for (File folder : folders){
 	    	File[] files = folder.listFiles(new PageFilter());
-			String folderPath = webRootPath.relativize(folder.toPath()).toString();
-			renderFolderAsTitle(folderPath);
-			renderPageLinks(folderPath, files);
+			String folderUrl = getRelativeFolderUrl(folder);
+			renderFolderAsTitle(folderUrl);
+			renderPageLinks(folderUrl, files);
 		}
+	}
+
+	private String getRelativeFolderUrl(File folder) {
+		//replace path separator in windows, backslash, with forward slash
+		return webRootPath.relativize(folder.toPath()).toString().replaceAll("\\\\", "/");
 	}
 
 	private void renderPageLinks(String folderPath, File[] files) {
