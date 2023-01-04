@@ -82,7 +82,7 @@ public class IndexComposer extends SelectorComposer<Component> {
 		 * @return a list of directories that contain example pages
 		 */
 		static public List<File> scanFolders(Path basePath) throws IOException {
-			String[] dir2Skip = {"WEB-INF", "js"};
+			String[] dir2Skip = {"WEB-INF", "js", "META-INF"};
 			List<File> folders = new LinkedList<>();
 			Files.walkFileTree(basePath, new SimpleFileVisitor<Path>() {
 				@Override
