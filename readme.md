@@ -17,19 +17,24 @@ If you are new to run Keikai, we recommend you to read [Tutorial](https://doc.ke
 Clone the project and launch your command line interface in the folder with `pom.xml`. Execute the following commands based on your OS.
 
 ## Maven installed
-`mvn tomcat7:run` (support JSP)
+### Tomcat (support JSP)
+`mvn clean verify org.codehaus.cargo:cargo-maven3-plugin:run -Dcargo.maven.containerId=tomcat9x -Dcargo.maven.containerUrl=https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat/9.0.45/tomcat-9.0.45.zip` 
 
+See [
+Codehaus Cargo Maven 3 Plugin Getting Started](https://codehaus-cargo.github.io/cargo/Maven+3+Plugin+Getting+Started.html)
+
+### Jetty
 `mvn jetty:run`
 
 ## No Maven installed yet
 Run the Maven wrapper below which will download everything needed for you during starting up: 
 * Linux / Mac
 
-`./mvnw tomcat7:run`
+`./mvnw [SAME_GOAL_ABOVE]`
 
 * Windows
 
-`mvnw.cmd tomcat7:run`
+`mvnw.cmd [SAME_GOAL_ABOVE]`
 
 
 After Tomcat starts up, visit http://localhost:8080/dev-ref with your browser. You will be seeing a list of examples, these examples are explained in Keikai [Developer Reference](https://doc.keikai.io/dev-ref).
