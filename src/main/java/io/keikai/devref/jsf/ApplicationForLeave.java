@@ -5,7 +5,6 @@ import io.keikai.api.model.Book;
 import io.keikai.api.model.Sheet;
 import io.keikai.jsf.Action;
 import io.keikai.jsf.ActionBridge;
-import net.sf.cglib.core.Local;
 
 import java.io.*;
 import java.net.URL;

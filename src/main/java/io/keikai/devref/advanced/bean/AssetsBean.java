@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@Scope(value="session",  proxyMode=ScopedProxyMode.TARGET_CLASS)
+@Scope(value="session")
 public class AssetsBean {
     private double liquidAssets = 146504221;
     private double fundInvestment = 23181709;
