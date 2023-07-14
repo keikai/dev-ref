@@ -84,18 +84,14 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 
 	@Listen("onSelect = #hAlignBox")
 	public void applyAlignmentByUtil() {
-
 		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-		CellOperationUtil.applyAlignment(selection
-				, (Alignment)hAlignBox.getSelectedItem().getValue());
+		CellOperationUtil.applyAlignment(selection, hAlignBox.getSelectedItem().getValue());
 	}
 
 	@Listen("onSelect = #vAlignBox")
 	public void applyVerticalAlignmentByUtil() {
-
 		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
-		CellOperationUtil.applyVerticalAlignment(selection
-				, vAlignBox.getSelectedItem().getValue());
+		CellOperationUtil.applyVerticalAlignment(selection, vAlignBox.getSelectedItem().getValue());
 	}
 
 	private ListModelList<Alignment> getAlignmentList() {
@@ -113,12 +109,12 @@ public class CellStyleComposer extends SelectorComposer<Component> {
 				.values()));
 	}
 
-	//demonstrate API usage
+	//Builder API usage
 	public void applyAlignment() {
 		Range selection = Ranges.range(ss.getSelectedSheet(), ss.getSelection());
 		CellStyle oldStyle = selection.getCellStyle();
 		CellStyle newStyle = selection.getCellStyleHelper().builder(oldStyle)
-				.alignment((Alignment)hAlignBox.getSelectedItem().getValue()).build();
+				.alignment(hAlignBox.getSelectedItem().getValue()).build();
 		selection.setCellStyle(newStyle);
 	}
 }
