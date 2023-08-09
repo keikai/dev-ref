@@ -4,11 +4,10 @@ import io.keikai.api.*;
 import io.keikai.api.model.*;
 import io.keikai.json.JSONValue;
 import io.keikai.jsp.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import org.zkoss.json.JSONObject;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
  *
  */
 @WebServlet("/jsp/app4l")
-public class ApplicationForLeaveServlet extends HttpServlet{
+public class ApplicationForLeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ACTION = "action";
 

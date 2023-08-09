@@ -3,9 +3,9 @@ package io.keikai.devref.jsp;
 import io.keikai.api.*;
 import io.keikai.api.model.*;
 import io.keikai.jsp.BookProvider;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.*;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.*;
 import java.net.URL;
 
 public class DemoBookProvider implements BookProvider {

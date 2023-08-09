@@ -18,7 +18,7 @@ Clone the project and launch your command line interface in the folder with `pom
 
 ## Maven installed
 ### Tomcat (support JSP/JSF)
-`mvn clean verify org.codehaus.cargo:cargo-maven3-plugin:run -Dcargo.maven.containerId=tomcat9x -Dcargo.maven.containerUrl=https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat/9.0.45/tomcat-9.0.45.zip` 
+`mvn cargo:run` 
 
 See [
 Codehaus Cargo Maven 3 Plugin Getting Started](https://codehaus-cargo.github.io/cargo/Maven+3+Plugin+Getting+Started.html)

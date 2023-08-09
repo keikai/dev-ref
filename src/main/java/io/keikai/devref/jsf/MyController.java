@@ -2,13 +2,13 @@ package io.keikai.devref.jsf;
 
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.*;
+import jakarta.faces.bean.*;
+import jakarta.faces.context.FacesContext;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
 import org.zkoss.zk.ui.util.Clients;
 
-import javax.faces.bean.*;
-import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "myController")
 @RequestScoped

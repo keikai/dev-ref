@@ -1,7 +1,8 @@
 package io.keikai.devref.external;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+
 import java.io.IOException;
 import java.util.Optional;
 

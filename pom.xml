@@ -5,13 +5,14 @@
 	<artifactId>dev-ref</artifactId>
 	<version>5.12.2-Eval</version>
 	<properties>
-		<keikai.version>${project.version}</keikai.version>
+		<keikai.version>5.12.2-jakarta-FL-20230808</keikai.version>
+		<zk.jakarta.version>9.6.3-jakarta</zk.jakarta.version>
 		<zk.version>9.6.3-Eval</zk.version>
 		<jsf-api.version>2.2.20</jsf-api.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.9</maven.compiler.source>
+		<maven.compiler.target>1.9</maven.compiler.target>
 	</properties>
 	<packaging>war</packaging>
 	<name>The Keikai Developer Reference Example Project</name>
@@ -27,6 +28,10 @@
 		<repository>
 			<id>Keikai EVAL</id>
 			<name>Keikai Evaluation Repository</name>
+			<url>https://mavensync.zkoss.org/eval</url>
+		</repository>
+		<repository>
+			<id>ZK EVAL</id>
 			<url>https://mavensync.zkoss.org/eval</url>
 		</repository>
 		<repository>
@@ -51,7 +56,7 @@
 			<dependency>
 				<groupId>org.zkoss.zk</groupId>
 				<artifactId>zkex</artifactId>
-				<version>${zk.version}</version>
+				<version>${zk.jakarta.version}</version>
 				<exclusions>
 					<exclusion>
 						<groupId>net.sf.jasperreports</groupId>
@@ -65,7 +70,7 @@
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-ex</artifactId>
-			<version>${project.version}</version>
+			<version>${keikai.version}</version>
 			<!-- to include different version of ZK, required to exclude default one -->
 			<exclusions>
 				<exclusion>
@@ -81,12 +86,12 @@
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsp</artifactId>
-			<version>${project.version}</version>
+			<version>${keikai.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-pdf</artifactId>
-			<version>${project.version}</version>
+			<version>${keikai.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.bouncycastle</groupId>
@@ -101,18 +106,18 @@
 		<dependency>
 			<groupId>io.keikai</groupId>
 			<artifactId>keikai-jsf</artifactId>
-			<version>${project.version}</version>
+			<version>${keikai.version}</version>
 		</dependency>
 		<!-- optional, zkmax requires another license, keikai includes zkex by default -->
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkmax</artifactId>
-			<version>${zk.version}</version>
+			<version>${zk.jakarta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zuti</artifactId>
-			<version>${zk.version}</version>
+			<version>${zk.jakarta.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
@@ -122,30 +127,34 @@
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkplus</artifactId>
-			<version>${zk.version}</version>
+			<version>${zk.jakarta.version}</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-web</artifactId>-->
+<!--			<version>4.3.30.RELEASE</version>-->
+<!--		</dependency>-->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>4.3.30.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>5.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- JSF -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>${jsf-api.version}</version>
+			<groupId>jakarta.faces</groupId>
+			<artifactId>jakarta.faces-api</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>${jsf-api.version}</version>
-		</dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>2.1.1</version>
+		</dependency><!--		<dependency>-->
+<!--			<groupId>com.sun.faces</groupId>-->
+<!--			<artifactId>jsf-impl</artifactId>-->
+<!--			<version>${jsf-api.version}</version>-->
+<!--		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -179,16 +188,23 @@
 				<!-- starts up faster but no JSP, JSF supported	-->
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.27.v20200227</version>
+				<version>11.0.15</version>
 				<configuration>
 					<jvmArgs>-Xmx4096m</jvmArgs>
-					<webAppConfig>
+					<webApp>
 						<contextPath>/${project.artifactId}</contextPath>
-						<!-- disable web fragment scanning to speed up startup time-->
-						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
-						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
-					</webAppConfig>
+					</webApp>
 <!--					<scanIntervalSeconds>5</scanIntervalSeconds>-->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven3-plugin</artifactId>
+				<version>1.10.9</version>
+				<configuration>
+					<container>
+						<containerId>tomcat10x</containerId>
+					</container>
 				</configuration>
 			</plugin>
 			<!-- 3.x is required for Cargo Maven 3 Plugin to run tomcat -->

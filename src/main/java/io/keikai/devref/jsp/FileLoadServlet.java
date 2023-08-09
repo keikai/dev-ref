@@ -1,7 +1,8 @@
 package io.keikai.devref.jsp;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
+
 import java.io.IOException;
 
 public class FileLoadServlet extends HttpServlet {

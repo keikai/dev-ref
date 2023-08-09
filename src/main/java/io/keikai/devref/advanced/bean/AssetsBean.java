@@ -1,16 +1,16 @@
 package io.keikai.devref.advanced.bean;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
+//import org.springframework.context.annotation.Scope;
+//import org.springframework.context.annotation.ScopedProxyMode;
+//import org.springframework.stereotype.Component;
 
 /**
  * A simple data bean.
  * @author Hawk
  *
  */
-@Component
-@Scope(value="session")
+//@Component
+//@Scope(value="session")
 public class AssetsBean {
     private double liquidAssets = 146504221;
     private double fundInvestment = 23181709;
