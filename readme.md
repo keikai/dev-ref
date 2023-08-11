@@ -18,6 +18,10 @@ Clone the project and launch your command line interface in the folder with `pom
 
 ## Maven installed
 ### Tomcat (support JSP/JSF)
+build WAR
+`mvn clean package`
+
+start server
 `mvn cargo:run` 
 
 See [
