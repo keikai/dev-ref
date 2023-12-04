@@ -1,8 +1,9 @@
 package io.keikai.devref.advanced;
 
-import org.zkoss.poi.ss.formula.TwoDEval;
-import org.zkoss.poi.ss.formula.eval.*;
-import org.zkoss.poi.ss.formula.functions.Function;
+
+import org.apache.poi.ss.formula.TwoDEval;
+import org.apache.poi.ss.formula.eval.*;
+import org.apache.poi.ss.formula.functions.Function;
 
 import java.util.*;
 
@@ -83,7 +84,7 @@ public class MyCustomFunctions {
 			}
 			//process an argument like C18
 			if (args[i] instanceof RefEval){
-				ValueEval valueEval = ((RefEval)args[i]).getInnerValueEval();
+				ValueEval valueEval = ((RefEval)args[i]).getInnerValueEval(((RefEval) args[i]).getFirstSheetIndex());
 				if (valueEval instanceof StringEval){
 					stringList.add((StringEval)valueEval);
 				}

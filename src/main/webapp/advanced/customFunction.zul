@@ -4,10 +4,10 @@
         signature="double exchange(double,double)"?>
 <?xel-method prefix="keikai" name="MYSUBTOTAL"
         class="io.keikai.devref.advanced.MyCustomFunctions"
-        signature="org.zkoss.poi.ss.formula.eval.ValueEval mySubtotal(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
+        signature="org.apache.poi.ss.formula.eval.ValueEval mySubtotal(org.apache.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <?xel-method prefix="keikai" name="CHAIN"
         class="io.keikai.devref.advanced.MyCustomFunctions"
-        signature="org.zkoss.poi.ss.formula.eval.ValueEval chain(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
+        signature="org.apache.poi.ss.formula.eval.ValueEval chain(org.apache.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <?taglib uri="/WEB-INF/tld/function.tld" prefix="keikai" ?>
 <zk xmlns="http://www.zkoss.org/2005/zul"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

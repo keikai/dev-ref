@@ -1,8 +1,9 @@
 package io.keikai.devref.advanced;
 
-import org.zkoss.poi.ss.formula.OperationEvaluationContext;
-import org.zkoss.poi.ss.formula.eval.*;
-import org.zkoss.poi.ss.formula.functions.FreeRefFunction;
+
+import org.apache.poi.ss.formula.OperationEvaluationContext;
+import org.apache.poi.ss.formula.eval.*;
+import org.apache.poi.ss.formula.functions.FreeRefFunction;
 
 /**
  * This is an example to show a custom function that can access sheets and cells.</br>
@@ -22,7 +23,7 @@ public class MyCell implements FreeRefFunction {
             return ErrorEval.VALUE_INVALID;
         }
         ValueEval evalCell = context.getRefEvaluatorForCurrentSheet()
-                .getEvalForCell(context.getRowIndex(), context.getColumnIndex());
+                .getEvalForCell(context.getSheetIndex(), context.getRowIndex(), context.getColumnIndex());
         if (evalCell instanceof StringEval) {
             return new StringEval("l");
         } else if (evalCell instanceof BlankEval) {

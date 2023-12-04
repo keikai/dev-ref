@@ -1,22 +1,18 @@
 package io.keikai.devref.advanced;
 
-import org.zkoss.poi.ss.formula.eval.EvaluationException;
-import org.zkoss.poi.ss.formula.functions.MultiOperandNumericFunction;
+
+import org.apache.poi.ss.formula.eval.EvaluationException;
+import org.apache.poi.ss.formula.functions.MultiOperandNumericFunction;
 
 /**
  * Implement a numeric function that accepts multiple operations
  * @author Hawk
  *
  */
-public class MySubtotal extends MultiOperandNumericFunction{
+public class MySubtotal extends MultiOperandNumericFunction {
 
 	protected MySubtotal() {
-		// the first parameter determines whether to evaluate boolean value. If
-		// it's true, evaluator will evaluate boolean value to number. TRUE to 1
-		// and FALSE to 0.
-		// If it's false, boolean value is just ignored.
-		// The second parameter determines whether to evaluate blank value.
-		super(false, false);
+		super(false,false, false);
 	}
 	
 	/**

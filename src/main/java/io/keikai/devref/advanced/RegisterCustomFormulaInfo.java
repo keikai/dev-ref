@@ -18,11 +18,11 @@ public class RegisterCustomFormulaInfo implements Initiator {
         addCustomFormulaInfo();
     }
     static public void addCustomFormulaInfo() {
-        if (Formulas.getFormulaInfos().get(CUSTOM) != null) {
+        if (Formulas.getFormulaInfosByCategory().get(CUSTOM) != null) {
             List<FormulaMetaInfo> customList = new LinkedList<>();
             customList.add(new FormulaMetaInfo(CUSTOM, "EXCHANGE",
                     "EXCHANGE(price, exchange_rate)", "convert a price into another price with specified exchange_rate", 2, null));
-            Formulas.getFormulaInfos().put(CUSTOM, customList);
+            Formulas.getFormulaInfosByCategory().put(CUSTOM, customList);
         }
     }
 }

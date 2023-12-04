@@ -1,6 +1,6 @@
 <?xel-method prefix="keikai" name="LEN"
     class="io.keikai.devref.advanced.MyCustomFunctions"
-    signature="org.zkoss.poi.ss.formula.eval.ValueEval myLen(org.zkoss.poi.ss.formula.eval.ValueEval[], int, int)"?>
+    signature="org.apache.poi.ss.formula.eval.ValueEval myLen(org.apache.poi.ss.formula.eval.ValueEval[], int, int)"?>
 <zk xmlns="http://www.zkoss.org/2005/zul"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">

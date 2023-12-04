@@ -1,7 +1,8 @@
 package io.keikai.devref.advanced;
 
-import org.zkoss.poi.ss.formula.eval.*;
-import org.zkoss.poi.ss.formula.functions.TextFunction;
+
+import org.apache.poi.ss.formula.eval.*;
+import org.apache.poi.ss.formula.functions.TextFunction;
 
 public class MyLen extends TextFunction {
 
