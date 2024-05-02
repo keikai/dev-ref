@@ -67,7 +67,7 @@ public class MyCustomFunctions {
 
 		List<StringEval> stringList = new LinkedList<StringEval>();
 		for (int i = 0 ; i < args.length ; i++){
-			//process an argument like A1:B2
+			//process a cell range like A1:B2
 			if (args[i] instanceof TwoDEval) {
 				TwoDEval twoDEval = (TwoDEval) args[i];
 				int width = twoDEval.getWidth();
@@ -82,7 +82,7 @@ public class MyCustomFunctions {
 				}
 				continue;
 			}
-			//process an argument like C18
+			//process a cell address like C18
 			if (args[i] instanceof RefEval){
 				ValueEval valueEval = ((RefEval)args[i]).getInnerValueEval(((RefEval) args[i]).getFirstSheetIndex());
 				if (valueEval instanceof StringEval){
