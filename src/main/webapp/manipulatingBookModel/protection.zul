@@ -1,6 +1,4 @@
-<zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+<zk>
 	<window hflex="1" vflex="1"
 		apply="io.keikai.devref.model.ProtectionComposer">
 		<hlayout hflex="1" vflex="1">
@@ -19,14 +17,19 @@
 							<row>
 								Current Sheet Protection Status: <label id="status" style="font-weight:bold"/>
 							</row>
-							<row spans="2" align="right">
-								<button id="toggleProtection" label="Toggle Protection"/>
+							<row align="right">
+								<cell colspan="2">
+									<button id="toggleSheetProtection" label="Toggle Sheet Protection"/>
+									<button id="toggleProtection" label="Toggle Protection"/>
+								</cell>
 							</row>
 							<row>
 								Current Cell Locked Status: <label id="lockStatus" style="font-weight:bold"/>
 							</row>
-							<row spans="2" align="right">
+							<row align="right">
+								<cell colspan="2">
 								<button id="toggleLock" label="Toggle Lock"/>
+								</cell>
 							</row>
 						</rows>
 					</grid>
