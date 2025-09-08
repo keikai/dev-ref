@@ -1,6 +1,4 @@
-<zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+<zk>
 	<window hflex="1" vflex="1" apply="io.keikai.devref.model.ChartComposer">
 
 		<hlayout hflex="1" vflex="1">

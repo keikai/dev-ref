@@ -1,9 +1,7 @@
 <?xel-method prefix="keikai" name="LEN"
     class="io.keikai.devref.advanced.MyCustomFunctions"
     signature="org.apache.poi.ss.formula.eval.ValueEval myLen(org.apache.poi.ss.formula.eval.ValueEval[], int, int)"?>
-<zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+<zk>
 	<window title="ZK Spreadsheet" border="normal" height="100%">
 		<spreadsheet src="/WEB-INF/books/overrideFunction.xlsx" 
 		maxVisibleRows="250" maxVisibleColumns="40" width="100%" height="100%" showFormulabar="true"

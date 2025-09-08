@@ -1,6 +1,4 @@
-<zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+<zk>
 	custom toolbar example: the last button on the toolbar
 <style src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<spreadsheet id="spreadsheet" maxVisibleRows="60" maxVisibleColumns="60"

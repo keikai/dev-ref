@@ -1,7 +1,5 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
-<zk xmlns="http://www.zkoss.org/2005/zul"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.zkoss.org/2005/zul http://keikai.io/2019/zul/zul.xsd">
+<zk>
 <div height="100%" width="100%" apply="io.keikai.devref.component.SelectSheetComposer">
 	<div height="40px">
 	Select Sheet Name: <listbox id="sheetBox" mold="select"/>
