@@ -5,8 +5,8 @@
 			<spreadsheet id="ss" hflex="1" vflex="1"
 				showFormulabar="true" showContextMenu="true" showToolbar="true"
 				showSheetbar="true" showSheetTabContextMenu="true" maxVisibleRows="100" maxVisibleColumns="40"
-				src="/WEB-INF/books/blank.xlsx" />
-			<tabbox width="300px" vflex="1">
+				src="/WEB-INF/books/combo-chart.xlsx" />
+			<tabbox width="500px" vflex="1">
 				<tabs>
 					<tab label="Information" />
 					<tab label="Filters" />

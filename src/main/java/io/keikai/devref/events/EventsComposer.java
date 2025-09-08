@@ -14,7 +14,7 @@ import org.zkoss.zul.*;
 import java.util.ArrayList;
 
 /**
- * This controller listens all Spreadsheet's events and show related messages.
+ * This controller listens to all Spreadsheet's events and show related messages.
  * @author dennis, Hawk
  *
  */
@@ -450,12 +450,37 @@ public class EventsComposer extends SelectorComposer<Component>{
 		}
 	}
 
+	@Listen(Events.ON_CHART_CLICK + " = #ss")
+	public void onChartClick(ChartMouseEvent event) {
+		if(isShowEventInfo(event.getName())){
+			StringBuilder info = new StringBuilder();
+			info.append("clicked " + event.getChartName());
+			addInfo(info.toString());
+		}
+	}
 
-	
+	@Listen(Events.ON_CHART_RIGHT_CLICK + " = #ss")
+	public void onChartRightClick(ChartMouseEvent event) {
+		if(isShowEventInfo(event.getName())){
+			StringBuilder info = new StringBuilder();
+			info.append("right clicked " + event.getChartName());
+			addInfo(info.toString());
+		}
+	}
+
+	@Listen(Events.ON_CHART_DOUBLE_CLICK + " = #ss")
+	public void onChartDoubleClick(ChartMouseEvent event) {
+		if(isShowEventInfo(event.getName())){
+			StringBuilder info = new StringBuilder();
+			info.append("double clicked " + event.getChartName());
+			addInfo(info.toString());
+		}
+	}
+
 
 	private void initModel() {
 		//Available events
-		//It is just for showing message, event is always listened in this demo.
+		//It is just for showing messages, event is always listened in this demo.
 		eventFilterModel.setMultiple(true);
 		
 		enableEventFilter(Events.ON_START_EDITING,true);
@@ -494,6 +519,10 @@ public class EventsComposer extends SelectorComposer<Component>{
 		
 		enableEventFilter(Events.ON_CELL_HYPERLINK,true);
 		enableEventFilter(Events.ON_CLIPBOARD_PASTE,false);
+		//chart clicking
+		enableEventFilter(Events.ON_CHART_CLICK,false);
+		enableEventFilter(Events.ON_CHART_RIGHT_CLICK,false);
+		enableEventFilter(Events.ON_CHART_DOUBLE_CLICK,false);
 
 		eventFilterList.setModel(eventFilterModel);
 
@@ -512,11 +541,11 @@ public class EventsComposer extends SelectorComposer<Component>{
 		Ranges.range(ss.getSelectedSheet(), 2, 4).setCellEditText("Edit Me");
 	}
 	
-	private void enableEventFilter(String event, boolean showinfo){
-		if(!eventFilterModel.contains(eventFilterModel)){
+	private void enableEventFilter(String event, boolean showInfo){
+		if(!eventFilterModel.contains(event)){
 			eventFilterModel.add(event);
 		}
-		if(showinfo){
+		if(showInfo){
 			eventFilterModel.addToSelection(event);
 		}else{
 			eventFilterModel.removeFromSelection(event);
