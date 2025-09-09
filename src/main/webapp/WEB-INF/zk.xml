@@ -44,4 +44,8 @@
         <value>Roboto, Helvetica Neue</value>
     </library-property>
     -->
+    <library-property>
+        <name>io.keikai.chart.customizer.class</name>
+        <value>io.keikai.devref.advanced.customization.chart.MyChartCustomizer</value>
+    </library-property>
 </zk>

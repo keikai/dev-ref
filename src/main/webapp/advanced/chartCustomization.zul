@@ -1,0 +1,9 @@
+<zk>
+    <label multiline="true"><![CDATA[ since 6.2.0
+This customization only works on browser rendering, doesn't take effect on exporting.
+    ]]></label>
+    <div apply="io.keikai.devref.advanced.customization.chart.ChartCustomizerComposer" height="100%">
+        <button id="customize" label="Customize Area Chart" />
+    <spreadsheet id="ss" width="100%" vflex="1" src="/WEB-INF/books/chartCustomizer.xlsx" showToolbar="true"/>
+    </div>
+</zk>
