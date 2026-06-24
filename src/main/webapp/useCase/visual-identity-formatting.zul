@@ -1,0 +1,4 @@
+<zk>
+    <spreadsheet id="spreadsheet" width="100%" height="100%" src="/WEB-INF/books/visualIdentityFormatting.xlsx"
+                 showContextMenu="true"/>
+</zk>
