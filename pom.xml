@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.keikai</groupId>
 	<artifactId>dev-ref</artifactId>
-	<version>6.2.0-Eval</version>
+	<version>6.3.0-Eval</version>
 	<properties>
 		<keikai.version>${project.version}</keikai.version>
-		<zk.version>10.0.0-Eval</zk.version>
+		<zk.version>10.3.0.1-Eval</zk.version>
 		<jsf-api.version>2.2.20</jsf-api.version>
 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
 		<packname>-${project.version}-FL-${maven.build.timestamp}</packname>
@@ -179,15 +179,15 @@
 				<!-- starts up faster but no JSP, JSF supported	-->
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.27.v20200227</version>
+				<version>10.0.25</version>
 				<configuration>
 					<jvmArgs>-Xmx4096m</jvmArgs>
-					<webAppConfig>
+					<webApp>
 						<contextPath>/${project.artifactId}</contextPath>
 						<!-- disable web fragment scanning to speed up startup time-->
 						<webInfIncludeJarPattern>^$</webInfIncludeJarPattern>
 						<containerIncludeJarPattern>^$</containerIncludeJarPattern>
-					</webAppConfig>
+					</webApp>
 <!--					<scanIntervalSeconds>5</scanIntervalSeconds>-->
 				</configuration>
 			</plugin>
