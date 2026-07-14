@@ -21,9 +21,9 @@
 							<row>
 								Cell Count: <intbox id="cellCountBox" value="1"/> 
 							</row>
-							<row spans="2" align="right">
+							<row><cell colspan="2" align="right">
 								<button id="fillButton" label="Auto fill"/>
-							</row>
+							</cell></row>
 						</rows>
 					</grid>
 				</groupbox>

@@ -37,7 +37,7 @@
 					<caption label="Control" />
 					<grid vflex="1" hflex="1">
 						<rows>
-							<row spans="2" align="right">
+							<row><cell colspan="2" align="right">
 								<hlayout >
 								To Row:
 								<intbox id="toRowBox" value="0"  width="70px"/>
@@ -45,13 +45,13 @@
 								<intbox id="toColumnBox" value="0" width="70px"/>
 								<button id="moveButton" label="Move" />
 								</hlayout>
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<hlayout>
 									<button id="addButton" label="Add a Picture" />
 									<button id="deleteButton" label="Delete" />
 								</hlayout>
-							</row>
+							</cell></row>
 						</rows>
 					</grid>
 				</groupbox>

@@ -15,15 +15,15 @@
 							<column width="100px"/>
 						</columns>
 						<rows>
-							<row spans="2" align="right">
+							<row><cell colspan="2" align="right">
 								<button id="toggle" label="Toogle Filter"/>
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<button id="clear" label="Clear Filter"/>
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<button id="reapply" label="Reapply Filter"/>  
-							</row>
+							</cell></row>
 							<row align="right">
 								<hlayout>
 								Filter by type: 

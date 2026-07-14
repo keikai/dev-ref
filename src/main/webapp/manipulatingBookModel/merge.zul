@@ -18,18 +18,18 @@
 							<row>
 								Selection: <label id="cellRef" />
 							</row>
-							<row spans="2" align="right">
+							<row><cell colspan="2" align="right">
 								<button id="mergeCenterButton" label="Merge and Center" width="120px" />
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<button id="mergeAcrossButton" label="Merge Across" width="120px"/>
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<button id="mergeButton" label="Merge" width="120px"/>
-							</row>
-							<row spans="2" align="right">
+							</cell></row>
+							<row><cell colspan="2" align="right">
 								<button id="unmergeButton" label="Unmerge" width="120px"/>
-							</row>
+							</cell></row>
 						</rows>
 					</grid>
 				</groupbox>

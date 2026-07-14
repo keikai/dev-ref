@@ -39,5 +39,5 @@
 			</div>
 		</hlayout>
 	</window>
-	<script src="/demo/database/right-click.js"></script>
+	<script src="database/right-click.js"></script>
 </zk>

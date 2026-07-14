@@ -44,6 +44,36 @@ After the server starts up, visit http://localhost:8080/dev-ref with your browse
 After finishing trying it out, you can press `Ctrl+c` to stop the server.
 
 
+# How to Run Tests
+This project ships browser-based smoke tests built on [zk-webdriver](https://github.com/zkoss/zk-webdriver) (JUnit 5, embedded Jetty + headless Chrome). They open real pages, check browser console errors / ZK error boxes / spreadsheet rendering, and write one JSON record per page under `target/smoke/` (plus a screenshot) for cross-version comparison.
+
+Requirements: JDK 17+ and a local Chrome installation. Run in the folder with `pom.xml` (use `./mvnw` / `mvnw.cmd` if Maven is not installed):
+
+```bash
+# smoke-load every page (zul + html); merges results into target/smoke/baseline-<version>.json
+mvn test -Dtest=Tier0SmokeTest -Dkeikai.version=<version, e.g. 6.3.0-Eval>
+
+# basic edit interaction (click a cell, type, Enter) over manipulatingBookModel / advanced / useCase pages
+mvn test -Dtest=InteractionSmokeTest
+
+# login flow for useCase/userPermission (Tier0 skips main.zul because it needs a session)
+mvn test -Dtest=UserPermissionFlowTest
+
+# dump the spreadsheet DOM tag / CSS-class inventory of representative pages to target/domdump/
+mvn test -Dtest=DomDumpTest
+
+# everything at once
+mvn test
+```
+
+Useful switches:
+* `-Dheadless=false` — watch the browser while a test runs.
+* `-Dkeikai.version=...` — only stamps the version string into the JSON records; the actual Keikai version under test comes from `pom.xml` (switch git branches to test another version).
+
+Notes:
+* JSP/JSF pages and a few pages with preconditions are skipped with a reason (see `SKIP` / `KNOWN_BASELINE_ISSUES` in `Tier0SmokeTest`); skipped pages still get a JSON record so the page inventory stays complete.
+* To compare two versions, run `Tier0SmokeTest` on each branch, keep both `baseline-*.json` files, and diff them.
+
 # Try Freshly Release
 Freshly release contains the latest features and bug fixes that are under development. It's built for testing and evaluation. Welcome to try it and [give us feedback](https://keikai.io/contact).
 

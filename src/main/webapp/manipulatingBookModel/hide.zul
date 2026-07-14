@@ -14,9 +14,9 @@
 							<column/>
 						</columns>
 						<rows>
-							<row spans="2">
+							<row><cell colspan="2">
 								Select an arbitrary range and click buttons below: 
-							</row>
+							</cell></row>
 							<row  align="right">
 								<button id="hideButton" label="Hide Rows"/>
 								<button id="unhideButton" label="Unhide Rows"/>
