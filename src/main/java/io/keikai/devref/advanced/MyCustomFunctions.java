@@ -1,9 +1,7 @@
 package io.keikai.devref.advanced;
 
 
-import org.apache.poi.ss.formula.TwoDEval;
-import org.apache.poi.ss.formula.eval.*;
-import org.apache.poi.ss.formula.functions.Function;
+import io.keikai.range.formula.*;
 
 import java.util.*;
 

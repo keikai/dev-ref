@@ -1,23 +1,42 @@
 package io.keikai.devref.advanced.customization;
 
-import io.keikai.importer.*;
-import io.keikai.model.SSheet;
+import io.keikai.model.SBook;
+import io.keikai.range.*;
 
-import java.util.List;
+import java.io.*;
+import java.net.URL;
 
 /**
- * An example of custom importer which just imports the first sheet of a book.
- * Watch out! This approach doesn't always work on every file e.g. a named range referenced to those not-imported sheet
+ * An example of custom importer which just keeps the first sheet of a book.
+ * Watch out! This approach doesn't always work on every file e.g. a named range referenced to those removed sheets
  * will cause an exception.
+ * <p>
+ * Since Keikai 7.0, {@code io.keikai.importer.XlsxImporter} and its extractor hooks were removed
+ * (importing is handled by the built-in engine). A custom importer now wraps the default
+ * {@link SImporter} and post-processes the imported {@link SBook} instead.
  */
-public class FirstSheetImporter extends XlsxImporter {
+public class FirstSheetImporter implements SImporter {
+    private final SImporter delegate = SImporters.getImporter();
+
     @Override
-    protected void importSheets(List<XlsxExtractor.XlsxSheetExtractor> sheets) {
-        XlsxExtractor.XlsxSheetExtractor xSheet = sheets.get(0);
-        SSheet sheet = this.importSheet(xSheet);
-        this.importTables(xSheet, sheet);
-        for (int i = 1 ; i < sheets.size() ; i++){
-            sheets.remove(i);
+    public SBook imports(InputStream is, String bookName) throws IOException {
+        return keepFirstSheetOnly(delegate.imports(is, bookName));
+    }
+
+    @Override
+    public SBook imports(File file, String bookName) throws IOException {
+        return keepFirstSheetOnly(delegate.imports(file, bookName));
+    }
+
+    @Override
+    public SBook imports(URL url, String bookName) throws IOException {
+        return keepFirstSheetOnly(delegate.imports(url, bookName));
+    }
+
+    private SBook keepFirstSheetOnly(SBook book) {
+        while (book.getNumOfSheet() > 1) {
+            book.deleteSheet(book.getSheet(book.getNumOfSheet() - 1));
         }
+        return book;
     }
 }

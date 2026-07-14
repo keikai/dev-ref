@@ -4,7 +4,6 @@ import io.keikai.api.*;
 import io.keikai.api.model.Sheet;
 import io.keikai.ui.Spreadsheet;
 import io.keikai.ui.event.*;
-import org.apache.poi.ss.usermodel.DateUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.*;
@@ -74,7 +73,7 @@ public class ExchangeComposer extends SelectorComposer {
         //locate the 1st cell based on the header because insertion causes a name range shifted
         Range firstCell1stRow = Ranges.rangeByName(sheet, "header").toShiftedRange(1,0);
         Range fillCell = firstCell1stRow;
-        setValuesInRow(firstCell1stRow, DateUtil.getExcelDate(new Date()), cost, destinationCurrency,
+        setValuesInRow(firstCell1stRow, new Date(), cost, destinationCurrency,
                 rates.get(destinationCurrency), amount);
     }
 

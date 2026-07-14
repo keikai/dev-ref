@@ -1,6 +1,6 @@
 package io.keikai.devref.util;
 
-import org.apache.poi.ss.usermodel.ZssContext;
+import io.keikai.compat.ZssContext;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.util.ExecutionInit;
 
