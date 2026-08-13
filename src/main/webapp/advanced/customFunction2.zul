@@ -1,6 +1,6 @@
 <?xel-method prefix="keikai" name="LEN"
     class="io.keikai.devref.advanced.MyCustomFunctions"
-    signature="org.apache.poi.ss.formula.eval.ValueEval myLen(org.apache.poi.ss.formula.eval.ValueEval[], int, int)"?>
+    signature="io.keikai.range.formula.ValueEval myLen(io.keikai.range.formula.ValueEval[], int, int)"?>
 <zk>
 	<window title="ZK Spreadsheet" border="normal" height="100%">
 		<spreadsheet src="/WEB-INF/books/overrideFunction.xlsx" 

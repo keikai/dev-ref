@@ -23,9 +23,6 @@
     <listener>
         <listener-class>io.keikai.devref.advanced.FunctionRegistration</listener-class>
     </listener>
-    <listener>
-        <listener-class>io.keikai.devref.util.PoiLoggerInit</listener-class>
-    </listener>
 <!--    <library-property>-->
 <!--        <name>io.keikai.import.cache</name>-->
 <!--        <value>true</value>-->

@@ -1,8 +1,7 @@
 package io.keikai.devref.advanced;
 
 
-import org.apache.poi.ss.formula.eval.EvaluationException;
-import org.apache.poi.ss.formula.functions.MultiOperandNumericFunction;
+import io.keikai.range.formula.*;
 
 /**
  * Implement a numeric function that accepts multiple operations

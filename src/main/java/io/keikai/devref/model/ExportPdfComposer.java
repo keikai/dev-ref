@@ -2,8 +2,8 @@ package io.keikai.devref.model;
 
 import java.io.*;
 
+import io.keikai.api.*;
 import io.keikai.model.*;
-import io.keikai.model.impl.pdf.*;
 import io.keikai.ui.Spreadsheet;
 import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Component;
@@ -41,10 +41,7 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
 
     private ListModelList<PrintingScope> printingScopeModel = new ListModelList(PrintingScope.values());
 
-    //the default way, it uses the file's printing setup
-//	private Exporter exporter = Exporters.getExporter("pdf");
-    // use this if you need to change print setup
-    private PdfExporter pdfExporter = new PdfExporter();
+    private Exporter exporter = Exporters.getExporter("pdf");
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
@@ -64,14 +61,14 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
             fos = new FileOutputStream(file);
             switch (printingScopeModel.getSelection().iterator().next()) {
                 case BOOK:
-                    pdfExporter.export(ss.getBook().getInternalBook(), file);
+                    exporter.export(ss.getBook(), fos);
                     break;
                 case SHEET:
-                    pdfExporter.export(ss.getSelectedSSheet(), fos);
-                    break;
                 case SELECTION:
-                    pdfExporter.export(new SheetRegion(ss.getSelectedSSheet(), new CellRegion(ss.getSelection().asString())), fos);
-                    break;
+                    // Since Keikai 7.0, PdfExporter only exports a whole book;
+                    // sheet- and selection-scoped export methods were removed.
+                    Messagebox.show("Exporting a single sheet or selection is not supported since Keikai 7.0");
+                    return;
             }
         } finally {
             if (fos != null) {
@@ -88,9 +85,13 @@ public class ExportPdfComposer extends SelectorComposer<Component> {
     }
 
     public void loadSetup() {
-        SPrintSetup setup = pdfExporter.getPrintSetup();
-        setup.setHCenter(centerH.isChecked());
-        setup.setVCenter(centerV.isChecked());
-        setup.setPrintGridlines(printGridlines.isChecked());
+        // Since Keikai 7.0, the exporter reads print settings from the workbook
+        // itself; configure each sheet's SPrintSetup instead of the exporter.
+        for (SSheet sheet : ss.getBook().getInternalBook().getSheets()) {
+            SPrintSetup setup = sheet.getPrintSetup();
+            setup.setHCenter(centerH.isChecked());
+            setup.setVCenter(centerV.isChecked());
+            setup.setPrintGridlines(printGridlines.isChecked());
+        }
     }
 }

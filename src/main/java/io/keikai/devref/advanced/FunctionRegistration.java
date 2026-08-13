@@ -5,7 +5,7 @@ import org.zkoss.zk.ui.WebApp;
 import org.zkoss.zk.ui.util.WebAppInit;
 
 /**
- * register a {@link org.zkoss.poi.ss.formula.functions.FreeRefFunction}.
+ * register a {@link io.keikai.range.formula.FreeRefFunction}.
  */
 public class FunctionRegistration implements WebAppInit {
     @Override
